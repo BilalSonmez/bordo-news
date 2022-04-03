@@ -1,0 +1,43 @@
+<template name="publicComponentsNavbar">
+  <nav class="navbar brdf-navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <div class="row brdf-navbar-content">
+        <div class="col-md-12 navbar-brand-content text-center">
+          <a class="navbar-brand" href="{{pathFor 'public.home'}}">
+            <i class="fa-solid fa-newspaper"></i> Bordo Haber
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+        <div class="col-md-12">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <a class="nav-link{{#if eq currentRouteName 'public.about'}} active{{/if}}" aria-current="page" href="{{pathFor 'public.about'}}">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link{{#if eq currentRouteName 'public.contact'}} active{{/if}}" aria-current="page" href="{{pathFor 'public.contact'}}">Contact Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link{{#if eq currentRouteName 'public.contact'}} active{{/if}}" aria-current="page" href="{{pathFor 'public.contact'}}">Contact Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link{{#if eq currentRouteName 'public.contact'}} active{{/if}}" aria-current="page" href="{{pathFor 'public.contact'}}">Contact Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link{{#if eq currentRouteName 'public.contact'}} active{{/if}}" aria-current="page" href="{{pathFor 'public.contact'}}">Contact Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link{{#if eq currentRouteName 'public.contact'}} active{{/if}}" aria-current="page" href="{{pathFor 'public.contact'}}">Contact Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link{{#if eq currentRouteName 'public.contact'}} active{{/if}}" aria-current="page" href="{{pathFor 'public.contact'}}">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</template>
