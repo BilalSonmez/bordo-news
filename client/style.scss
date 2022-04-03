@@ -1,6 +1,9 @@
-
 $color-base: #2e3e74;
 $color-base-dark: #1f2a4c;
 $color-secondary: #985530;
 $color-secondary-dark: #838386;
 $color-secondary-light: #e3e4e4;
+
+body {
+  background-color: $color-secondary-light;
+}
