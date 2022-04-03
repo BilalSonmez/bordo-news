@@ -24,3 +24,34 @@ insecure@1.0.7                # Allow all DB writes from clients (for prototypin
 
 hot-module-replacement@0.5.1  # Update code in development without reloading the page
 blaze-hot               # Update files using Blaze's API with HMR
+
+
+reactive-dict
+fourseven:scss
+ostrio:flow-router-meta
+ostrio:flow-router-extra
+accounts-password@2.2.0
+random@1.2.0
+aldeed:collection2
+alanning:roles
+mdg:validated-method
+percolate:migrations
+email
+meteorhacks:ssr
+dburles:collection-helpers
+easy:search
+momentjs:moment
+mizzao:user-status
+edgee:slingshot
+sakulstra:aggregate
+raix:handlebar-helpers
+montiapm:agent
+
+bordo:loading
+bordo:soft-remove
+bordo:auto-dates
+bordo:loading-section
+bordo:loading-line
+bordo:slugify
+bordo:last-edit-user
+bordo:create-user
