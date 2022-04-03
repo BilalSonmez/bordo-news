@@ -1,4 +1,8 @@
 <template name="adminLayoutDefault">
-  <h1>#adminLayoutDefault</h1>
-  {{> Template.dynamic template=page}}
+  {{> adminComponentNavbar}}
+  <div class="container adminContainer">
+    <h1>#adminLayoutDefault</h1>
+    {{> Template.dynamic template=page}}
+  </div>
+  {{> adminComponentFooter}}
 </template>

@@ -10,7 +10,7 @@ const routesAdmin = FlowRouter.group({
 routesAdmin.route('/', {
   name: 'admin',
   action: function (params, queryParams) {
-    FlowRouter.go('admin.dashboard');
+    FlowRouter.go('admin.dashboard'); 
   }
 });
 
@@ -18,5 +18,29 @@ routesAdmin.route('/dashboard', {
   name: 'admin.dashboard',
   action: function (params, queryParams) {
     this.render('adminLayoutDefault', { page: 'adminPageDashboard' });
+  }
+});
+routesAdmin.route('/category', {
+  name: 'admin.category',
+  action: function (params, queryParams) {
+    this.render('adminLayoutDefault', { page: 'adminPageCategory' });
+  }
+});
+routesAdmin.route('/column', {
+  name: 'admin.column',
+  action: function (params, queryParams) {
+    this.render('adminLayoutDefault', { page: 'adminPageColumn' });
+  }
+});
+routesAdmin.route('/new', {
+  name: 'admin.new',
+  action: function (params, queryParams) {
+    this.render('adminLayoutDefault', { page: 'adminPageNew' });
+  }
+});
+routesAdmin.route('/user', {
+  name: 'admin.user',
+  action: function (params, queryParams) {
+    this.render('adminLayoutDefault', { page: 'adminPageUser' });
   }
 });

@@ -80,8 +80,10 @@ img {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--bs-primary);
-  border: 2px solid var(--bs-primary);
+  background-color: #1f2a4c;
+  border: 2px solid #1f2a4c;
+  //background-color: var(--bs-primary);
+  //border: 2px solid var(--bs-primary);
   border-radius: 6px;
   width: 5px;
 }
