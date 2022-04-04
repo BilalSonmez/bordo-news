@@ -1,0 +1,40 @@
+@import '../../../../style.scss';
+
+.gfooter {
+  background:  $color-base-dark;
+  background: linear-gradient(180deg, $color-base-dark,  $color-secondary 80%);
+  color: white;
+  text-decoration: none;
+  margin-top: 2rem;
+  //position:absolute;  //Bunu yazarsak yerinde sabit kalır
+  bottom:0;
+  width:100%;
+    /* Height of the footer */
+    .container {
+      min-height:100%;
+      position:relative;
+   }
+  .row {
+    .col-md-4 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      li {
+        margin: 0.7rem 0;
+      } 
+    }
+    .brands a {
+      margin-left: 0.7rem;
+      margin-right: 0.7rem;
+    }
+    a {
+      color: #cfcfcf;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+      text-decoration: none;
+      margin: 10rem 0;
+    }
+    a:hover {
+      color: white;
+    }
+  }
+}
