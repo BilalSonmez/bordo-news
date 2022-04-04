@@ -18,7 +18,7 @@
                 <a class="nav-link{{#if eq currentRouteName 'admin.dashboard'}} active{{/if}}" aria-current="page" href="{{pathFor 'admin.dashboard'}}"><i class="fa fa-dashboard"></i> Dashboard</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link{{#if eq currentRouteName 'admin.category'}} active{{/if}}" aria-current="page" href="{{pathFor 'admin.category'}}"><i class="fa fa-filter"></i> Categories</a>
+                <a class="nav-link{{#if eq1 currentRouteName 'admin.category' 'admin.category.add' 'admin.category.edit'}} active{{/if}}" aria-current="page" href="{{pathFor 'admin.category'}}"><i class="fa fa-filter"></i> Categories</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link{{#if eq currentRouteName 'admin.new'}} active{{/if}}" aria-current="page" href="{{pathFor 'admin.new'}}"><i class="fa-solid fa-newspaper"></i> News</a>
@@ -35,4 +35,17 @@
       </div>
     </div>
   </nav>
+  <script>
+    $(function(){
+      $(window).scroll(function(){
+        if ($(this).scrollTop() != 0) {
+      $(".navbar-brand-content").addClass("d-none");
+      return;
+    } else {
+      $(".navbar-brand-content").removeClass("d-none");
+      return;
+    }
+      });
+    });
+    </script>
 </template>

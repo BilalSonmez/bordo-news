@@ -1,3 +1,4 @@
+import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 Template.adminPageCategory.onCreated(function () {
   this.state = new ReactiveDict(null, {
     
@@ -20,14 +21,17 @@ Template.adminPageCategory.onCreated(function () {
 Template.adminPageCategory.onRendered(function () {
   const self = this;
   this.autorun(function () {
+    AppUtil.refreshTokens.get("category");
 
   });
 });
 
 Template.adminPageCategory.events({
-
+  'click .btnCategoryAdd': function (event, template) {
+    FlowRouter.go("admin.category.add",{});
+  },
 });
 
 Template.adminPageCategory.onDestroyed(function () {
-
+  
 });

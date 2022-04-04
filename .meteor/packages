@@ -54,3 +54,5 @@ bordo:loading-line
 bordo:slugify
 bordo:last-edit-user
 bordo:create-user
+
+aldeed:schema-index
