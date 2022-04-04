@@ -1,0 +1,13 @@
+// .adminContainer{
+//   min-height: calc(100vh - 203px);
+// }
+@media only screen and (max-width: 991px) {
+  .adminContainer {
+    min-height: calc(100vh - 163px);
+  }
+}
+@media only screen and (min-width: 992px) {
+  .adminContainer {
+    min-height: calc(100vh - 203px);
+  }
+}
