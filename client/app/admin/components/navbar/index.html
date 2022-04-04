@@ -35,17 +35,16 @@
       </div>
     </div>
   </nav>
-  <script>
-    $(function(){
-      $(window).scroll(function(){
-        if ($(this).scrollTop() != 0) {
+  <!-- TODO fix issue stuck-->
+  <!-- <script>
+    window.addEventListener("scroll", (event) => {
+    let scroll = this.scrollY;
+    if(scroll>0){
       $(".navbar-brand-content").addClass("d-none");
-      return;
-    } else {
-      $(".navbar-brand-content").removeClass("d-none");
-      return;
     }
-      });
-    });
-    </script>
+    if(scroll==0){
+      $(".navbar-brand-content").removeClass("d-none");
+    }
+});
+    </script> -->
 </template>

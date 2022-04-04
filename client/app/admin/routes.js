@@ -32,6 +32,12 @@ routesAdmin.route('/category/add', {
     this.render('adminLayoutDefault', { page: 'adminPageCategoryAdd' });
   }
 });
+routesAdmin.route('/category/edit/:_id', {
+  name: 'admin.category.edit',
+  action: function (params, queryParams) {
+    this.render('adminLayoutDefault', { page: 'adminPageCategoryEdit' });
+  }
+});
 routesAdmin.route('/column', {
   name: 'admin.column',
   action: function (params, queryParams) {
