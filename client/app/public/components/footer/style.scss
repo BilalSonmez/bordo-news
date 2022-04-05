@@ -1,18 +1,19 @@
 @import '../../../../style.scss';
 
 .gfooter {
-  background:  $color-base-dark;
-  background: linear-gradient(180deg, $color-base-dark,  $color-secondary 80%);
+  background:  $color-secondary-dark;
+  //background: linear-gradient(180deg, $color-base-dark,  $color-secondary 80%);
   color: white;
   text-decoration: none;
-  margin-top: 2rem;
+ // margin-top: 34.5rem;
+ // position:relative;
   //position:absolute;  //Bunu yazarsak yerinde sabit kalır
-  bottom:0;
-  width:100%;
+  
+ 
     /* Height of the footer */
     .container {
       min-height:100%;
-      position:relative;
+     // position:relative;
    }
   .row {
     .col-md-4 {
