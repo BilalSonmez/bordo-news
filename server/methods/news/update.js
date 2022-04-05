@@ -1,20 +1,20 @@
 import SimpleSchema from 'simpl-schema';
 
 new ValidatedMethod({
-  name: 'category.update',
+  name: 'news.update',
   //TODO mixin and roles
   validate: new SimpleSchema({
     _id: SimpleSchema.RegEx.Id,
-    category: CategorySchema
+    news: NewSchema
   }).validator(),
   run: function (data) {
     this.unblock();
-    const { _id, category } = data
+    const { _id, news } = data
 
-    const id = Categories.update({ _id: _id }, {
-      $set: category
+    const id = News.update({ _id: _id }, {
+      $set: news
     });
 
-    return Categories.findOne({ _id: id });
+    return News.findOne({ _id: id });
   }
 });

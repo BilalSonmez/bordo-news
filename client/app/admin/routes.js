@@ -38,16 +38,22 @@ routesAdmin.route('/category/edit/:_id', {
     this.render('adminLayoutDefault', { page: 'adminPageCategoryEdit' });
   }
 });
-routesAdmin.route('/column', {
-  name: 'admin.column',
-  action: function (params, queryParams) {
-    this.render('adminLayoutDefault', { page: 'adminPageColumn' });
-  }
-});
 routesAdmin.route('/new', {
   name: 'admin.new',
   action: function (params, queryParams) {
     this.render('adminLayoutDefault', { page: 'adminPageNew' });
+  }
+});
+routesAdmin.route('/new/add', {
+  name: 'admin.new.add',
+  action: function (params, queryParams) {
+    this.render('adminLayoutDefault', { page: 'adminPageNewsAdd' });
+  }
+});
+routesAdmin.route('/column', {
+  name: 'admin.column',
+  action: function (params, queryParams) {
+    this.render('adminLayoutDefault', { page: 'adminPageColumn' });
   }
 });
 routesAdmin.route('/user', {

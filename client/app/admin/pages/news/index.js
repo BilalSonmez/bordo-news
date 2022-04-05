@@ -1,3 +1,4 @@
+import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 Template.adminPageNew.onCreated(function () {
   this.state = new ReactiveDict(null, {
     
@@ -25,7 +26,9 @@ Template.adminPageNew.onRendered(function () {
 });
 
 Template.adminPageNew.events({
-
+  'click .btnNewsAdd': function (event, template) {
+    FlowRouter.go("admin.new.add",{});
+  },
 });
 
 Template.adminPageNew.onDestroyed(function () {
