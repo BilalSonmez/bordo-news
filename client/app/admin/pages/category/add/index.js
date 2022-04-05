@@ -32,36 +32,23 @@ Template.adminPageCategoryAdd.events({
     const description = template.quill.root.innerHTML;
     const metaTitle = event.target.inputMetaTitle.value;
     const metaDescription = event.target.inputMetaDescription.value;
-    const noIndex = event.target.noIndexSelect.value;
-    const noFollow =event.target.noFollowSelect.value;
-    const slugUrl = Slugify(event.target.inputTitle.value,'-');
+    const noIndex = event.target.noIndexSelect.checked;
+    const noFollow =event.target.noFollowSelect.checked;
+    const slugUrl = Slugify(event.target.slugUrl.value,'-');
     const obj = {
       category: {
         title: title,
+        description: description,
         slugUrl: slugUrl,
         metaContent:{
+          metaTitle:metaTitle,
+          metaDescription:metaDescription,
+          noIndex:noIndex,
+          noFollow:noFollow,
         }
       },
     };
-    if (description!=="<p><br></p>") {
-      obj.category.description=description;
-    }
-    if (metaTitle!=='') {
-      obj.category.metaContent.metaTitle = metaTitle;
-    }
-    if (metaDescription!=='') {
-      obj.category.metaContent.metaDescription = metaDescription;
-    }
-    if(noIndex === 'true'){
-      obj.category.metaContent.noIndex=true;
-    }else if (noIndex === 'false'){
-      obj.category.metaContent.noIndex=false;
-    }
-    if(noFollow === 'true'){
-      obj.category.metaContent.noFollow=true;
-    }else if (noFollow === 'false'){
-      obj.category.metaContent.noFollow=false;
-    }
+
     console.log(obj); 
     Swal.fire({
       title: 'Do you want to save Category?',
@@ -82,5 +69,8 @@ Template.adminPageCategoryAdd.events({
         
       }
     })
-  }
+  },
+  'input #inputTitle': function (event, template) {
+    $('#slugUrl').val(Slugify(event.target.value));
+  },
 });

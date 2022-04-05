@@ -10,6 +10,17 @@
             <label for="inputTitle" class="form-label">Title</label>
             <input type="text" class="form-control" id="inputTitle" placeholder="Please enter title." value="{{_category.title}}"/>
           </div>
+
+          <div class="col-md-12">
+            <label for="slugUrl" class="form-label">Slug Url</label>
+            <div class="input-group">
+              <span class="input-group-text" id="basic-addon3">https://bordonews.com/category/</span>
+              <input type="text" class="form-control" id="slugUrl" aria-describedby="basic-addon3" value="{{_category.slugUrl}}">
+              <!-- TODO will add later -->
+              <!-- <button class="btn btn-outline-secondary" type="button" id="button-check">Check</button> -->
+            </div>
+          </div>
+
           <div class="col-12 h-50">
             <label for="inputDescription" class="form-label">Description</label>
             <div id="category-add-editor"></div>
@@ -21,40 +32,32 @@
           </div>
           <div class="col-md-12">
             <label for="inputMetaDescription" class="form-label">Meta-Description</label>
-            <input type="text" class="form-control" id="inputMetaDescription" placeholder="Optional" value="{{_category.metaContent.metaDescription}}"/>
+            <textarea class="form-control" aria-label="With textarea"  id="inputMetaDescription" placeholder="Optional" value="{{_category.metaContent.metaDescription}}"></textarea>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-4 col-6">
             <label for="noIndexSelect" class="form-label">No Index</label>
-            <select id="noIndexSelect" class="form-select">
-              <option value="default">Optional</option>
+            <div class="form-check form-switch">
               {{#if (eq _category.metaContent.noIndex false)}}
-              <option value="false" selected>False</option>
-              {{else}}
-              <option value="false">False</option>
+              <input class="form-check-input" type="checkbox" id="noIndexSelect">
               {{/if}}
               {{#if (eq _category.metaContent.noIndex true)}}
-              <option value="true" selected>True</option>
-              {{else}}
-              <option value="true">True</option>
+              <input class="form-check-input" type="checkbox" id="noIndexSelect" checked>
               {{/if}}
-            </select>
+              <label class="form-check-label" for="noIndexSelect">Off / On</label>
+            </div>  
           </div>
-          <div class="col-md-6">
+          <div class="col-md-4 col-6">
             <label for="noFollowSelect" class="form-label">No Follow</label>
-            <select id="noFollowSelect" class="form-select">
-              <option value="default">Optional</option>
+            <div class="form-check form-switch">
               {{#if (eq _category.metaContent.noFollow false)}}
-              <option value="false" selected>False</option>
-              {{else}}
-              <option value="false">False</option>
+              <input class="form-check-input" type="checkbox" id="noFollowSelect">
               {{/if}}
               {{#if (eq _category.metaContent.noFollow true)}}
-              <option value="true" selected>True</option>
-              {{else}}
-              <option value="true">True</option>
+              <input class="form-check-input" type="checkbox" id="noFollowSelect" checked>
               {{/if}}
-            </select>
-          </div>
+              <label class="form-check-label" for="noFollowSelect">Off / On</label>
+            </div>
+          </div>  
         </form>
         <div class="col-md-12 col-10 text-center justify-content-center py-3">
           <button type="submit" form="brdCategoryEditForm" class="btn btn-lg mw-25 categorySave">Save</button>
