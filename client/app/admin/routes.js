@@ -50,6 +50,12 @@ routesAdmin.route('/new/add', {
     this.render('adminLayoutDefault', { page: 'adminPageNewsAdd' });
   }
 });
+routesAdmin.route('/new/edit/:_id', {
+  name: 'admin.new.edit',
+  action: function (params, queryParams) {
+    this.render('adminLayoutDefault', { page: 'adminPageNewsEdit' });
+  }
+});
 routesAdmin.route('/column', {
   name: 'admin.column',
   action: function (params, queryParams) {
