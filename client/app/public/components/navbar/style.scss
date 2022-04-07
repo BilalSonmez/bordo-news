@@ -1,7 +1,12 @@
 @import '../../../../style.scss';
 
+.brd-hide{
+  top: -150px !important;
+  transition: top 0.25s ease;
+}
 .brdf-navbar {
   background-color: $color-base-dark;
+ 
   .brdf-navbar-content {
     margin: 0 auto;
     .navbar-brand-content {
@@ -11,6 +16,7 @@
       }
     }
   }
+  
   .navbar-brand {
     font-weight: 600;
   }
