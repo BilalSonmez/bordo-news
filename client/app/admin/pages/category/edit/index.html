@@ -25,16 +25,19 @@
             <label for="inputDescription" class="form-label">Description</label>
             <div id="category-add-editor"></div>
           </div>
-          <hr>
-          <div class="col-md-12">
+          <div class="col-12">
+            <button type="button" class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target=".metaContent">Meta Content</button>
+          </div>
+
+          <div class="col-md-12 metaContent collapse">
             <label for="inputMetaTitle" class="form-label">Meta-Title</label>
             <input type="text" class="form-control" id="inputMetaTitle" placeholder="Optional" value="{{_category.metaContent.metaTitle}}"/>
           </div>
-          <div class="col-md-12">
+          <div class="col-md-12 metaContent collapse">
             <label for="inputMetaDescription" class="form-label">Meta-Description</label>
             <textarea class="form-control" aria-label="With textarea"  id="inputMetaDescription" placeholder="Optional" value="{{_category.metaContent.metaDescription}}"></textarea>
           </div>
-          <div class="col-md-4 col-6">
+          <div class="col-md-4 col-6 metaContent collapse">
             <label for="noIndexSelect" class="form-label">No Index</label>
             <div class="form-check form-switch">
               {{#if (eq _category.metaContent.noIndex false)}}
@@ -46,7 +49,7 @@
               <label class="form-check-label" for="noIndexSelect">Off / On</label>
             </div>  
           </div>
-          <div class="col-md-4 col-6">
+          <div class="col-md-4 col-6 metaContent collapse">
             <label for="noFollowSelect" class="form-label">No Follow</label>
             <div class="form-check form-switch">
               {{#if (eq _category.metaContent.noFollow false)}}

@@ -5,6 +5,7 @@ import Slugify from 'slugify';
 Template.adminPageNewsEdit.onCreated(function () {
   this.state = new ReactiveDict(null, {
     categories: [],
+    mainCategories: [],
     news: {},
   });
 });
@@ -22,32 +23,33 @@ Template.adminPageNewsEdit.onRendered(function () {
         ErrorHandler.show(error.message);
         return;
       }
-      //console.log(result.categories);
-      //self.state.set("categories", result.categories);
-      let categories = result;
-      Meteor.call("news.show", {_id:_id}, function (error, success) {
+      self.state.set("mainCategories", result.categories);
+    });
+  });
+  this.autorun(function () {
+    let categories = self.state.get("mainCategories");
+      if(categories.length==0){
+        return;
+      }
+      Meteor.call("news.show", {_id:_id}, function (error, result) {
         if (error) {
           ErrorHandler.show(error.message);
           return;
         }
-        console.log(success.categories);
-        for (let index = 0; index < categories.categories.length; index++) {
-          categories.categories[index].selected=false;
-          for (let a = 0; a < success.categories.length; a++) {
-            if (success.categories[a]==categories.categories[index]._id) {
-              categories.categories[index].selected=true;
-            }
-          }
-          
-        }
-        self.state.set("categories", categories.categories);
-        console.log(categories.categories);
-        self.state.set('news', success);
-        self.quill.root.innerHTML=self.state.get("news").content;
+        console.log(result.categories);
+        categories=categories.map(category => {
+          const index = result.categories.findIndex(_category =>{
+            return category._id == _category;
+          })
+          category.selected=index==-1?false:true;
+          return category;
+        })
+        self.state.set("categories", categories);
+        console.log(categories);
+        self.state.set('news', result);
+        self.quill.root.innerHTML=result.content;
       });
-    })
-
-  });
+    });
 });
 
 Template.adminPageNewsEdit.events({

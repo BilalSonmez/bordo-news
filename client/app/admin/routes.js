@@ -62,6 +62,18 @@ routesAdmin.route('/column', {
     this.render('adminLayoutDefault', { page: 'adminPageColumn' });
   }
 });
+routesAdmin.route('/column/add', {
+  name: 'admin.column.add',
+  action: function (params, queryParams) {
+    this.render('adminLayoutDefault', { page: 'adminPageColumnAdd' });
+  }
+});
+routesAdmin.route('/column/edit/:_id', {
+  name: 'admin.column.edit',
+  action: function (params, queryParams) {
+    this.render('adminLayoutDefault', { page: 'adminPageColumnEdit' });
+  }
+});
 routesAdmin.route('/user', {
   name: 'admin.user',
   action: function (params, queryParams) {

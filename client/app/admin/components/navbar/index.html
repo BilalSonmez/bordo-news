@@ -21,10 +21,10 @@
                 <a class="nav-link{{#if eq1 currentRouteName 'admin.category' 'admin.category.add' 'admin.category.edit'}} active{{/if}}" aria-current="page" href="{{pathFor 'admin.category'}}"><i class="fa fa-filter"></i> Categories</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link{{#if eq currentRouteName 'admin.new'}} active{{/if}}" aria-current="page" href="{{pathFor 'admin.new'}}"><i class="fa-solid fa-newspaper"></i> News</a>
+                <a class="nav-link{{#if eq1 currentRouteName 'admin.new' 'admin.new.add' 'admin.new.edit'}} active{{/if}}" aria-current="page" href="{{pathFor 'admin.new'}}"><i class="fa-solid fa-newspaper"></i> News</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link{{#if eq currentRouteName 'admin.column'}} active{{/if}}" aria-current="page" href="{{pathFor 'admin.column'}}"><i class="fa-solid fa-file-lines"></i> Columns</a>
+                <a class="nav-link{{#if eq1 currentRouteName 'admin.column' 'admin.column.add' 'admin.column.edit'}} active{{/if}}" aria-current="page" href="{{pathFor 'admin.column'}}"><i class="fa-solid fa-file-lines"></i> Columns</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link{{#if eq currentRouteName 'admin.user'}} active{{/if}}" aria-current="page" href="{{pathFor 'admin.user'}}"><i class="fa fa-user"></i> Users</a>

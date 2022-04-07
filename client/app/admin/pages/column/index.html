@@ -1,3 +1,49 @@
 <template name="adminPageColumn">
-  <h2>adminPageColumn</h2>
+  {{#let _columns=(state.get 'columns')}}
+  <div class="row my-3 ">
+    <div class="col  col-md-3 d-none d-md-block">
+
+    </div>
+    <div class="col  col-md-6 cold-12">
+      <div class="h2 text-center">Columns List</div>
+    </div>
+    <div class="col  text-end col-md-3 col-12">
+      <button class="btn btn-md btnColumnAdd ">Add Column</button>
+    </div>  
+  </div>
+  <div class="row ">
+    <div class="table-responsive" >
+      <table class="table table-striped align-middle">
+        <thead>
+          <tr>
+            <th scope="col" style="width: 10%">Index</th>
+            <th scope="col" style="width: 60%">Column Title</th>
+            <th scope="col" class="text-center" style="width: 15%"></th>
+            <th scope="col" class="text-center" style="width: 15%"></th>
+          </tr>
+        </thead>
+        <tbody >
+          {{#each _columns.columns}}
+          <tr>
+            <td class="fw-bold">{{index_count @index _columns.options.pagination}}</td>
+            <td>{{title}}</td>
+            <td class="text-center" style="width: 15%">
+              <button class="btn btn-secondary btn-sm btnColumnEdit">
+                <i class="fa-solid fa-file-pen"></i> Edit
+              </button>
+            </td>
+            <td class="text-center" style="width: 15%">
+              <button class="btn btn-danger btn-sm btnColumnDelete"><i class="fas fa-trash"></i> Delete</button>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    <div class="row pb-3">
+      {{> componentAdminPagination paginationState=pagination}}
+    </div>
+  </div>
+  
+  {{/let}}
 </template>
