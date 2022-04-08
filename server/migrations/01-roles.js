@@ -6,11 +6,11 @@ Migrations.add({
     Roles.createRole('roles.editor');
 
     const userId = Accounts.createUser({
-      email: 'admin@bordomovie.com',
+      email: 'admin@bordonews.com',
       password: '123123',
       profile: {
         name: 'Bordo',
-        lastName: 'Movie'
+        lastName: 'News'
       }
     });
 

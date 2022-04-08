@@ -11,30 +11,54 @@
             <i class="fa-solid fa-user-doctor"></i> Bordo Haber
           </a>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-9">
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto">
               <li class="nav-item">
-                <a class="nav-link{{#if eq currentRouteName 'admin.dashboard'}} active{{/if}}" aria-current="page" href="{{pathFor 'admin.dashboard'}}"><i class="fa fa-dashboard"></i> Dashboard</a>
+                <a class="nav-link{{#if eq currentRouteName 'admin.dashboard'}} active{{/if}}" href="{{pathFor 'admin.dashboard'}}"><i class="fa fa-dashboard"></i> Dashboard</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link{{#if eq1 currentRouteName 'admin.category' 'admin.category.add' 'admin.category.edit'}} active{{/if}}" aria-current="page" href="{{pathFor 'admin.category'}}"><i class="fa fa-filter"></i> Categories</a>
+                <a class="nav-link{{#if eq1 currentRouteName 'admin.category' 'admin.category.add' 'admin.category.edit'}} active{{/if}}" href="{{pathFor 'admin.category'}}"><i class="fa fa-filter"></i> Categories</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link{{#if eq1 currentRouteName 'admin.new' 'admin.new.add' 'admin.new.edit'}} active{{/if}}" aria-current="page" href="{{pathFor 'admin.new'}}"><i class="fa-solid fa-newspaper"></i> News</a>
+                <a class="nav-link{{#if eq1 currentRouteName 'admin.new' 'admin.new.add' 'admin.new.edit'}} active{{/if}}" href="{{pathFor 'admin.new'}}"><i class="fa-solid fa-newspaper"></i> News</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link{{#if eq1 currentRouteName 'admin.column' 'admin.column.add' 'admin.column.edit'}} active{{/if}}" aria-current="page" href="{{pathFor 'admin.column'}}"><i class="fa-solid fa-file-lines"></i> Columns</a>
+                <a class="nav-link{{#if eq1 currentRouteName 'admin.column' 'admin.column.add' 'admin.column.edit'}} active{{/if}}" href="{{pathFor 'admin.column'}}"><i class="fa-solid fa-file-lines"></i> Columns</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link{{#if eq currentRouteName 'admin.user'}} active{{/if}}" aria-current="page" href="{{pathFor 'admin.user'}}"><i class="fa fa-user"></i> Users</a>
+                <a class="nav-link{{#if eq currentRouteName 'admin.user'}} active{{/if}}" href="{{pathFor 'admin.user'}}"><i class="fa fa-user"></i> Users</a>
               </li>
             </ul>
           </div>
         </div>
+
+        <div class="col-md-3">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto">
+              {{#if currentUser}}
+              <li class="nav-item">
+                <a class="nav-link btnLogout" href="#"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
+              </li>
+              {{else}}
+              <li class="nav-item">
+                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#brdLoginModal"><i class="fa-solid fa-right-to-bracket"></i>Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#brdSignUpModal">Sign Up</a>
+              </li>
+              {{/if}}
+              
+              
+            </ul>
+          </div>
+        </div>
+
       </div>
     </div>
   </nav>
+  {{>authModalSignIn}}
+  {{>authModalSignUp}}
   <!-- TODO fix issue stuck-->
   <!-- <script>
     window.addEventListener("scroll", (event) => {

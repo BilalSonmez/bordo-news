@@ -1,3 +1,93 @@
 <template name="adminPageUser">
-  <h2>adminPageUser</h2>
+  {{#let _users=(state.get 'users')}}
+  <div class="row my-3 ">
+    <div class="col  col-md-3 d-none d-md-block">
+
+    </div>
+    <div class="col col-md-12 col-12">
+      <div class="h2 text-center">User List</div>
+    </div>
+
+  </div>
+  <div class="row ">
+    <div class="table-responsive" >
+      <table class="table table-striped align-middle">
+        <thead>
+          <tr>
+            <th scope="col" style="width: 5%">Index</th>
+                <th class="text-center" scope="col" style="width: 8%">Status</th>
+                <th scope="col" style="width: 18%">Name Surname</th>
+                <th scope="col" style="width: 18%">E-mail</th>
+                <th class="text-center" scope="col" style="width: 15%">Roles</th>
+                <th class="text-center" scope="col" style="width: 13%">Admin</th>
+                <th class="text-center" scope="col" style="width: 13%">Editor</th>
+                <th class="text-center" scope="col" style="width: 10%">Remove</th>
+          </tr>
+        </thead>
+        <tbody >
+          {{#each _users.user}}
+              <tr>
+                <td class="fw-bold">{{index_count @index _users.options.pagination}}</td>
+                <td class="text-center">
+                  {{#if status.online}}
+                  <i class="fa-solid fa-circle" style="color: green"></i>
+                  {{else}}
+                  <i class="fa-solid fa-circle" style="color: red"></i>
+                  {{/if}}
+                </td>
+                <td class="ellipsis">{{profile.name}} {{profile.lastName}}</td>
+                <td class="ellipsis">{{emails.[0].address}}</td>
+                <td class="text-center">
+                  {{#if profile.isAdmin}}
+                  Admin - 
+                  {{/if}}
+                  {{#if profile.isEditor}}
+                  Editor
+                  {{/if}}
+                </td>
+                <td class="text-center">
+                  {{#if profile.isAdmin}}
+                  <button class="btn btn-danger btn-sm btnCancelAdminRole" title="Cancel admin role">
+                    <i class="fa-solid fa-user-xmark"></i>
+                  </button>
+                  {{else}}
+                  <button class="btn btn-success btn-sm btnSetAdminRole" title="Set admin role">
+                    <i class="fa-solid fa-user-check"></i>
+                  </button>
+                  {{/if}}
+                </td>
+                <td class="text-center">
+                  {{#if profile.isEditor}}
+                  {{#if profile.isAdmin}}
+                  <button class="btn btn-danger btn-sm btnCancelEditorRole" title="Cancel editor role" disabled>
+                    <i class="fa-solid fa-user-xmark"></i>
+                  </button>
+                  {{else}}
+                  <button class="btn btn-danger btn-sm btnCancelEditorRole" title="Cancel editor role">
+                    <i class="fa-solid fa-user-xmark"></i>
+                  </button>            
+                  {{/if}}
+                  
+                  {{else}}
+                  <button class="btn btn-success btn-sm btnSetEditorRole" title="Set editor role">
+                    <i class="fa-solid fa-user-check"></i>
+                  </button>
+                  {{/if}}
+                </td>
+                <td class="text-center">
+                  <button class="btn btn-danger btn-sm btnUserDelete">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+              {{/each}}
+        </tbody>
+      </table>
+    </div>
+    <div class="row pb-3">
+      {{> componentAdminPagination paginationState=pagination}}
+    </div>
+  </div>
+  
+  {{/let}}
 </template>
