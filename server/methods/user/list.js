@@ -2,7 +2,8 @@ import SimpleSchema from 'simpl-schema';
 
 new ValidatedMethod({
   name: 'user.list',
-  //TODO mixins: [isAdmin],
+  mixins : [SignedInMixin,RoleMixin],
+  roles: ["roles.editor"],
   validate: new SimpleSchema({
     options: { type: QueryOptionsSchema, optional: true }
   }).validator(),

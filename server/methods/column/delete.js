@@ -3,7 +3,8 @@ import SimpleSchema from 'simpl-schema';
 
 new ValidatedMethod({
   name: 'column.delete',
-  //TODO mixin and roles
+  mixins : [SignedInMixin,RoleMixin],
+  roles: ["roles.editor"],
   validate: new SimpleSchema({
     _id: SimpleSchema.RegEx.Id
   }).validator(),

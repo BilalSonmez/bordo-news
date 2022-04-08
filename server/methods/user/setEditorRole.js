@@ -1,8 +1,10 @@
 import SimpleSchema from 'simpl-schema';
+import { Roles } from 'meteor/alanning:roles';
 
 new ValidatedMethod({
   name: 'role.set.editor',
-  //TODO mixins: [isAdmin],
+  mixins : [SignedInMixin,RoleMixin],
+  roles: ["roles.admin"],
   validate: new SimpleSchema({
     _id: SimpleSchema.RegEx.Id
   }).validator(),
@@ -13,3 +15,4 @@ new ValidatedMethod({
     return Meteor.users.update({_id: _id}, {$set: {"profile.isEditor": true}});
   }
 });
+

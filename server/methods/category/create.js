@@ -2,7 +2,8 @@ import SimpleSchema from 'simpl-schema';
 
 new ValidatedMethod({
   name: 'category.create',
-  //TODO: mixin role kontrolü
+  mixins : [SignedInMixin,RoleMixin],
+  roles: ["roles.admin"],
   validate: new SimpleSchema({
     category: CategorySchema
   }).validator(),

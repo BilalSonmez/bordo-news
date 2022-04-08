@@ -2,7 +2,8 @@ import SimpleSchema from 'simpl-schema';
 
 new ValidatedMethod({
   name: 'news.create',
-  //TODO: mixin role kontrolü
+  mixins : [SignedInMixin,RoleMixin],
+  roles: ["roles.editor"],
   validate: new SimpleSchema({
     news: NewSchema
   }).validator(),
