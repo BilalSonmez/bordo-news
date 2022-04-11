@@ -8,3 +8,9 @@
   color: #985530 !important;
   border: 2px solid #985530;
 }
+.ellipsis {
+  max-width: 40px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
