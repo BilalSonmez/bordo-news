@@ -3,7 +3,7 @@ import SimpleSchema from 'simpl-schema';
 new ValidatedMethod({
   name: 'column.create',
   mixins : [SignedInMixin,RoleMixin],
-  roles: ["roles.editor"],
+  roles: ["roles.columnist"],
   validate: new SimpleSchema({
     column: ColumnSchema
   }).validator(),
