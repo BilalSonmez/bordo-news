@@ -3,7 +3,7 @@ import SimpleSchema from 'simpl-schema';
 new ValidatedMethod({
   name: 'category.update',
   mixins : [SignedInMixin,RoleMixin],
-  roles: ["roles.admin"],
+  roles: ["roles.editor"],
   validate: new SimpleSchema({
     _id: SimpleSchema.RegEx.Id,
     category: CategorySchema
