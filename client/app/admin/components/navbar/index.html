@@ -17,18 +17,26 @@
               <li class="nav-item">
                 <a class="nav-link{{#if eq currentRouteName 'admin.dashboard'}} active{{/if}}" href="{{pathFor 'admin.dashboard'}}"><i class="fa fa-dashboard"></i> Dashboard</a>
               </li>
+              {{#if currentUser.profile.isEditor}}
               <li class="nav-item">
                 <a class="nav-link{{#if eq1 currentRouteName 'admin.category' 'admin.category.add' 'admin.category.edit'}} active{{/if}}" href="{{pathFor 'admin.category'}}"><i class="fa fa-filter"></i> Categories</a>
               </li>
+              {{/if}}
+              {{#if currentUser.profile.isEditor}}
               <li class="nav-item">
                 <a class="nav-link{{#if eq1 currentRouteName 'admin.new' 'admin.new.add' 'admin.new.edit'}} active{{/if}}" href="{{pathFor 'admin.new'}}"><i class="fa-solid fa-newspaper"></i> News</a>
               </li>
+              {{/if}}
+              {{#if currentUser.profile.isColumnist}}
               <li class="nav-item">
                 <a class="nav-link{{#if eq1 currentRouteName 'admin.column' 'admin.column.add' 'admin.column.edit'}} active{{/if}}" href="{{pathFor 'admin.column'}}"><i class="fa-solid fa-file-lines"></i> Columns</a>
               </li>
+              {{/if}}
+              {{#if currentUser.profile.isAdmin}}
               <li class="nav-item">
                 <a class="nav-link{{#if eq currentRouteName 'admin.user'}} active{{/if}}" href="{{pathFor 'admin.user'}}"><i class="fa fa-user"></i> Users</a>
               </li>
+              {{/if}}
             </ul>
           </div>
         </div>

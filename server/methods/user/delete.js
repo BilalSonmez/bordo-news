@@ -12,6 +12,7 @@ new ValidatedMethod({
     const { _id } = data;
     Roles.removeUsersFromRoles(_id, 'roles.admin', null);
     Roles.removeUsersFromRoles(_id, 'roles.editor', null);
+    Roles.removeUsersFromRoles(_id, 'roles.columnist', null);
     return Meteor.users.remove({ _id: _id });
   }
 });

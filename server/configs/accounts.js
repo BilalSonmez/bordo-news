@@ -5,7 +5,7 @@ Accounts.onCreateUser(function (options, user) {
   user.profile.status = 'active';
   user.profile.isAdmin = false;
   user.profile.isEditor = false;
-
+  user.profile.isColumnist = false;
   return user;
 });
 

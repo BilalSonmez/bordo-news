@@ -1,21 +1,19 @@
-import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
-import Swal from 'sweetalert2';
+import { FlowRouter } from "meteor/ostrio:flow-router-extra";
+import Swal from "sweetalert2";
 Template.adminPageUser.onCreated(function () {
   this.state = new ReactiveDict(null, {
-    users:[],
+    users: [],
   });
   this.pagination = new ReactiveDict(null, {
     currentPage: 1,
     pageItems: 10,
     totalCount: 0,
-    totalPages: 0
+    totalPages: 0,
   });
-
   this.sorting = new ReactiveDict(null, {
-    sortField: 'createdAt',
-    sortOrder: 'asc'
+    sortField: "createdAt",
+    sortOrder: "asc",
   });
-
   this.filtering = new ReactiveDict(null, {});
 });
 
@@ -33,10 +31,9 @@ Template.adminPageUser.onRendered(function () {
         sorting: {
           sortField: self.sorting.get("sortField"),
           sortOrder: self.sorting.get("sortOrder"),
-        }
-      }
+        },
+      },
     };
-
     Meteor.call("user.list", listOptions, function (error, result) {
       if (error) {
         ErrorHandler.show(error.message);
@@ -48,11 +45,8 @@ Template.adminPageUser.onRendered(function () {
       const pages = Math.ceil(result.options.pagination.totalCount / result.options.pagination.pageItems);
       self.pagination.set("totalPages", pages);
     });
-    
-
   });
 });
-
 
 Template.adminPageUser.events({
   "click .btnUserDelete": function (event, template) {
@@ -60,123 +54,146 @@ Template.adminPageUser.events({
     const user = this;
     console.log(user);
     Swal.fire({
-      title: 'Do you want to delete User?',
+      title: "Do you want to delete User?",
       showCancelButton: true,
-      confirmButtonText: 'Delete',
+      confirmButtonText: "Delete",
     }).then((result) => {
       if (result.isConfirmed) {
-        Meteor.call(
-          "user.delete",{_id: user._id},function (error, result) {
-            if (error) {
-              ErrorHandler.show(error.message);
-              return;
-            }
-            Swal.fire('Deleted!', '', 'success');
-            AppUtil.refreshTokens.set("user", Random.id());
+        Meteor.call("user.delete", { _id: user._id }, function (error, result) {
+          if (error) {
+            ErrorHandler.show(error.message);
+            return;
           }
-        );
-        
+          Swal.fire("Deleted!", "", "success");
+          AppUtil.refreshTokens.set("user", Random.id());
+        });
       }
-    })
+    });
   },
   "click .btnSetAdminRole": function (event, template) {
     event.preventDefault();
     const user = this;
     console.log(user);
     Swal.fire({
-      title: 'Do you want to give Admin Role?',
+      title: "Do you want to give Admin Role?",
       showCancelButton: true,
-      confirmButtonText: 'Give',
+      confirmButtonText: "Give",
     }).then((result) => {
       if (result.isConfirmed) {
-        Meteor.call(
-          "role.set.admin",{_id: user._id,},
-          function (error, result) {
-            if (error) {
-              ErrorHandler.show(error.message);
-              return;
-            }
-            Swal.fire('Admin Role Setted!', '', 'success');
-            AppUtil.refreshTokens.set("user", Random.id());
+        Meteor.call("role.set.admin", { _id: user._id }, function (error, result) {
+          if (error) {
+            ErrorHandler.show(error.message);
+            return;
           }
-        );
+          Swal.fire("Admin Role Setted!", "", "success");
+          AppUtil.refreshTokens.set("user", Random.id());
+        });
       }
-    })  
+    });
   },
   "click .btnSetEditorRole": function (event, template) {
     event.preventDefault();
     const user = this;
     console.log(user);
     Swal.fire({
-      title: 'Do you want to give Editor Role?',
+      title: "Do you want to give Editor Role?",
       showCancelButton: true,
-      confirmButtonText: 'Give',
+      confirmButtonText: "Give",
     }).then((result) => {
       if (result.isConfirmed) {
-        Meteor.call(
-          "role.set.editor",{_id: user._id,},
-          function (error, result) {
-            if (error) {
-              ErrorHandler.show(error.message);
-              return;
-            }
-            Swal.fire('Editor Role Setted!', '', 'success');
-            AppUtil.refreshTokens.set("user", Random.id());
+        Meteor.call("role.set.editor", { _id: user._id }, function (error, result) {
+          if (error) {
+            ErrorHandler.show(error.message);
+            return;
           }
-        );
+          Swal.fire("Editor Role Setted!", "", "success");
+          AppUtil.refreshTokens.set("user", Random.id());
+        });
       }
-    })  
+    });
+  },
+  "click .btnSetColumnistRole": function (event, template) {
+    event.preventDefault();
+    const user = this;
+    console.log(user);
+    Swal.fire({
+      title: "Do you want to give Columnist Role?",
+      showCancelButton: true,
+      confirmButtonText: "Give",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Meteor.call("role.set.columnist", { _id: user._id }, function (error, result) {
+          if (error) {
+            ErrorHandler.show(error.message);
+            return;
+          }
+          Swal.fire("Columnist Role Setted!", "", "success");
+          AppUtil.refreshTokens.set("user", Random.id());
+        });
+      }
+    });
   },
   "click .btnCancelAdminRole": function (event, template) {
     event.preventDefault();
     const user = this;
     console.log(user);
     Swal.fire({
-      title: 'Do you want to cancel Admin Role?',
+      title: "Do you want to cancel Admin Role?",
       showCancelButton: true,
-      confirmButtonText: 'Okey',
+      confirmButtonText: "Okey",
     }).then((result) => {
       if (result.isConfirmed) {
-        Meteor.call(
-          "role.cancel.admin",{_id: user._id,},
-          function (error, result) {
-            if (error) {
-              ErrorHandler.show(error.message);
-              return;
-            }
-            Swal.fire('Admin Role Canceled!', '', 'success');
-            AppUtil.refreshTokens.set("user", Random.id());
+        Meteor.call("role.cancel.admin", { _id: user._id }, function (error, result) {
+          if (error) {
+            ErrorHandler.show(error.message);
+            return;
           }
-        );
+          Swal.fire("Admin Role Canceled!", "", "success");
+          AppUtil.refreshTokens.set("user", Random.id());
+        });
       }
-    })  
+    });
   },
   "click .btnCancelEditorRole": function (event, template) {
     event.preventDefault();
     const user = this;
     console.log(user);
     Swal.fire({
-      title: 'Do you want to cancel Editor Role?',
+      title: "Do you want to cancel Editor Role?",
       showCancelButton: true,
-      confirmButtonText: 'Okey',
+      confirmButtonText: "Okey",
     }).then((result) => {
       if (result.isConfirmed) {
-        Meteor.call(
-          "role.cancel.editor",{_id: user._id,},
-          function (error, result) {
-            if (error) {
-              ErrorHandler.show(error.message);
-              return;
-            }
-            Swal.fire('Editor Role Canceled!', '', 'success');
-            AppUtil.refreshTokens.set("user", Random.id());
+        Meteor.call("role.cancel.editor", { _id: user._id }, function (error, result) {
+          if (error) {
+            ErrorHandler.show(error.message);
+            return;
           }
-        );
+          Swal.fire("Editor Role Canceled!", "", "success");
+          AppUtil.refreshTokens.set("user", Random.id());
+        });
       }
-    })  
+    });
   },
-});
-
-Template.adminPageUser.onDestroyed(function () {
-
+  "click .btnCancelColumnistRole": function (event, template) {
+    event.preventDefault();
+    const user = this;
+    console.log(user);
+    Swal.fire({
+      title: "Do you want to cancel Columnist Role?",
+      showCancelButton: true,
+      confirmButtonText: "Okey",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Meteor.call("role.cancel.columnist", { _id: user._id }, function (error, result) {
+          if (error) {
+            ErrorHandler.show(error.message);
+            return;
+          }
+          Swal.fire("Columnist Role Canceled!", "", "success");
+          AppUtil.refreshTokens.set("user", Random.id());
+        });
+      }
+    });
+  },
 });

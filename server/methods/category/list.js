@@ -9,7 +9,6 @@ new ValidatedMethod({
     this.unblock();
     
     const { options } = data
-
     return Fetch(Categories, {}, options, 'categories');
   }
 });
