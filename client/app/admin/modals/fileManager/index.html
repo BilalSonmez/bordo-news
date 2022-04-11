@@ -1,0 +1,57 @@
+<template name="adminModalsFileManager">
+  <link href="https://releases.transloadit.com/uppy/v2.9.1/uppy.min.css" rel="stylesheet">
+  {{#let _files=(state.get 'files') }}
+  <div class="modal fade" id="brdAdminModalsFileManager" tabindex="-1" aria-labelledby="brdAdminModalsFileManagerLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="brdAdminModalsFileManagerLabel" style="margin-right: 1rem;">File Manager</h5>
+          <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+            data-bs-target="#drag-drop-area" aria-expanded="false" aria-controls="drag-drop-area">Upload Files</button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div id="drag-drop-area" class="panel-collapse collapse"></div>
+          <div class="row my-2">
+            <div class="col-md-8">
+              <h5>Files</h5>
+            </div>
+            <div class="col-md-4">
+              <form id="search-form" class="d-flex">
+                <input class="form-control me-2" type="search" name="fileSearchInput" id="fileSearchInput" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+              </form>
+            </div>
+          </div>
+          <ul class="thumbnails image_picker_selector row">
+            {{#each _files}}
+            <li class="col-6 col-md-2">
+              <div class="thumbnail" id="{{_id}}">
+                <div class="brd-media-image-container">
+                  <div class="brd-media-image"><img class="image_picker_image img-fluid"
+                      src="{{url}}"></div>
+                </div>
+                <div class="brd-media-buttons">
+                  <button type="button" class="btn-brd-media-image-delete">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+            </li>
+            {{/each}}
+          </ul>
+          <div class="fileLoading text-center" style="display: none;">
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" form="brdCategoryCreateForm" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/let}}
+</template>
