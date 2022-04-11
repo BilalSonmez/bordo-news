@@ -17,8 +17,6 @@ Template.publicComponentsNavbar.onRendered(function () {
  
   
 });
-
-
 Template.publicComponentsNavbar.events({
   "click .btnLogout": function (event, template) {
     event.preventDefault();

@@ -1,72 +1,77 @@
 <template name="adminPageCategoryEdit">
   {{#let _category=(state.get'category')}}
-  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
-  <div class="container categoryAddContainer my-2">
-    <div class="d-flex flex-row row justify-content-center">
-      <h2 class="text-center">Category Edit</h2>
-      <div class="col-md-8 col-sm-10 col-10">
-        <form class="row g-3 my-1" id="brdCategoryEditForm">
-          <div class="col-md-12">
-            <label for="inputTitle" class="form-label">Title</label>
-            <input type="text" class="form-control" id="inputTitle" placeholder="Please enter title." value="{{_category.title}}"/>
-          </div>
-
-          <div class="col-md-12">
-            <label for="slugUrl" class="form-label">Slug Url</label>
-            <div class="input-group">
-              <span class="input-group-text" id="basic-addon3">https://bordonews.com/category/</span>
-              <input type="text" class="form-control" id="slugUrl" aria-describedby="basic-addon3" value="{{_category.slugUrl}}">
-              <!-- TODO will add later -->
-              <!-- <button class="btn btn-outline-secondary" type="button" id="button-check">Check</button> -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
+    <div class="container categoryAddContainer my-2">
+      <div class="d-flex flex-row row justify-content-center">
+        <h2 class="text-center">Category Edit</h2>
+        <div class="col-md-8 col-sm-10 col-10">
+          <form class="row g-3 my-1" id="brdCategoryEditForm">
+            <div class="col-md-12">
+              <label for="inputTitle" class="form-label">Title</label>
+              <input type="text" class="form-control" id="inputTitle" placeholder="Please enter title."
+                value="{{_category.title}}" />
             </div>
-          </div>
 
-          <div class="col-12 h-50">
-            <label for="inputDescription" class="form-label">Description</label>
-            <div id="category-add-editor"></div>
-          </div>
-          <div class="col-12">
-            <button type="button" class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target=".metaContent">Meta Content</button>
-          </div>
-
-          <div class="col-md-12 metaContent collapse">
-            <label for="inputMetaTitle" class="form-label">Meta-Title</label>
-            <input type="text" class="form-control" id="inputMetaTitle" placeholder="Optional" value="{{_category.metaContent.metaTitle}}"/>
-          </div>
-          <div class="col-md-12 metaContent collapse">
-            <label for="inputMetaDescription" class="form-label">Meta-Description</label>
-            <textarea class="form-control" aria-label="With textarea"  id="inputMetaDescription" placeholder="Optional" value="{{_category.metaContent.metaDescription}}"></textarea>
-          </div>
-          <div class="col-md-4 col-6 metaContent collapse">
-            <label for="noIndexSelect" class="form-label">No Index</label>
-            <div class="form-check form-switch">
-              {{#if (eq _category.metaContent.noIndex false)}}
-              <input class="form-check-input" type="checkbox" id="noIndexSelect">
-              {{/if}}
-              {{#if (eq _category.metaContent.noIndex true)}}
-              <input class="form-check-input" type="checkbox" id="noIndexSelect" checked>
-              {{/if}}
-              <label class="form-check-label" for="noIndexSelect">Off / On</label>
-            </div>  
-          </div>
-          <div class="col-md-4 col-6 metaContent collapse">
-            <label for="noFollowSelect" class="form-label">No Follow</label>
-            <div class="form-check form-switch">
-              {{#if (eq _category.metaContent.noFollow false)}}
-              <input class="form-check-input" type="checkbox" id="noFollowSelect">
-              {{/if}}
-              {{#if (eq _category.metaContent.noFollow true)}}
-              <input class="form-check-input" type="checkbox" id="noFollowSelect" checked>
-              {{/if}}
-              <label class="form-check-label" for="noFollowSelect">Off / On</label>
+            <div class="col-md-12">
+              <label for="slugUrl" class="form-label">Slug Url</label>
+              <div class="input-group">
+                <span class="input-group-text" id="basic-addon3">https://bordonews.com/category/</span>
+                <input type="text" class="form-control" id="slugUrl" aria-describedby="basic-addon3"
+                  value="{{_category.slugUrl}}">
+                <!-- TODO will add later -->
+                <!-- <button class="btn btn-outline-secondary" type="button" id="button-check">Check</button> -->
+              </div>
             </div>
-          </div>  
-        </form>
-        <div class="col-md-12 col-10 text-center justify-content-center py-3">
-          <button type="submit" form="brdCategoryEditForm" class="btn btn-lg mw-25 categorySave">Save</button>
+
+            <div class="col-12 h-50">
+              <label for="inputDescription" class="form-label">Description</label>
+              <div id="category-add-editor"></div>
+            </div>
+            <div class="col-12">
+              <button type="button" class="btn btn-secondary" data-bs-toggle="collapse"
+                data-bs-target=".metaContent">Meta Content</button>
+            </div>
+
+            <div class="col-md-12 metaContent collapse">
+              <label for="inputMetaTitle" class="form-label">Meta-Title</label>
+              <input type="text" class="form-control" id="inputMetaTitle" placeholder="Optional"
+                value="{{_category.metaContent.metaTitle}}" />
+            </div>
+            <div class="col-md-12 metaContent collapse">
+              <label for="inputMetaDescription" class="form-label">Meta-Description</label>
+              <textarea class="form-control" aria-label="With textarea" id="inputMetaDescription" placeholder="Optional"
+                value="{{_category.metaContent.metaDescription}}"></textarea>
+            </div>
+            <div class="col-md-4 col-6 metaContent collapse">
+              <label for="noIndexSelect" class="form-label">No Index</label>
+              <div class="form-check form-switch">
+                {{#if (eq _category.metaContent.noIndex false)}}
+                  <input class="form-check-input" type="checkbox" id="noIndexSelect">
+                {{/if}}
+                {{#if (eq _category.metaContent.noIndex true)}}
+                  <input class="form-check-input" type="checkbox" id="noIndexSelect" checked>
+                {{/if}}
+                <label class="form-check-label" for="noIndexSelect">Off / On</label>
+              </div>
+            </div>
+            <div class="col-md-4 col-6 metaContent collapse">
+              <label for="noFollowSelect" class="form-label">No Follow</label>
+              <div class="form-check form-switch">
+                {{#if (eq _category.metaContent.noFollow false)}}
+                  <input class="form-check-input" type="checkbox" id="noFollowSelect">
+                {{/if}}
+                {{#if (eq _category.metaContent.noFollow true)}}
+                  <input class="form-check-input" type="checkbox" id="noFollowSelect" checked>
+                {{/if}}
+                <label class="form-check-label" for="noFollowSelect">Off / On</label>
+              </div>
+            </div>
+          </form>
+          <div class="col-md-12 col-10 text-center justify-content-center py-3">
+            <button type="submit" form="brdCategoryEditForm" class="btn btn-lg mw-25 categorySave">Save</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   {{/let}}
 </template>

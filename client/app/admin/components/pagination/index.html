@@ -10,7 +10,7 @@
 
     {{#let _currentPage=(paginationState.get 'currentPage')}} {{#each state.get 'pages'}}
     <li class="page-item {{#if eq _currentPage value}}active{{/if}}">
-      <a data-cy="brd-test-pagination-{{value}}" style="width: 35px" class="page-link brd-page text-center" href="#">{{text}}</a>
+      <a data-cy="brd-test-pagination-{{value}}" style="width: 55px" class="page-link brd-page text-center" href="#">{{text}}</a>
     </li>
     {{/each}} {{/let}}
 
