@@ -1,0 +1,109 @@
+#drag-drop-area {
+  .file-error-status {
+    border: 2px solid red;
+  }
+}
+
+/* line 6, source/sass/image-picker.scss */
+ul.thumbnails.image_picker_selector {
+  overflow: auto;
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none;
+  padding: 0;
+}
+
+ul.thumbnails.image_picker_selector li .thumbnail {
+  margin: 0 0 20px;
+
+  border-radius: 4px;
+  background: #F2F3F8;
+  border: 2px solid #E2E5EC;
+  position: relative;
+  transition: all .2s;
+}
+
+ul.thumbnails.image_picker_selector li .thumbnail img {
+  -webkit-user-drag: none;
+}
+
+ul.thumbnails.image_picker_selector li .thumbnail.selected {
+  border-color: #5577EB;
+
+  transition: all .2s;
+}
+
+
+ul.thumbnails.image_picker_selector li .thumbnail.selected::before {
+  content: '✓';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background: #0BBB87;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  z-index: 4;
+  border-radius: 4px;
+  transition: all .2s;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+ul.thumbnails.image_picker_selector li .thumbnail.selected::before {
+  opacity: 1;
+  visibility: visible;
+  transition: all .2s;
+}
+
+.thumbnails .brd-media-image-container {
+
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+}
+
+.thumbnails .brd-media-image {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ul.thumbnails.image_picker_selector li .thumbnail .brd-media-buttons {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+ul.thumbnails.image_picker_selector li .thumbnail .brd-media-buttons .btn-brd-media-image-delete,
+ul.thumbnails.image_picker_selector li .thumbnail .brd-media-buttons .btn-brd-media-image-update {
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  margin: 0 0 0 5px;
+}
+
+ul.thumbnails.image_picker_selector li .thumbnail .brd-media-buttons .btn-brd-media-image-delete {
+  background: #FD397A
+}
+
+ul.thumbnails.image_picker_selector li .thumbnail .brd-media-buttons .btn-brd-media-image-update {
+  background: #5577EB
+}
+
+.modal .btn-primary {
+  color: white!important;
+}
