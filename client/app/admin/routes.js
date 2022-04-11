@@ -78,7 +78,7 @@ routesNews.route('/edit/:_id', {
 const routesColumns = FlowRouter.group({
   prefix: '/admin/column',
   name: 'admin.column',
-  triggersEnter:[MustSignIn, IsEditor]
+  triggersEnter:[MustSignIn, IsColumnist]
 });
 routesColumns.route('/', {
   name: 'admin.column',
