@@ -107,3 +107,9 @@ ul.thumbnails.image_picker_selector li .thumbnail .brd-media-buttons .btn-brd-me
 .modal .btn-primary {
   color: white!important;
 }
+
+#drag-drop-area{
+  .file-error-status {
+    border: 2px solid red;
+  }
+}
