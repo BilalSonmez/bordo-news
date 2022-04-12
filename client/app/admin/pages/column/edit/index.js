@@ -17,7 +17,9 @@ Template.adminPageColumnEdit.onRendered(function () {
   });
 
   this.autorun(function () {
-    Meteor.call("column.show", { _id: _id }, function (error, result) {
+    Meteor.call("column.show", {
+      _id: _id
+    }, function (error, result) {
       if (error) {
         ErrorHandler.show(error.message);
         return;

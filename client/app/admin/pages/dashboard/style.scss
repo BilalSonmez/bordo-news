@@ -1,0 +1,147 @@
+.dasboardTitle {
+  color: #300100;
+}
+
+.rowDashboard {
+  --bs-gutter-x: 0rem !important;
+
+}
+
+
+$block-stat-card: "stat-card";
+//Stat card
+$color-stat-card-default: #985530;
+$color-stat-card-pink: #F5437B;
+$color-stat-card-blue: #0072BB;
+$color-stat-card-lightblue: #3C91E6;
+$color-stat-card-green: #67C97C;
+$color-stat-card-yellow: #FFA630;
+$color-stat-card-red: #D0021B;
+$color-stat-card-desc: #4D5365;
+
+$box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16),
+0 2px 10px 0 rgba(0, 0, 0, .12);
+
+%transition {
+  transition: all .5s ease;
+}
+
+@mixin stat-color ($name, $color) {
+  &--#{$name} {
+    border-top: 5px solid $color;
+    background-image: linear-gradient(to bottom, white 50%, $color 50%);
+
+    &.#{$block-stat-card}.#{$block-stat-card}--wide {
+      background-image: linear-gradient(to right, white 50%, $color 50%);
+      border-left: 5px solid $color;
+    }
+
+    .#{$block-stat-card}__stat {
+      color: $color;
+    }
+  }
+}
+
+.#{$block-stat-card} {
+  @extend %transition;
+  width: 350px;
+  border-radius: 3px;
+  height: 175px;
+  padding: 0 15px 0 15px;
+  margin: 15px;
+  background-size: 100% 200%;
+  background-image: linear-gradient(to bottom, #e3e4e4 50%, $color-stat-card-default 50%);
+  border-top: 5px solid $color-stat-card-default;
+  display: inline-block;
+  box-shadow: $box-shadow;
+  vertical-align: top;
+
+  &:hover {
+    background-position: 0 -100%;
+    cursor: pointer;
+
+    .#{$block-stat-card}__stat,
+    .#{$block-stat-card}__desc,
+    .#{$block-stat-card}__sub-stat {
+      color: white;
+    }
+  }
+
+  //Elements
+  &__stat,
+  &__desc {
+    text-align: center;
+    font-weight: 500;
+  }
+
+  &__sub-stat {
+    @extend %transition;
+    display: inline;
+    font-size: 26px;
+    color: $color-stat-card-pink;
+    margin-left: -5px;
+  }
+
+  &__stat {
+    @extend %transition;
+    color: $color-stat-card-default;
+    font-size: 60px;
+    margin: 5px 0;
+  }
+
+  &__desc {
+    @extend %transition;
+    color: $color-stat-card-desc;
+    font-size: 22px;
+  }
+
+  //Modifiers
+  @include stat-color('pink', $color-stat-card-pink);
+  @include stat-color('blue', $color-stat-card-blue);
+  @include stat-color('green', $color-stat-card-green);
+  @include stat-color('yellow', $color-stat-card-yellow);
+  @include stat-color('red', $color-stat-card-red);
+  @include stat-color('light-blue', $color-stat-card-lightblue);
+
+  &.#{$block-stat-card}--wide {
+    width: calc(50% - 8px);
+    margin: 3px 3px;
+    height: 50px;
+    background-image: linear-gradient(to right, white 50%, $color-stat-card-default 50%);
+    background-size: 200% 100%;
+    border-top: none;
+    border-left: 5px solid $color-stat-card-default;
+
+    &:hover {
+      background-position: -100% 0;
+
+      .#{$block-stat-card}__stat,
+      .#{$block-stat-card}__desc,
+      .#{$block-stat-card}__sub-stat {
+        color: white;
+      }
+    }
+
+    .#{$block-stat-card}__stat {
+      float: right;
+      font-size: 26px;
+    }
+
+    .#{$block-stat-card}__desc {
+      float: left;
+      margin: 5px 0;
+      font-size: 26px;
+      color: $color-stat-card-default;
+    }
+  }
+
+  &--short {
+    height: 90px;
+    padding: 0 5px 0 5px;
+
+    .#{$block-stat-card}__stat {
+      margin-bottom: -10px;
+      margin-top: 0;
+    }
+  }
+}

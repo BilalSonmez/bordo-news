@@ -1,4 +1,3 @@
-import { FlowRouter } from "meteor/ostrio:flow-router-extra";
 import Swal from "sweetalert2";
 Template.adminPageUser.onCreated(function () {
   this.state = new ReactiveDict(null, {
@@ -59,7 +58,9 @@ Template.adminPageUser.events({
       confirmButtonText: "Delete",
     }).then((result) => {
       if (result.isConfirmed) {
-        Meteor.call("user.delete", { _id: user._id }, function (error, result) {
+        Meteor.call("user.delete", {
+          _id: user._id
+        }, function (error, result) {
           if (error) {
             ErrorHandler.show(error.message);
             return;
@@ -80,7 +81,9 @@ Template.adminPageUser.events({
       confirmButtonText: "Give",
     }).then((result) => {
       if (result.isConfirmed) {
-        Meteor.call("role.set.admin", { _id: user._id }, function (error, result) {
+        Meteor.call("role.set.admin", {
+          _id: user._id
+        }, function (error, result) {
           if (error) {
             ErrorHandler.show(error.message);
             return;
@@ -101,7 +104,9 @@ Template.adminPageUser.events({
       confirmButtonText: "Give",
     }).then((result) => {
       if (result.isConfirmed) {
-        Meteor.call("role.set.editor", { _id: user._id }, function (error, result) {
+        Meteor.call("role.set.editor", {
+          _id: user._id
+        }, function (error, result) {
           if (error) {
             ErrorHandler.show(error.message);
             return;
@@ -122,7 +127,9 @@ Template.adminPageUser.events({
       confirmButtonText: "Give",
     }).then((result) => {
       if (result.isConfirmed) {
-        Meteor.call("role.set.columnist", { _id: user._id }, function (error, result) {
+        Meteor.call("role.set.columnist", {
+          _id: user._id
+        }, function (error, result) {
           if (error) {
             ErrorHandler.show(error.message);
             return;
@@ -143,7 +150,9 @@ Template.adminPageUser.events({
       confirmButtonText: "Okey",
     }).then((result) => {
       if (result.isConfirmed) {
-        Meteor.call("role.cancel.admin", { _id: user._id }, function (error, result) {
+        Meteor.call("role.cancel.admin", {
+          _id: user._id
+        }, function (error, result) {
           if (error) {
             ErrorHandler.show(error.message);
             return;
@@ -164,7 +173,9 @@ Template.adminPageUser.events({
       confirmButtonText: "Okey",
     }).then((result) => {
       if (result.isConfirmed) {
-        Meteor.call("role.cancel.editor", { _id: user._id }, function (error, result) {
+        Meteor.call("role.cancel.editor", {
+          _id: user._id
+        }, function (error, result) {
           if (error) {
             ErrorHandler.show(error.message);
             return;
@@ -185,7 +196,9 @@ Template.adminPageUser.events({
       confirmButtonText: "Okey",
     }).then((result) => {
       if (result.isConfirmed) {
-        Meteor.call("role.cancel.columnist", { _id: user._id }, function (error, result) {
+        Meteor.call("role.cancel.columnist", {
+          _id: user._id
+        }, function (error, result) {
           if (error) {
             ErrorHandler.show(error.message);
             return;

@@ -18,7 +18,7 @@ Template.adminPageNewsEdit.onRendered(function () {
     placeholder: 'Optional',
   });
   this.autorun(function () {
-    Meteor.call("category.list",{}, function (error, result) {
+    Meteor.call("category.list", {}, function (error, result) {
       if (error) {
         ErrorHandler.show(error.message);
         return;
@@ -28,47 +28,49 @@ Template.adminPageNewsEdit.onRendered(function () {
   });
   this.autorun(function () {
     let categories = self.state.get("mainCategories");
-      if(categories.length==0){
+    if (categories.length == 0) {
+      return;
+    }
+    Meteor.call("news.show", {
+      _id: _id
+    }, function (error, result) {
+      if (error) {
+        ErrorHandler.show(error.message);
         return;
       }
-      Meteor.call("news.show", {_id:_id}, function (error, result) {
-        if (error) {
-          ErrorHandler.show(error.message);
-          return;
-        }
-        console.log(result.categories);
-        categories=categories.map(category => {
-          const index = result.categories.findIndex(_category =>{
-            return category._id == _category;
-          })
-          category.selected=index==-1?false:true;
-          return category;
+      console.log(result.categories);
+      categories = categories.map(category => {
+        const index = result.categories.findIndex(_category => {
+          return category._id == _category;
         })
-        self.state.set("categories", categories);
-        console.log(categories);
-        self.state.set('news', result);
-        self.quill.root.innerHTML=result.content;
-      });
+        category.selected = index == -1 ? false : true;
+        return category;
+      })
+      self.state.set("categories", categories);
+      console.log(categories);
+      self.state.set('news', result);
+      self.quill.root.innerHTML = result.content;
     });
+  });
 });
 
 Template.adminPageNewsEdit.events({
   "submit form#brdNewAddForm": function (event, template) {
     event.preventDefault();
     const title = event.target.inputTitle.value;
-    if (title==='') {
+    if (title === '') {
       ErrorHandler.show("Title cannot be empty");
       return;
     }
     const subTitle = event.target.inputSubTitle.value;
     const content = template.quill.root.innerHTML;
-    const slugUrl = Slugify(event.target.slugUrl.value,'-');
+    const slugUrl = Slugify(event.target.slugUrl.value, '-');
     //TODO will change after upload system
-    const featuredImage ='YSsf6nLfoKjAAekKo';
+    const featuredImage = 'YSsf6nLfoKjAAekKo';
     const metaTitle = event.target.inputMetaTitle.value;
     const metaDescription = event.target.inputMetaDescription.value;
     const noIndex = event.target.noIndexSelect.checked;
-    const noFollow =event.target.noFollowSelect.checked;
+    const noFollow = event.target.noFollowSelect.checked;
     let isImportant;
     if (event.target.isImportantOff.checked) {
       isImportant = false;
@@ -76,26 +78,28 @@ Template.adminPageNewsEdit.events({
     if (event.target.isImportantOn.checked) {
       isImportant = true;
     }
-    const selectedCategories = $('.selectedCategories:checkbox:checked').map(function() {return this.value; }).get();
-    
+    const selectedCategories = $('.selectedCategories:checkbox:checked').map(function () {
+      return this.value;
+    }).get();
+
     const newraw = template.state.get("news");
-    const obj ={
-      _id:newraw._id,
-      news:{
-        title:title,
+    const obj = {
+      _id: newraw._id,
+      news: {
+        title: title,
         subTitle: subTitle,
-        content:content,
-        slugUrl:slugUrl,
-        categories:selectedCategories,
-        featuredImage:featuredImage,
-        isImportant:isImportant,
-        metaContent:{
-          metaTitle:metaTitle,
-          metaDescription:metaDescription,
-          noIndex:noIndex,
-          noFollow:noFollow,
+        content: content,
+        slugUrl: slugUrl,
+        categories: selectedCategories,
+        featuredImage: featuredImage,
+        isImportant: isImportant,
+        metaContent: {
+          metaTitle: metaTitle,
+          metaDescription: metaDescription,
+          noIndex: noIndex,
+          noFollow: noFollow,
         },
-        communityData:newraw.communityData,
+        communityData: newraw.communityData,
       }
     }
     console.log(obj);
@@ -114,9 +118,9 @@ Template.adminPageNewsEdit.events({
           AppUtil.refreshTokens.set("news", Random.id());
           event.target.reset();
           Swal.fire('Saved!', '', 'success')
-          FlowRouter.go("admin.new",{});
+          FlowRouter.go("admin.new", {});
         });
-        
+
       }
     })
   },

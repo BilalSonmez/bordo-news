@@ -2,7 +2,7 @@ import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import Swal from 'sweetalert2';
 Template.adminPageNew.onCreated(function () {
   this.state = new ReactiveDict(null, {
-    news:[],
+    news: [],
   });
   this.pagination = new ReactiveDict(null, {
     currentPage: 1,
@@ -36,16 +36,16 @@ Template.adminPageNew.onRendered(function () {
         }
       }
     };
-    
+
     Meteor.call("news.list", listOptions, function (error, result) {
       if (error) {
         ErrorHandler.show(error.message);
         return;
       }
       console.log(result);
-      self.pagination.set("totalCount",result.options.pagination.totalCount);
-      const pages=Math.ceil(result.options.pagination.totalCount/result.options.pagination.pageItems);
-      self.pagination.set("totalPages",pages);
+      self.pagination.set("totalCount", result.options.pagination.totalCount);
+      const pages = Math.ceil(result.options.pagination.totalCount / result.options.pagination.pageItems);
+      self.pagination.set("totalPages", pages);
       self.state.set("news", result);
     })
 
@@ -54,10 +54,12 @@ Template.adminPageNew.onRendered(function () {
 
 Template.adminPageNew.events({
   'click .btnNewsAdd': function (event, template) {
-    FlowRouter.go("admin.new.add",{});
+    FlowRouter.go("admin.new.add", {});
   },
   "click .btnNewsEdit": function (event, template) {
-    FlowRouter.go("admin.new.edit", {_id: this._id});
+    FlowRouter.go("admin.new.edit", {
+      _id: this._id
+    });
   },
   "click .btnNewsDelete": function (event, template) {
     event.preventDefault();
@@ -69,7 +71,10 @@ Template.adminPageNew.events({
     }).then((result) => {
       if (result.isConfirmed) {
         Meteor.call(
-          "news.delete",{_id: news._id},function (error, result) {
+          "news.delete", {
+            _id: news._id
+          },
+          function (error, result) {
             if (error) {
               ErrorHandler.show(error.message);
               return;
@@ -78,12 +83,7 @@ Template.adminPageNew.events({
             AppUtil.refreshTokens.set("news", Random.id());
           }
         );
-        
       }
     })
   },
-});
-
-Template.adminPageNew.onDestroyed(function () {
-
 });

@@ -53,11 +53,11 @@
                 <td class="text-center">
                   {{#if profile.isAdmin}}
                     <button class="btn btn-danger btn-sm btnCancelAdminRole" title="Cancel admin role">
-                      <i class="fa-solid fa-user-xmark"></i>
+                      <i class="fa-solid fa-minus"></i>
                     </button>
                   {{else}}
                     <button class="btn btn-success btn-sm btnSetAdminRole" title="Set admin role">
-                      <i class="fa-solid fa-user-check"></i>
+                      <i class="fa-solid fa-plus"></i>
                     </button>
                   {{/if}}
                 </td>
@@ -66,16 +66,16 @@
                   {{#if profile.isEditor}}
                     {{#if profile.isAdmin}}
                       <button class="btn btn-danger btn-sm btnCancelEditorRole" title="Cancel editor role" disabled>
-                        <i class="fa-solid fa-user-xmark"></i>
+                        <i class="fa-solid fa-minus"></i>
                       </button>
                     {{else}}
                       <button class="btn btn-danger btn-sm btnCancelEditorRole" title="Cancel editor role">
-                        <i class="fa-solid fa-user-xmark"></i>
+                        <i class="fa-solid fa-minus"></i>
                       </button>
                     {{/if}}
                   {{else}}
                     <button class="btn btn-success btn-sm btnSetEditorRole" title="Set editor role">
-                      <i class="fa-solid fa-user-check"></i>
+                      <i class="fa-solid fa-plus"></i>
                     </button>
                   {{/if}}
                 </td>
@@ -85,23 +85,23 @@
                     {{#if profile.isAdmin}}
                       <button class="btn btn-danger btn-sm btnCancelColumnistRole" title="Cancel columnist role"
                         disabled>
-                        <i class="fa-solid fa-user-xmark"></i>
+                        <i class="fa-solid fa-minus"></i>
                       </button>
                     {{else}}
                       <button class="btn btn-danger btn-sm btnCancelColumnistRole" title="Cancel columnist role">
-                        <i class="fa-solid fa-user-xmark"></i>
+                        <i class="fa-solid fa-minus"></i>
                       </button>
                     {{/if}}
                   {{else}}
                     <button class="btn btn-success btn-sm btnSetColumnistRole" title="Set columnist role">
-                      <i class="fa-solid fa-user-check"></i>
+                      <i class="fa-solid fa-plus"></i>
                     </button>
                   {{/if}}
                 </td>
 
                 <td class="text-center">
                   <button class="btn btn-danger btn-sm btnUserDelete">
-                    <i class="fas fa-trash"></i>
+                    <i class="fa-solid fa-user-xmark"></i>
                   </button>
                 </td>
               </tr>
@@ -113,6 +113,5 @@
         {{> componentAdminPagination paginationState=pagination}}
       </div>
     </div>
-
   {{/let}}
 </template>

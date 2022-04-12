@@ -2,7 +2,7 @@ Template.adminComponentNavbar.onRendered(function () {
   const self = this;
 
   this.autorun(function () {
-    
+
   });
 });
 

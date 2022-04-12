@@ -1,82 +1,71 @@
 <template name="adminComponentNavbar">
   <nav class="navbar admin-navbar navbar-expand-lg sticky-top">
-    <div class="container">
-      <div class="row admin-navbar-content">
-        <div class="col-md-12 navbar-brand-content text-center">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fa-solid fa-bars fa-lg"></i>
-          </button>
+    <div class="container-fluid">
 
-          <a class="navbar-brand" href="{{pathFor 'public.home'}}">
-            <i class="fa-solid fa-user-doctor"></i> Bordo Haber
-          </a>
-        </div>
-        <div class="col-md-9">
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mx-auto">
-              <li class="nav-item">
-                <a class="nav-link{{#if eq currentRouteName 'admin.dashboard'}} active{{/if}}" href="{{pathFor 'admin.dashboard'}}"><i class="fa fa-dashboard"></i> Dashboard</a>
-              </li>
-              {{#if currentUser.profile.isEditor}}
-              <li class="nav-item">
-                <a class="nav-link{{#if eq1 currentRouteName 'admin.category' 'admin.category.add' 'admin.category.edit'}} active{{/if}}" href="{{pathFor 'admin.category'}}"><i class="fa fa-filter"></i> Categories</a>
-              </li>
-              {{/if}}
-              {{#if currentUser.profile.isEditor}}
-              <li class="nav-item">
-                <a class="nav-link{{#if eq1 currentRouteName 'admin.new' 'admin.new.add' 'admin.new.edit'}} active{{/if}}" href="{{pathFor 'admin.new'}}"><i class="fa-solid fa-newspaper"></i> News</a>
-              </li>
-              {{/if}}
-              {{#if currentUser.profile.isColumnist}}
-              <li class="nav-item">
-                <a class="nav-link{{#if eq1 currentRouteName 'admin.column' 'admin.column.add' 'admin.column.edit'}} active{{/if}}" href="{{pathFor 'admin.column'}}"><i class="fa-solid fa-file-lines"></i> Columns</a>
-              </li>
-              {{/if}}
-              {{#if currentUser.profile.isAdmin}}
-              <li class="nav-item">
-                <a class="nav-link{{#if eq currentRouteName 'admin.user'}} active{{/if}}" href="{{pathFor 'admin.user'}}"><i class="fa fa-user"></i> Users</a>
-              </li>
-              {{/if}}
-            </ul>
-          </div>
-        </div>
+      <button class="navbar-toggler px-3" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars fa-lg"></i>
+      </button>
 
-        <div class="col-md-3">
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mx-auto">
-              {{#if currentUser}}
-              <li class="nav-item">
-                <a class="nav-link btnLogout" href="#"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
-              </li>
-              {{else}}
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#brdLoginModal"><i class="fa-solid fa-right-to-bracket"></i>Login</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#brdSignUpModal">Sign Up</a>
-              </li>
-              {{/if}}
-              
-              
-            </ul>
-          </div>
-        </div>
+      <a class="navbar-brand ps-3" href="{{pathFor 'public.home'}}">
+        <i class="fa-solid fa-user-doctor"></i> Bordo Haber
+      </a>
 
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto me-5">
+          <li class="nav-item">
+            <a class="nav-link{{#if eq currentRouteName 'admin.dashboard'}} active{{/if}}"
+              href="{{pathFor 'admin.dashboard'}}"><i class="fa fa-dashboard"></i> Dashboard</a>
+          </li>
+          {{#if currentUser.profile.isEditor}}
+            <li class="nav-item">
+              <a class="nav-link{{#if eq1 currentRouteName 'admin.category' 'admin.category.add' 'admin.category.edit'}} active{{/if}}"
+                href="{{pathFor 'admin.category'}}"><i class="fa fa-filter"></i> Categories</a>
+            </li>
+          {{/if}}
+          {{#if currentUser.profile.isEditor}}
+            <li class="nav-item">
+              <a class="nav-link{{#if eq1 currentRouteName 'admin.new' 'admin.new.add' 'admin.new.edit'}} active{{/if}}"
+                href="{{pathFor 'admin.new'}}"><i class="fa-solid fa-newspaper"></i> News</a>
+            </li>
+          {{/if}}
+          {{#if currentUser.profile.isColumnist}}
+            <li class="nav-item">
+              <a class="nav-link{{#if eq1 currentRouteName 'admin.column' 'admin.column.add' 'admin.column.edit'}} active{{/if}}"
+                href="{{pathFor 'admin.column'}}"><i class="fa-solid fa-file-lines"></i> Columns</a>
+            </li>
+          {{/if}}
+          {{#if currentUser.profile.isAdmin}}
+            <li class="nav-item">
+              <a class="nav-link{{#if eq currentRouteName 'admin.user'}} active{{/if}}"
+                href="{{pathFor 'admin.user'}}"><i class="fa fa-user"></i> Users</a>
+            </li>
+          {{/if}}
+        </ul>
       </div>
+
+      <div class="collapse-show navbar-collapse d-flex" id="navbarNavDarkDropdown">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              {{currentUser.profile.name}}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDarkDropdownMenuLink">
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><a class="dropdown-item" href="/admin">Dashboard</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item btnLogout" href="#">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
     </div>
   </nav>
   {{>authModalSignIn}}
   {{>authModalSignUp}}
-  <!-- TODO fix issue stuck-->
-  <!-- <script>
-    window.addEventListener("scroll", (event) => {
-    let scroll = this.scrollY;
-    if(scroll>0){
-      $(".navbar-brand-content").addClass("d-none");
-    }
-    if(scroll==0){
-      $(".navbar-brand-content").removeClass("d-none");
-    }
-});
-    </script> -->
 </template>

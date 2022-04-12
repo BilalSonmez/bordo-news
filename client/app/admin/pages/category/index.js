@@ -1,6 +1,4 @@
-import {
-  FlowRouter
-} from 'meteor/ostrio:flow-router-extra';
+import {FlowRouter} from 'meteor/ostrio:flow-router-extra';
 import Swal from 'sweetalert2';
 Template.adminPageCategory.onCreated(function () {
   this.state = new ReactiveDict(null, {

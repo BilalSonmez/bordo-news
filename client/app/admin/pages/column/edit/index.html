@@ -1,90 +1,95 @@
 <template name="adminPageColumnEdit">
   {{#let _column=(state.get 'column')}}
-  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
-  <div class="container columnEditContainer my-2">
-    <div class="d-flex flex-row row justify-content-center">
-      <h2 class="text-center">Edit Column</h2>
-      <div class="col-md-8 col-sm-10 col-10">
-        <form class="row g-3 my-1" id="brdColumnAddForm">
-          <div class="col-md-12">
-            <label for="inputTitle" class="form-label">Title</label>
-            <input type="text" class="form-control" id="inputTitle" placeholder="Please enter title." value="{{_column.title}}"/>
-          </div>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
+    <div class="container columnEditContainer my-2">
+      <div class="d-flex flex-row row justify-content-center">
+        <h2 class="text-center">Edit Column</h2>
+        <div class="col-md-8 col-sm-10 col-10">
+          <form class="row g-3 my-1" id="brdColumnAddForm">
+            <div class="col-md-12">
+              <label for="inputTitle" class="form-label">Title</label>
+              <input type="text" class="form-control" id="inputTitle" placeholder="Please enter title."
+                value="{{_column.title}}" />
+            </div>
 
-          <div class="col-md-12">
-            <div class="form-check form-switch ms-0 ps-0">
-              <div class="input-group">
-                <label for="inputSubTitle" class="form-label">Sub Title</label>
-                <input class="form-check-input mx-2" type="checkbox" data-bs-toggle="collapse" data-bs-target=".colSubTitle"/>
+            <div class="col-md-12">
+              <div class="form-check form-switch ms-0 ps-0">
+                <div class="input-group">
+                  <label for="inputSubTitle" class="form-label">Sub Title</label>
+                  <input class="form-check-input mx-2" type="checkbox" data-bs-toggle="collapse"
+                    data-bs-target=".colSubTitle" />
+                </div>
+              </div>
+              <div class="collapse colSubTitle">
+                <input type="text" class="form-control" id="inputSubTitle" placeholder="Optional"
+                  value="{{_column.subTitle}}" />
               </div>
             </div>
-            <div class="collapse colSubTitle">
-              <input type="text" class="form-control" id="inputSubTitle" placeholder="Optional" value="{{_column.subTitle}}"/>
+            <div class="col-md-12">
+              <label for="slugUrl" class="form-label">Slug Url</label>
+              <div class="input-group">
+                <span class="input-group-text" id="basic-addon3">https://bordonews.com/columns/</span>
+                <input type="text" class="form-control" id="slugUrl" aria-describedby="basic-addon3"
+                  value="{{_column.slugUrl}}" />
+              </div>
             </div>
-          </div>
-          <div class="col-md-12">
-            <label for="slugUrl" class="form-label">Slug Url</label>
-            <div class="input-group">
-              <span class="input-group-text" id="basic-addon3">https://bordonews.com/columns/</span>
-              <input type="text" class="form-control" id="slugUrl" aria-describedby="basic-addon3" value="{{_column.slugUrl}}"/>
-              <!-- TODO will add later -->
-              <!-- <button class="btn btn-outline-secondary" type="button" id="button-check">Check</button> -->
-            </div>
-          </div>
-          
-          <div class="col-12">
-            <div class="mb-3">
-              <label for="featuredImageUpload" class="form-label">Featured Image</label>
-              <input class="form-control" type="file" id="featuredImageUpload" disabled>
-            </div>
-          </div>
 
-          <div class="col-12 h-50">
-            <label for="inputContent" class="form-label">Content</label>
-            <div id="column-edit-editor"></div>
-          </div>
-          <hr />
-          <div class="col-12">
-            <button type="button" class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target=".metaContent">Meta Content</button>
-          </div>
+            <div class="col-12">
+              <div class="mb-3">
+                <label for="featuredImageUpload" class="form-label">Featured Image</label>
+                <input class="form-control" type="file" id="featuredImageUpload" disabled>
+              </div>
+            </div>
+
+            <div class="col-12 h-50">
+              <label for="inputContent" class="form-label">Content</label>
+              <div id="column-edit-editor"></div>
+            </div>
+            <hr />
+            <div class="col-12">
+              <button type="button" class="btn btn-secondary" data-bs-toggle="collapse"
+                data-bs-target=".metaContent">Meta Content</button>
+            </div>
 
 
-          <div class="col-md-12 metaContent collapse">
-            <label for="inputMetaTitle" class="form-label">Meta-Title</label>
-            <input type="text" class="form-control" id="inputMetaTitle" placeholder="Optional" value="{{_column.metaContent.metaTitle}}"/>
-          </div>
-          <div class="col-md-12 metaContent collapse">
-            <label for="inputMetaDescription" class="form-label">Meta-Description</label>
-            <textarea class="form-control" aria-label="With textarea" id="inputMetaDescription" placeholder="Optional" value="{{_column.metaContent.metaDescription}}"></textarea>
-          </div>
-          <div class="col-md-4 col-6 metaContent collapse">
-            <label for="noIndexSelect" class="form-label">No Index</label>
-            <div class="form-check form-switch">
-              {{#if _column.metaContent.noIndex}}
-              <input class="form-check-input" type="checkbox" id="noIndexSelect" checked/>
-              {{else}}
-              <input class="form-check-input" type="checkbox" id="noIndexSelect" />                    
-              {{/if}}
-              <label class="form-check-label" for="noIndexSelect">Off / On</label>
+            <div class="col-md-12 metaContent collapse">
+              <label for="inputMetaTitle" class="form-label">Meta-Title</label>
+              <input type="text" class="form-control" id="inputMetaTitle" placeholder="Optional"
+                value="{{_column.metaContent.metaTitle}}" />
             </div>
-          </div>
-          <div class="col-md-4 col-6 metaContent collapse">
-            <label for="noFollowSelect" class="form-label">No Follow</label>
-            <div class="form-check form-switch">
-              {{#if _column.metaContent.noFollow}}
-              <input class="form-check-input" type="checkbox" id="noFollowSelect" checked/>
-              {{else}}
-              <input class="form-check-input" type="checkbox" id="noFollowSelect" />                   
-              {{/if}}
-              <label class="form-check-label" for="noFollowSelect">Off / On</label>
+            <div class="col-md-12 metaContent collapse">
+              <label for="inputMetaDescription" class="form-label">Meta-Description</label>
+              <textarea class="form-control" aria-label="With textarea" id="inputMetaDescription" placeholder="Optional"
+                value="{{_column.metaContent.metaDescription}}"></textarea>
             </div>
+            <div class="col-md-4 col-6 metaContent collapse">
+              <label for="noIndexSelect" class="form-label">No Index</label>
+              <div class="form-check form-switch">
+                {{#if _column.metaContent.noIndex}}
+                  <input class="form-check-input" type="checkbox" id="noIndexSelect" checked />
+                {{else}}
+                  <input class="form-check-input" type="checkbox" id="noIndexSelect" />
+                {{/if}}
+                <label class="form-check-label" for="noIndexSelect">Off / On</label>
+              </div>
+            </div>
+            <div class="col-md-4 col-6 metaContent collapse">
+              <label for="noFollowSelect" class="form-label">No Follow</label>
+              <div class="form-check form-switch">
+                {{#if _column.metaContent.noFollow}}
+                  <input class="form-check-input" type="checkbox" id="noFollowSelect" checked />
+                {{else}}
+                  <input class="form-check-input" type="checkbox" id="noFollowSelect" />
+                {{/if}}
+                <label class="form-check-label" for="noFollowSelect">Off / On</label>
+              </div>
+            </div>
+          </form>
+          <div class="col-md-12 col-10 text-center justify-content-center py-3">
+            <button type="submit" form="brdColumnAddForm" class="btn btn-lg mw-25 columnSave">Save</button>
           </div>
-        </form>
-        <div class="col-md-12 col-10 text-center justify-content-center py-3">
-          <button type="submit" form="brdColumnAddForm" class="btn btn-lg mw-25 columnSave">Save</button>
         </div>
       </div>
     </div>
-  </div>
   {{/let}}
 </template>
