@@ -20,3 +20,27 @@ FlowRouter.route('/contact', {
     this.render('publicLayoutDefault', {page: 'publicPagesContact'});
   }
 });
+FlowRouter.route('/category', {
+  name: 'public.category',
+  action: function (params, queryParams) {
+    this.render('publicLayoutDefault', {page: 'publicPagesCategory'});
+  }
+});
+FlowRouter.route('/columns', {
+  name: 'public.columns',
+  action: function (params, queryParams) {
+    this.render('publicLayoutDefault', {page: 'publicPagesColumns'});
+  }
+});
+FlowRouter.route('/dashboard', {
+  name: 'public.dashboard',
+  action: function (params, queryParams) {
+    this.render('publicLayoutDefault', {page: 'publicPagesDashboard'});
+  }
+});
+FlowRouter.route('/content', {
+  name: 'public.content',
+  action: function (params, queryParams) {
+    this.render('publicLayoutContent', {page: 'publicPagesContent'});
+  }
+});

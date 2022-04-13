@@ -7,19 +7,19 @@
 }
 .brdf-navbar {
   background-color: $color-base-dark;
- 
+  height: auto;
   .brdf-navbar-content {
     margin: 0 auto;
     .navbar-brand-content {
-      margin-bottom: 1.5rem;
+      margin-bottom: 0rem;
       .navbar-brand {
-        font-size: 2.5rem;
+        font-size: 1.3rem;
       }
     }
   }
   
   .navbar-brand {
-    font-weight: 600;
+    font-weight: 500;
   }
   a, .navbar-toggler {
     color: $color-secondary-light;
