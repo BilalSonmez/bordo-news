@@ -3,6 +3,7 @@
   <nav class="navbar brdf-navbar navbar-expand-lg ">
     <div class="container ">
       <div class="row  brdf-navbar-content">
+
         <div class="navbar-brand-content text-center">
           <a class="navbar-brand" href="{{pathFor 'public.home'}}">
             <i class="fa-solid fa-newspaper"></i> Bordo Haber
@@ -11,6 +12,7 @@
             <i class="fa-solid fa-bars"></i>
           </button>
           <div class="collapse navbar-collapse " id="navbarSupportedContent">
+           
             <ul class="navbar-nav mx-auto">
               <li class="nav-item">
                 <a class="nav-link{{#if eq currentRouteName 'public.about'}} active{{/if}}" aria-current="page" href="{{pathFor 'public.about'}}">About Us</a>
@@ -18,7 +20,15 @@
               <li class="nav-item">
                 <a class="nav-link{{#if eq currentRouteName 'public.contact'}} active{{/if}}" aria-current="page" href="{{pathFor 'public.contact'}}">Contact Us</a>
               </li>
-
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{{pathFor 'public.category'}}">Category</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{{pathFor 'public.columns'}}">Columns</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{{pathFor 'public.dashboard'}}">Dashboard</a>
+              </li>
                     {{#if currentUser}}
                     <li class="nav-item">
                       <a class="nav-link btnLogout" href="#"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
