@@ -1,195 +1,201 @@
 <template name="publicPagesHome">
-  <div class="publicPagesHome">
-    <div class="container-md mb-4">
-      <div class="row">
-        <div class="col-md-8 p-0 pb-3">
-          <!--position-absolute top-0 start-0 overflow-hidden-->
-
-          <div id="carouselExampleControls" class="carousel position-relative slide mt-3  w-100 h-100 ">
-            <div class="carousel-inner w-100 h-100 position-md-absolute top-0 start-0">
-              <div class="carousel-item h-100   active   ">
-                <img
-                  src="https://www.osevio.com/blog/wp-content/uploads/2018/10/osevio-blog-doga-resimleri-one-cikarilmis-gorsel.jpg"
-                  class=" d-block w-100 img-fluid brd-carousel-img h-100" alt="...">
-                <h4 class="position-absolute start-0 bottom-0 text-white p-2 m-0 bg-primary w-100 " style="opacity:0.7">
-                  Bugun Çarşamba</h4>
+  {{#let _breakingNews=(state.get'breakingNews') }}
+    <div class="publicPagesHome">
+      <div class="container-md mb-4">
+        <div class="row">
+          <div class="col-md-8 pb-5 px-0">
+            <div id="carouselExampleControls" class="carousel position-relative slide mt-3  w-100 h-100 ">
+              <div class="carousel-inner w-100 h-100 position-md-absolute top-0 start-0">
+                {{#each _breakingNews}}
+                  {{#if eq @index 0}}
+                    <div class="carousel-item h-100 active">
+                      <img
+                        src="https://www.osevio.com/blog/wp-content/uploads/2018/10/osevio-blog-doga-resimleri-one-cikarilmis-gorsel.jpg"
+                        class=" d-block w-100 img-fluid brd-carousel-img h-100" alt="...">
+                      <h4 class="position-absolute start-0 bottom-0 text-white p-2 m-0 bg-primary w-100 "
+                        style="opacity:0.7">
+                        {{title}}</h4>
+                    </div>
+                  {{else}}
+                    <div class="carousel-item h-100">
+                      <img src="https://cdn.pixabay.com/photo/2020/06/01/22/23/eye-5248678_960_720.jpg"
+                        class=" d-block w-100 img-fluid brd-carousel-img h-100" alt="...">
+                      <h4 class="position-absolute start-0 bottom-0 text-white p-2 m-0 bg-primary w-100 "
+                        style="opacity:0.7">
+                        {{title}}</h4>
+                    </div>
+                  {{/if}}
+                {{/each}}
               </div>
-              <div class="carousel-item h-100">
-                <img src="https://cdn.pixabay.com/photo/2020/06/01/22/23/eye-5248678_960_720.jpg"
-                  class=" d-block w-100 img-fluid brd-carousel-img h-100" alt="...">
-                <h4 class="position-absolute start-0 bottom-0 text-white p-2 m-0 bg-primary w-100 " style="opacity:0.7">
-                  Bugun Çarşamba</h4>
-              </div>
-              <div class="carousel-item h-100">
-                <img src="https://cdn.pixabay.com/photo/2013/11/28/10/03/river-219972_960_720.jpg"
-                  class=" d-block w-100 img-fluid brd-carousel-img h-100" alt="...">
-                <h4 class="position-absolute start-0 bottom-0 text-white p-2 m-0 bg-primary w-100 " style="opacity:0.7">
-                  Bugun Çarşamba</h4>
-              </div>
-              <div class="carousel-item h-100">
-                <img src="https://cdn.pixabay.com/photo/2015/11/16/14/43/cat-1045782_960_720.jpg"
-                  class=" d-block w-100 img-fluid brd-carousel-img h-100" alt="...">
-                <h4 class="position-absolute start-0 bottom-0 text-white p-2 m-0 bg-primary w-100 " style="opacity:0.7">
-                  Bugun Çarşamba</h4>
-              </div>
-              <div class="carousel-item h-100">
-                <img src="https://cdn.pixabay.com/photo/2013/02/20/11/30/autumn-83761_960_720.jpg"
-                  class=" d-block w-100 img-fluid brd-carousel-img h-100" alt="...">
-                <h4 class="position-absolute start-0 bottom-0 text-white p-2 m-0 bg-primary w-100 " style="opacity:0.7">
-                  Bugun Çarşamba</h4>
-              </div>
-              <div class="carousel-item h-100">
-                <img src="https://cdn.pixabay.com/photo/2013/11/28/10/03/river-219972_960_720.jpg"
-                  class=" d-block w-100 img-fluid brd-carousel-img h-100" alt="...">
-                <h4 class="position-absolute start-0 bottom-0 text-white p-2 m-0 bg-primary w-100 " style="opacity:0.7">
-                  Bugun Çarşamba</h4>
-              </div>
-              <div class="carousel-item h-100">
-                <img src="https://cdn.pixabay.com/photo/2015/11/16/14/43/cat-1045782_960_720.jpg"
-                  class=" d-block w-100 img-fluid brd-carousel-img h-100" alt="...">
-                <h4 class="position-absolute start-0 bottom-0 text-white p-2 m-0 bg-primary w-100 " style="opacity:0.7">
-                  Bugun Çarşamba</h4>
-              </div>
-              <div class="carousel-item h-100">
-                <img src="https://cdn.pixabay.com/photo/2020/06/01/22/23/eye-5248678_960_720.jpg"
-                  class=" d-block w-100 img-fluid brd-carousel-img h-100" alt="...">
-                <h4 class="position-absolute start-0 bottom-0 text-white p-2 m-0 bg-primary w-100 " style="opacity:0.7">
-                  Bugun Çarşamba</h4>
-              </div>
-              <div class="carousel-item h-100">
-                <img src="https://cdn.pixabay.com/photo/2013/11/28/10/03/river-219972_960_720.jpg"
-                  class=" d-block w-100 img-fluid brd-carousel-img h-100" alt="...">
-                <h4 class="position-absolute start-0 bottom-0 text-white p-2 m-0 bg-primary w-100 " style="opacity:0.7">
-                  Bugun Çarşamba</h4>
-              </div>
-              <div class="carousel-item h-100">
-                <img src="https://cdn.pixabay.com/photo/2013/11/28/10/36/road-220058_960_720.jpg"
-                  class=" d-block w-100 img-fluid brd-carousel-img h-100" alt="...">
-                <h4 class="position-absolute start-0 bottom-0 text-white p-2 m-0 bg-primary w-100 " style="opacity:0.7">
-                  Bugun Çarşamba</h4>
-              </div>
-              <div class="carousel-item h-100">
-                <img src="https://cdn.pixabay.com/photo/2020/06/01/22/23/eye-5248678_960_720.jpg"
-                  class=" d-block w-100 img-fluid brd-carousel-img h-100" alt="...">
-                <h4 class="position-absolute start-0 bottom-0 text-white p-2 m-0 bg-primary w-100 " style="opacity:0.7">
-                  Bugun Çarşamba</h4>
-              </div>
-              <div class="carousel-item h-100">
-                <img src="https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072821_960_720.jpg"
-                  class=" d-block w-100 img-fluid brd-carousel-img h-100" alt="...">
-                <h4 class="position-absolute start-0 bottom-0 text-white p-2 m-0 bg-primary w-100 " style="opacity:0.7">
-                  Bugun Çarşamba</h4>
-              </div>
-              <div class="carousel-item h-100">
-                <img src="https://cdn.pixabay.com/photo/2015/11/16/14/43/cat-1045782_960_720.jpg"
-                  class=" d-block w-100 img-fluid brd-carousel-img h-100" alt="...">
-                <h4 class="position-absolute start-0 bottom-0 text-white p-2 m-0 bg-primary w-100 " style="opacity:0.7">
-                  Bugun Çarşamba</h4>
-              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-              data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-              data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
+
+            <div class="d-flex pt-1 justify-content-center">
+              {{#each _breakingNews}}
+                <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="{{@index}}"
+                  class="btnCarousel btn btn-primary mx-2" aria-label="Slide {{add @index}}">{{add @index}}</button>
+              {{/each}}
+
+            </div>
+
           </div>
+          <div class="col-md-4  ">
+            <a href="#">
+              <div class="position-relative mt-3">
+                <img class="img-fluid " src="https://cdn.pixabay.com/photo/2015/04/23/21/59/tree-736877_960_720.jpg">
+                <h6 class="position-absolute start-0 bottom-0 text-white p-2 m-0">Bugun Çarşamba</h6>
+              </div>
+            </a>
+            <a href="#">
+              <div class="position-relative mt-3">
+                <img class="img-fluid " src="https://cdn.pixabay.com/photo/2013/11/28/10/03/river-219972_960_720.jpg">
+                <h6 class="position-absolute start-0 bottom-0 text-white p-2 m-0">Bugun Çarşamba</h6>
+              </div>
+            </a>
 
 
-        </div>
-        <div class="col-md-4  ">
-          <a href="#">
-            <div class="position-relative mt-3">
-              <img class="img-fluid " src="https://cdn.pixabay.com/photo/2015/04/23/21/59/tree-736877_960_720.jpg">
-              <h6 class="position-absolute start-0 bottom-0 text-white p-2 m-0">Bugun Çarşamba</h6>
-            </div>
-          </a>
-          <a href="#">
-            <div class="position-relative mt-3">
-              <img class="img-fluid " src="https://cdn.pixabay.com/photo/2013/11/28/10/03/river-219972_960_720.jpg">
-              <h6 class="position-absolute start-0 bottom-0 text-white p-2 m-0">Bugun Çarşamba</h6>
-            </div>
-          </a>
-
+          </div>
 
         </div>
 
-      </div>
-
-      <div class="row mt-3 ">
-        <div class="col-md-8 p-0">
-          <h4>Gündem</h4>
-          <div class="row">
-            {{>publicPagesCategories}}
-            {{>publicPagesCategories}}
-            {{>publicPagesCategories}}
-            {{>publicPagesCategories}}
-            {{>publicPagesCategories}}
-            {{>publicPagesCategories}}
-            {{>publicPagesCategories}}
-            {{>publicPagesCategories}}
-            {{>publicPagesCategories}}
-            {{>publicPagesCategories}}
-          </div>
-          <h4>Spor</h4>
-          <div class="row">
-            {{>publicPagesCategories}}
-            {{>publicPagesCategories}}
-            {{>publicPagesCategories}}
-            {{>publicPagesCategories}}
-            {{>publicPagesCategories}}
-            {{>publicPagesCategories}}
-            {{>publicPagesCategories}}
-            {{>publicPagesCategories}}
-            {{>publicPagesCategories}}
-            {{>publicPagesCategories}}
-          </div>
-          <h4>Ekonomi</h4>
-          <div class="row">
-            {{>publicPagesCategories}}
-            {{>publicPagesCategories}}
-            {{>publicPagesCategories}}
-            {{>publicPagesCategories}}
-            {{>publicPagesCategories}}
-            {{>publicPagesCategories}}
-            {{>publicPagesCategories}}
-            {{>publicPagesCategories}}
-            {{>publicPagesCategories}}
-            {{>publicPagesCategories}}
-          </div>
-        </div>
-        <div class="col-md-4 ">
-          <div class="card text-center  position-sticky top-50">
-            <div class="card-header">
-              Popüler Haberler
+        <div class="row mt-3 ">
+          <div class="col-md-8 p-0 my-3">
+            <h4>Gündem</h4>
+            <div class="row">
+              {{>publicPagesCategories}}
+              {{>publicPagesCategories}}
+              {{>publicPagesCategories}}
+              {{>publicPagesCategories}}
+              {{>publicPagesCategories}}
+              {{>publicPagesCategories}}
+              {{>publicPagesCategories}}
+              {{>publicPagesCategories}}
+              {{>publicPagesCategories}}
+              {{>publicPagesCategories}}
             </div>
-            <div class="card-body">
-              <h5 class="card-title">Haber Başlıkları</h5>
-              <p class="card-text">
-                <a>1.Haber</a><br>
-                <a>2.Haber</a><br>
-                <a>3.Haber</a><br>
-                <a>4.Haber</a><br>
-                <a>5.Haber</a><br>
-                <span id="more">
-                  <a>6.Haber</a><br>
-                  <a>7.Haber</a><br>
-                  <a>8.Haber</a><br>
-                  <a>9.Haber</a><br>
-                  <a>10.Haber</a><br>
-                </span>
-              </p>
-              <a href="#" id="myBtn" class="btn btn-primary btnMore">Daha Fazla Göster</a>
+          </div>
+          <div class="col-md-4 my-4">
+            <div class="card text-center position-sticky stickycard">
+              <div class="card-header">
+                Popüler Haberler
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Haber Başlıkları</h5>
+                <p class="card-text">
+                  <a>1.Haber</a><br>
+                  <a>2.Haber</a><br>
+                  <a>3.Haber</a><br>
+                  <a>4.Haber</a><br>
+                  <a>5.Haber</a><br>
+                  <span id="more">
+                    <a>6.Haber</a><br>
+                    <a>7.Haber</a><br>
+                    <a>8.Haber</a><br>
+                    <a>9.Haber</a><br>
+                    <a>10.Haber</a><br>
+                  </span>
+                </p>
+                <a href="" id="myBtn" class="btn btn-primary btnMore">Daha Fazla Göster</a>
+
+              </div>
 
             </div>
+          </div>
+          <div class="col-md-8 p-0 my-3">
+            <h4>Spor</h4>
+            <div class="row">
+              {{>publicPagesCategories}}
+              {{>publicPagesCategories}}
+              {{>publicPagesCategories}}
+              {{>publicPagesCategories}}
+              {{>publicPagesCategories}}
+              {{>publicPagesCategories}}
+              {{>publicPagesCategories}}
+              {{>publicPagesCategories}}
+              {{>publicPagesCategories}}
+              {{>publicPagesCategories}}
+            </div>
+          </div>
+          <div class="col-md-4 my-4">
+            <div class="card text-center position-sticky stickycard">
+              <div class="card-header">
+                Popüler Haberler
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Haber Başlıkları</h5>
+                <p class="card-text">
+                  <a>1.Haber</a><br>
+                  <a>2.Haber</a><br>
+                  <a>3.Haber</a><br>
+                  <a>4.Haber</a><br>
+                  <a>5.Haber</a><br>
+                  <span id="more">
+                    <a>6.Haber</a><br>
+                    <a>7.Haber</a><br>
+                    <a>8.Haber</a><br>
+                    <a>9.Haber</a><br>
+                    <a>10.Haber</a><br>
+                  </span>
+                </p>
+                <a href="#" id="myBtn" class="btn btn-primary btnMore">Daha Fazla Göster</a>
 
+              </div>
+
+            </div>
+          </div>
+          <div class="col-md-8 p-0 my-3">
+            <h4>Ekonomi</h4>
+            <div class="row">
+              {{>publicPagesCategories}}
+              {{>publicPagesCategories}}
+              {{>publicPagesCategories}}
+              {{>publicPagesCategories}}
+              {{>publicPagesCategories}}
+              {{>publicPagesCategories}}
+              {{>publicPagesCategories}}
+              {{>publicPagesCategories}}
+              {{>publicPagesCategories}}
+              {{>publicPagesCategories}}
+            </div>
+          </div>
+          <div class="col-md-4 my-4">
+            <div class="card text-center position-sticky stickycard">
+              <div class="card-header">
+                Popüler Haberler
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Haber Başlıkları</h5>
+                <p class="card-text">
+                  <a>1.Haber</a><br>
+                  <a>2.Haber</a><br>
+                  <a>3.Haber</a><br>
+                  <a>4.Haber</a><br>
+                  <a>5.Haber</a><br>
+                  <span id="more">
+                    <a>6.Haber</a><br>
+                    <a>7.Haber</a><br>
+                    <a>8.Haber</a><br>
+                    <a>9.Haber</a><br>
+                    <a>10.Haber</a><br>
+                  </span>
+                </p>
+                <a href="#" id="myBtn" class="btn btn-primary btnMore">Daha Fazla Göster</a>
+
+              </div>
+
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  {{/let}}
 </template>
