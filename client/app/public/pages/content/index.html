@@ -1,0 +1,86 @@
+<template name="publicPagesContent">
+  <div class="publicPagesContent">
+    <div class="container-md mb-4 mr-3">
+      <div class="row ">
+        <h2 class="text-start mt-3 mb-2">
+          Kategori Başlığı
+        </h2>
+        <h4 class="text-start mt-2 mb-2 text-secondary ">
+          Kategori Alt Başlığı
+        </h4>
+      </div>
+      <div class="row mt-3 mb-2 justify-content-center ">
+
+        <div class="col-md-8 mt-2 mb-2">
+
+          <div class="position-relative  mt-3  " style="height:300px; width:100%; ">
+            <div class="w-100 h-100 position-md-absolute top-0 start-0">
+              <img
+                src="https://www.osevio.com/blog/wp-content/uploads/2018/10/osevio-blog-doga-resimleri-one-cikarilmis-gorsel.jpg"
+                class="  w-100 img-fluid  h-100" alt="...">
+            </div>
+          </div>
+
+          <h4 class="text-start mb-2 mt-3 pb-5">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, assumenda autem. Omnis ratione porro
+            error sequi rerum debitis nulla cum quas repellendus, quibusdam incidunt nemo quidem dicta itaque voluptatem
+            rem?
+          </h4>
+          <div>
+
+            <a class="btn btn-primary" style="background-color: #3b5998;" href="#!" role="button"><i
+                class="fab fa-facebook-f ms-1"></i></a>
+          
+            <button type="button" class="btn btn-primary " data-mdb-ripple-unbound="true"
+              style="background-color: #ac2bac;">
+              <i class="fab fa-instagram ms-1"></i>
+            </button>
+
+            <button type="button" class="btn btn-primary " data-mdb-ripple-unbound="true"
+              style="background-color: #55acee;">
+              Twitter <i class="fab fa-twitter ms-1"></i>
+              
+            </button>
+          </div>
+          <div class="row">
+            {{>publicPagesCategories}}
+            {{>publicPagesCategories}}
+            {{>publicPagesCategories}}
+            {{>publicPagesCategories}}
+            
+          </div>
+        </div>
+        <div class="col-md-4 mt-2 mb-2 ">
+
+          <div class="card text-center  position-sticky top-50">
+            <div class="card-header">
+              Popüler Haberler
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Haber Başlıkları</h5>
+              <p class="card-text">
+                <a>1.Haber</a><br>
+                <a>2.Haber</a><br>
+                <a>3.Haber</a><br>
+                <a>4.Haber</a><br>
+                <a>5.Haber</a><br>
+                <span id="more">
+                  <a>6.Haber</a><br>
+                  <a>7.Haber</a><br>
+                  <a>8.Haber</a><br>
+                  <a>9.Haber</a><br>
+                  <a>10.Haber</a><br>
+                </span>
+              </p>
+              <a href="#" id="myBtn" class="btn btn-primary btnMore">Daha Fazla Göster</a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</template>

@@ -1,10 +1,10 @@
 import Quill from "quill";
-import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+import {FlowRouter} from 'meteor/ostrio:flow-router-extra';
 import Swal from 'sweetalert2';
 import Slugify from 'slugify';
 Template.adminPageCategoryEdit.onCreated(function () {
   this.state = new ReactiveDict(null, {
-    category:{},
+    category: {},
   });
 });
 
@@ -16,7 +16,9 @@ Template.adminPageCategoryEdit.onRendered(function () {
     placeholder: 'Optional',
   });
   this.autorun(function () {
-    Meteor.call("category.show", {_id:_id}, function (error, success) {
+    Meteor.call("category.show", {
+      _id: _id
+    }, function (error, success) {
       if (error) {
         ErrorHandler.show(error.message);
         return;
@@ -24,7 +26,7 @@ Template.adminPageCategoryEdit.onRendered(function () {
       console.log(success);
       self.state.set('category', success);
     });
-    self.quill.root.innerHTML=self.state.get("category").description;
+    self.quill.root.innerHTML = self.state.get("category").description;
   });
 });
 
@@ -32,7 +34,7 @@ Template.adminPageCategoryEdit.events({
   "submit form#brdCategoryEditForm": function (event, template) {
     event.preventDefault();
     const title = event.target.inputTitle.value;
-    if (title==='') {
+    if (title === '') {
       ErrorHandler.show("Title cannot be empty");
       return;
     }
@@ -41,24 +43,24 @@ Template.adminPageCategoryEdit.events({
     const metaTitle = event.target.inputMetaTitle.value;
     const metaDescription = event.target.inputMetaDescription.value;
     const noIndex = event.target.noIndexSelect.checked;
-    const noFollow =event.target.noFollowSelect.checked;
-    const slugUrl = Slugify(event.target.slugUrl.value,'-');
+    const noFollow = event.target.noFollowSelect.checked;
+    const slugUrl = Slugify(event.target.slugUrl.value, '-');
     const obj = {
-      _id:FlowRouter.getParam("_id"),
+      _id: FlowRouter.getParam("_id"),
       category: {
         title: title,
         description: description,
         slugUrl: slugUrl,
-        metaContent:{
-          metaTitle:metaTitle,
-          metaDescription:metaDescription,
-          noIndex:noIndex,
-          noFollow:noFollow,
+        metaContent: {
+          metaTitle: metaTitle,
+          metaDescription: metaDescription,
+          noIndex: noIndex,
+          noFollow: noFollow,
         }
       },
     };
 
-    console.log(obj); 
+    console.log(obj);
     Swal.fire({
       title: 'Do you want to save Category?',
       showCancelButton: true,
@@ -73,9 +75,9 @@ Template.adminPageCategoryEdit.events({
           AppUtil.refreshTokens.set("category", Random.id());
           event.target.reset();
           Swal.fire('Saved!', '', 'success')
-          FlowRouter.go("admin.category",{});
+          FlowRouter.go("admin.category", {});
         });
-        
+
       }
     })
   },

@@ -5,7 +5,11 @@ Accounts.onCreateUser(function (options, user) {
   user.profile.status = 'active';
   user.profile.isAdmin = false;
   user.profile.isEditor = false;
-
+  user.profile.isColumnist = false;
+  user.profile.picture={
+    name:"defaultPic",
+    url:"https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
+  };
   return user;
 });
 

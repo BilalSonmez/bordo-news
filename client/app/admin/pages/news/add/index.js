@@ -16,7 +16,7 @@ Template.adminPageNewsAdd.onRendered(function () {
   });
   this.autorun(function () {
 
-    Meteor.call("category.list",{}, function (error, result) {
+    Meteor.call("category.list", {}, function (error, result) {
       if (error) {
         ErrorHandler.show(error.message);
         return;
@@ -33,19 +33,19 @@ Template.adminPageNewsAdd.events({
     event.preventDefault();
     const title = event.target.inputTitle.value;
     const images = AppUtil.temp.get('newsFeaturedImage');
-    if (title==='') {
+    if (title === '') {
       ErrorHandler.show("Title cannot be empty");
       return;
     }
     const subTitle = event.target.inputSubTitle.value;
     const content = template.quill.root.innerHTML;
-    const slugUrl = Slugify(event.target.slugUrl.value,'-');
+    const slugUrl = Slugify(event.target.slugUrl.value, '-');
     //TODO will change after upload system
     const featuredImage = images.length > 0 ? images[0]._id : null;
     const metaTitle = event.target.inputMetaTitle.value;
     const metaDescription = event.target.inputMetaDescription.value;
     const noIndex = event.target.noIndexSelect.checked;
-    const noFollow =event.target.noFollowSelect.checked;
+    const noFollow = event.target.noFollowSelect.checked;
     let isImportant;
     if (event.target.isImportantOff.checked) {
       isImportant = false;
@@ -53,26 +53,28 @@ Template.adminPageNewsAdd.events({
     if (event.target.isImportantOn.checked) {
       isImportant = true;
     }
-    const selectedCategories = $('.selectedCategories:checkbox:checked').map(function() {return this.value; }).get();
+    const selectedCategories = $('.selectedCategories:checkbox:checked').map(function () {
+      return this.value;
+    }).get();
 
-    const obj ={
-      news:{
-        title:title,
+    const obj = {
+      news: {
+        title: title,
         subTitle: subTitle,
-        content:content,
-        slugUrl:slugUrl,
-        categories:selectedCategories,
-        featuredImage:featuredImage,
-        isImportant:isImportant,
-        metaContent:{
-          metaTitle:metaTitle,
-          metaDescription:metaDescription,
-          noIndex:noIndex,
-          noFollow:noFollow,
+        content: content,
+        slugUrl: slugUrl,
+        categories: selectedCategories,
+        featuredImage: featuredImage,
+        isImportant: isImportant,
+        metaContent: {
+          metaTitle: metaTitle,
+          metaDescription: metaDescription,
+          noIndex: noIndex,
+          noFollow: noFollow,
         },
-        communityData:{
-          views:0,
-          like:[],
+        communityData: {
+          views: 0,
+          like: [],
         },
       }
     }
@@ -92,9 +94,8 @@ Template.adminPageNewsAdd.events({
           AppUtil.refreshTokens.set("news", Random.id());
           event.target.reset();
           Swal.fire('Saved!', '', 'success')
-          FlowRouter.go("admin.new",{});
+          FlowRouter.go("admin.new", {});
         });
-        
       }
     })
   },

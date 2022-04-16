@@ -12,6 +12,7 @@ new ValidatedMethod({
     const { _id } = data;
     Roles.addUsersToRoles(_id, 'roles.admin', null);
     Roles.addUsersToRoles(_id, 'roles.editor', null);
-    return Meteor.users.update({_id: _id}, {$set: {"profile.isAdmin": true,"profile.isEditor": true}});
+    Roles.addUsersToRoles(_id, 'roles.columnist', null);
+    return Meteor.users.update({_id: _id}, {$set: {"profile.isAdmin": true,"profile.isEditor": true,"profile.isColumnist": true}});
   }
 });

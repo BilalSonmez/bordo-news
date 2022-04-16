@@ -1,5 +1,6 @@
 import bootstrap from "bootstrap";
 import Swal from 'sweetalert2';
+import { FlowRouter } from "meteor/ostrio:flow-router-extra";
 
 Template.authModalSignIn.onRendered(function () {
   const self = this;

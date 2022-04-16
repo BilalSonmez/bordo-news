@@ -1,4 +1,4 @@
-import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+import {FlowRouter} from 'meteor/ostrio:flow-router-extra';
 import Swal from 'sweetalert2';
 Template.adminPageCategory.onCreated(function () {
   this.state = new ReactiveDict(null, {
@@ -36,25 +36,24 @@ Template.adminPageCategory.onRendered(function () {
         }
       }
     };
-    
+
     Meteor.call("category.list", listOptions, function (error, result) {
       if (error) {
         ErrorHandler.show(error.message);
         return;
       }
       console.log(result);
-      self.pagination.set("totalCount",result.options.pagination.totalCount);
-      const pages=Math.ceil(result.options.pagination.totalCount/result.options.pagination.pageItems);
-      self.pagination.set("totalPages",pages);
+      self.pagination.set("totalCount", result.options.pagination.totalCount);
+      const pages = Math.ceil(result.options.pagination.totalCount / result.options.pagination.pageItems);
+      self.pagination.set("totalPages", pages);
       self.state.set("categories", result);
     })
-
   });
 });
 
 Template.adminPageCategory.events({
   'click .btnCategoryAdd': function (event, template) {
-    FlowRouter.go("admin.category.add",{});
+    FlowRouter.go("admin.category.add", {});
   },
   "click .btnCategortDelete": function (event, template) {
     event.preventDefault();
@@ -66,7 +65,10 @@ Template.adminPageCategory.events({
     }).then((result) => {
       if (result.isConfirmed) {
         Meteor.call(
-          "category.delete",{_id: category._id},function (error, result) {
+          "category.delete", {
+            _id: category._id
+          },
+          function (error, result) {
             if (error) {
               ErrorHandler.show(error.message);
               return;
@@ -75,15 +77,12 @@ Template.adminPageCategory.events({
             AppUtil.refreshTokens.set("category", Random.id());
           }
         );
-        
       }
     })
   },
   "click .btnCategortEdit": function (event, template) {
-    FlowRouter.go("admin.category.edit", {_id: this._id});
+    FlowRouter.go("admin.category.edit", {
+      _id: this._id
+    });
   }
-});
-
-Template.adminPageCategory.onDestroyed(function () {
-  
 });

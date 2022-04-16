@@ -3,80 +3,98 @@ import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 const routesAdmin = FlowRouter.group({
   prefix: '/admin',
   name: 'admin',
-  //TODO Admin&Editor Check
-  //triggersEnter:[MustSignIn, IsAdmin]
+  triggersEnter:[MustSignIn, hasRole]
 });
-
 routesAdmin.route('/', {
   name: 'admin',
   action: function (params, queryParams) {
     FlowRouter.go('admin.dashboard'); 
   }
 });
-
 routesAdmin.route('/dashboard', {
   name: 'admin.dashboard',
   action: function (params, queryParams) {
     this.render('adminLayoutDefault', { page: 'adminPageDashboard' });
   }
 });
-routesAdmin.route('/category', {
+routesAdmin.route('/user', {
+  name: 'admin.user',
+  action: function (params, queryParams) {
+    this.render('adminLayoutDefault', { page: 'adminPageUser' });
+  }
+});
+
+
+const routesCategories = FlowRouter.group({
+  prefix: '/admin/category',
+  name: 'admin.category',
+  triggersEnter:[MustSignIn, IsEditor]
+});
+routesCategories.route('/', {
   name: 'admin.category',
   action: function (params, queryParams) {
     this.render('adminLayoutDefault', { page: 'adminPageCategory' });
   }
 });
-routesAdmin.route('/category/add', {
+routesCategories.route('/add', {
   name: 'admin.category.add',
   action: function (params, queryParams) {
     this.render('adminLayoutDefault', { page: 'adminPageCategoryAdd' });
   }
 });
-routesAdmin.route('/category/edit/:_id', {
+routesCategories.route('/edit/:_id', {
   name: 'admin.category.edit',
   action: function (params, queryParams) {
     this.render('adminLayoutDefault', { page: 'adminPageCategoryEdit' });
   }
 });
-routesAdmin.route('/new', {
+
+
+const routesNews = FlowRouter.group({
+  prefix: '/admin/new',
+  name: 'admin.new',
+  triggersEnter:[MustSignIn, IsEditor]
+});
+routesNews.route('/', {
   name: 'admin.new',
   action: function (params, queryParams) {
     this.render('adminLayoutDefault', { page: 'adminPageNew' });
   }
 });
-routesAdmin.route('/new/add', {
+routesNews.route('/add', {
   name: 'admin.new.add',
   action: function (params, queryParams) {
     this.render('adminLayoutDefault', { page: 'adminPageNewsAdd' });
   }
 });
-routesAdmin.route('/new/edit/:_id', {
+routesNews.route('/edit/:_id', {
   name: 'admin.new.edit',
   action: function (params, queryParams) {
     this.render('adminLayoutDefault', { page: 'adminPageNewsEdit' });
   }
 });
-routesAdmin.route('/column', {
+
+
+const routesColumns = FlowRouter.group({
+  prefix: '/admin/column',
+  name: 'admin.column',
+  triggersEnter:[MustSignIn, IsColumnist]
+});
+routesColumns.route('/', {
   name: 'admin.column',
   action: function (params, queryParams) {
     this.render('adminLayoutDefault', { page: 'adminPageColumn' });
   }
 });
-routesAdmin.route('/column/add', {
+routesColumns.route('/add', {
   name: 'admin.column.add',
   action: function (params, queryParams) {
     this.render('adminLayoutDefault', { page: 'adminPageColumnAdd' });
   }
 });
-routesAdmin.route('/column/edit/:_id', {
+routesColumns.route('/edit/:_id', {
   name: 'admin.column.edit',
   action: function (params, queryParams) {
     this.render('adminLayoutDefault', { page: 'adminPageColumnEdit' });
-  }
-});
-routesAdmin.route('/user', {
-  name: 'admin.user',
-  action: function (params, queryParams) {
-    this.render('adminLayoutDefault', { page: 'adminPageUser' });
   }
 });

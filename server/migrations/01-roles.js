@@ -4,6 +4,7 @@ Migrations.add({
   up: function () {
     Roles.createRole('roles.admin');
     Roles.createRole('roles.editor');
+    Roles.createRole('roles.columnist');
 
     const userId = Accounts.createUser({
       email: 'admin@bordonews.com',
@@ -18,11 +19,12 @@ Migrations.add({
       $set: {
         'profile.isAdmin': true,
         'profile.isEditor': true,
+        'profile.isColumnist': true, 
       }
     })
-
     
     Roles.addUsersToRoles(userId, 'roles.admin', null);
     Roles.addUsersToRoles(userId, 'roles.editor', null);
+    Roles.addUsersToRoles(userId, 'roles.columnist', null);
   }
 });

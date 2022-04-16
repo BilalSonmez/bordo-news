@@ -4,7 +4,7 @@ import SimpleSchema from 'simpl-schema';
 new ValidatedMethod({
   name: 'column.delete',
   mixins : [SignedInMixin,RoleMixin],
-  roles: ["roles.editor"],
+  roles: ["roles.columnist"],
   validate: new SimpleSchema({
     _id: SimpleSchema.RegEx.Id
   }).validator(),
