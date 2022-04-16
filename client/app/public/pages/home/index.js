@@ -6,11 +6,10 @@ Template.publicPagesHome.onCreated(function () {
 
   this.newsPagination = new ReactiveDict(null, {
     currentPage: 1,
-    pageItems: 8,
+    pageItems: 6,
     totalCount: 0,
     totalPages: 0
   });
-
 
 });
 
@@ -37,6 +36,9 @@ Template.publicPagesHome.onRendered(function () {
         return;
       }
       console.log(result);
+      self.newsPagination.set("totalCount", result.options.pagination.totalCount);
+      self.newsPagination.set("totalPages", Math.ceil(result.options.pagination.totalCount / result.options.pagination.pageItems));
+      console.log(self.newsPagination);
       self.state.set("news", self.state.get('news').concat(result.news));
     })
   });
@@ -70,6 +72,9 @@ Template.publicPagesHome.events({
   },
   'click .btnNewsMore': function (event, template) {
     template.newsPagination.set("currentPage",template.newsPagination.get("currentPage")+1);
+    if (template.newsPagination.get("currentPage")>=template.newsPagination.get("totalPages")) {
+      $(event.target).hide();
+    }
   },
   "click .btnMore": function (event, template) {
     let moretext = document.getElementById("more");

@@ -1,0 +1,190 @@
+[
+  {
+      "_id" : "YSsf6nLfoKjAAekKo",
+      "title" : "Gündem",
+      "description" : "<p>Gündeme dair güncel haberleri, son dakika gündem haberlerini, gündemde yer alan sıcak gelişmeleri sayfamızda bulabilirsiniz.</p>",
+      "slugUrl" : "gundem",
+      "metaContent" : {
+          "metaTitle" : "Bordo Haber - Gündem Haberleri",
+          "noIndex" : false,
+          "noFollow" : false
+      },
+      "createdAt" : "2022-04-05T13:18:39.459Z",
+      "updatedAt" : "2022-04-16T12:18:36.083Z",
+      "createdUserId" : "jKu3f6RD5JZSZY9X8",
+      "lastEditUserId" : "jKu3f6RD5JZSZY9X8"
+  },
+  {
+      "_id" : "7ZKBLdQJuBxmRv7yS",
+      "title" : "Türkiye",
+      "description" : "<p>Türkiye’ye dair güncel haberlere, son dakika Türkiye haberlerine, tüm yerel haberlere sayfamızdan ulaşabilirsiniz.</p>",
+      "slugUrl" : "turkiye",
+      "metaContent" : {
+          "metaTitle" : "Bordo Haber - Türkiye Haberleri",
+          "noIndex" : false,
+          "noFollow" : false
+      },
+      "createdAt" : "2022-04-16T12:22:31.399Z",
+      "lastEditUserId" : "jKu3f6RD5JZSZY9X8",
+      "createdUserId" : "jKu3f6RD5JZSZY9X8",
+      "updatedAt" : "2022-04-16T12:23:58.979Z"
+  },
+  {
+      "_id" : "Ez72WJvHQcM7zuJRZ",
+      "title" : "Dünya",
+      "description" : "<p>Dünyadan güncel gelişmeler, son dakika dünya haberlerini, dünyadaki gelişmelerle ilgili dosya ve özel haberleri sayfamızda bulabilirsiniz.</p>",
+      "slugUrl" : "dunya",
+      "metaContent" : {
+          "metaTitle" : "Bordo Haber - Dünya Haberleri",
+          "noIndex" : false,
+          "noFollow" : false
+      },
+      "createdAt" : "2022-04-16T12:24:53.484Z",
+      "lastEditUserId" : "jKu3f6RD5JZSZY9X8",
+      "createdUserId" : "jKu3f6RD5JZSZY9X8"
+  },
+  {
+      "_id" : "WpQPtRwMuMwn3nhnF",
+      "title" : "Ekonomi",
+      "description" : "<p>Türkiye'den ve dünyadan ekonomi haberleri, piyasalarda yaşanan  son gelişmeler; altın, borsa, dolar ve euro fiyatları Bordo Haber Ekonomi sayfalarında. Ekonominin nabzını Türkiye'nin internet gazetesi Bordo Haber ile tutun, ekonomi gündeminden geri kalmayın.</p>",
+      "slugUrl" : "ekonomi",
+      "metaContent" : {
+          "metaTitle" : "Bordo Haber - Ekonomi Haberleri",
+          "noIndex" : false,
+          "noFollow" : false
+      },
+      "createdAt" : "2022-04-16T12:26:53.197Z",
+      "lastEditUserId" : "jKu3f6RD5JZSZY9X8",
+      "createdUserId" : "jKu3f6RD5JZSZY9X8"
+  },
+  {
+      "_id" : "codZ5CpNtBWdBTbGC",
+      "title" : "Spor",
+      "description" : "<p>Son dakika spor haberleri, Türkiye'den ve dünyadan en yeni transfer dedikoduları, sporda bugün yaşanan gelişmeler ile günün güncel spor olayları için Bordo Haber'i takip edin!</p>",
+      "slugUrl" : "spor",
+      "metaContent" : {
+          "metaTitle" : "Bordo Haber - Spor Haberleri",
+          "noIndex" : false,
+          "noFollow" : false
+      },
+      "createdAt" : "2022-04-16T12:30:48.384Z",
+      "lastEditUserId" : "jKu3f6RD5JZSZY9X8",
+      "createdUserId" : "jKu3f6RD5JZSZY9X8",
+      "updatedAt" : "2022-04-16T12:45:33.796Z"
+  },
+  {
+      "_id" : "ZgGfQBiGRCBTKsci4",
+      "title" : "Yaşam",
+      "description" : "<p>En güncel yaşam haberlerine, Türkiye ve dünyadan insan hikayelerine ve son dakika yaşam haberlerine Bordo Haber Yaşam sayfamızda bulabilirsiniz.</p>",
+      "slugUrl" : "yasam",
+      "metaContent" : {
+          "metaTitle" : "Bordo Haber - Yaşam Haberleri",
+          "noIndex" : false,
+          "noFollow" : false
+      },
+      "createdAt" : "2022-04-16T12:47:27.597Z",
+      "lastEditUserId" : "jKu3f6RD5JZSZY9X8",
+      "createdUserId" : "jKu3f6RD5JZSZY9X8",
+      "updatedAt" : "2022-04-16T12:48:42.167Z"
+  },
+  {
+      "_id" : "GcTrMJyAfgx4QPTrS",
+      "title" : "Kültür ve Sanat",
+      "description" : "<p>Türkiye ve dünyadan en güncel kültür ve sanat haberlerini, Türkiye’deki kültür-sanat etkinliklerini, sanatçılarla ilgili haberleri ve uluslararası festivalleri Bordo Haber Kültür-Sanat sayfamızda bulabilirsiniz.</p>",
+      "slugUrl" : "kultur-sanat",
+      "metaContent" : {
+          "metaTitle" : "Bordo Haber - Kültür ve Sanat Haberleri",
+          "noIndex" : false,
+          "noFollow" : false
+      },
+      "createdAt" : "2022-04-16T12:49:21.527Z",
+      "lastEditUserId" : "jKu3f6RD5JZSZY9X8",
+      "createdUserId" : "jKu3f6RD5JZSZY9X8",
+      "updatedAt" : "2022-04-16T12:52:14.329Z"
+  },
+  {
+      "_id" : "Z3pqNTDgmEmFkx9Qb",
+      "title" : "Sağlık",
+      "description" : "<p>Sağlıkla ilgili en güncel gelişmeleri, Türkiye ve dünyadan en önemli sağlık haberlerini, aşı çalışmalarını ve doktorlardan gelen sağlık uyarılarını Bordo Haber Sağlık sayfamızda bulabilirsiniz.</p>",
+      "slugUrl" : "saglik",
+      "metaContent" : {
+          "metaTitle" : "Bordo Haber - Sağlık Haberleri",
+          "noIndex" : false,
+          "noFollow" : false
+      },
+      "createdAt" : "2022-04-16T12:50:22.390Z",
+      "lastEditUserId" : "jKu3f6RD5JZSZY9X8",
+      "createdUserId" : "jKu3f6RD5JZSZY9X8"
+  },
+  {
+      "_id" : "TYN6eWa2xuKjT388o",
+      "title" : "Bilim ve Teknoloji",
+      "description" : "<p>Türkiye’den ve dünyadan en güncel teknoloji haberlerine, son dakika teknoloji haberlerine, dünyada gelişen teknolojilere ve teknoloji dünyasından son haberlere Bordo Haber Teknoloji sayfamızdan ulaşabilirsiniz.</p>",
+      "slugUrl" : "bilim-teknoloji",
+      "metaContent" : {
+          "metaTitle" : "Bordo Haber - Bilim ve Teknoloji Haberleri",
+          "noIndex" : false,
+          "noFollow" : false
+      },
+      "createdAt" : "2022-04-16T12:51:44.083Z",
+      "lastEditUserId" : "jKu3f6RD5JZSZY9X8",
+      "createdUserId" : "jKu3f6RD5JZSZY9X8",
+      "updatedAt" : "2022-04-16T12:52:28.162Z"
+  },
+  {
+      "_id" : "QMAxs3Zcr8G8tczPy",
+      "title" : "Eğitim",
+      "description" : "<p>Eğitimdeki güncel gelişmeleri, Türkiye ve dünyadan en son eğitim haberleri, sınav tarihleri ve sonuçları ile okullarla ilgili son gelişmeleri Bordo Haber Eğitim sayfamızda bulabilirsiniz.</p>",
+      "slugUrl" : "egitim",
+      "metaContent" : {
+          "metaTitle" : "Bordo Haber - Eğitim Haberleri",
+          "noIndex" : false,
+          "noFollow" : false
+      },
+      "createdAt" : "2022-04-16T13:17:05.518Z",
+      "lastEditUserId" : "jKu3f6RD5JZSZY9X8",
+      "createdUserId" : "jKu3f6RD5JZSZY9X8"
+  },
+  {
+      "_id" : "kLBPKu7yroMA9cKr2",
+      "title" : "Siyaset",
+      "description" : "<p>Siyasetin nabzı Bordo Haberde atıyor; seçimler, anketler, ittifaklar, siyasi kulis haberleri ve liderlerin son demeçleri Bordo'da! Son Dakika Siyasi Haberler!</p>",
+      "slugUrl" : "siyaset",
+      "metaContent" : {
+          "metaTitle" : "Bordo Haber - Siyaset Haberleri",
+          "noIndex" : false,
+          "noFollow" : false
+      },
+      "createdAt" : "2022-04-16T13:22:09.949Z",
+      "lastEditUserId" : "jKu3f6RD5JZSZY9X8",
+      "createdUserId" : "jKu3f6RD5JZSZY9X8"
+  },
+  {
+      "_id" : "JQQuWFu6rhCb3BLFi",
+      "title" : "Magazin",
+      "description" : "<p>Son dakika magazin haberleri ve yaşanan en son magazin haberi burada. Bordo Magazin sayfasını takip ederek magazin haberleri an be an takip edebilir, tüm güncel gelişmelere ulaşabilirsiniz.</p>",
+      "slugUrl" : "magazin",
+      "metaContent" : {
+          "metaTitle" : "Bordo Haber - Magazin Haberleri",
+          "noIndex" : false,
+          "noFollow" : false
+      },
+      "createdAt" : "2022-04-16T13:24:22.382Z",
+      "lastEditUserId" : "jKu3f6RD5JZSZY9X8",
+      "createdUserId" : "jKu3f6RD5JZSZY9X8"
+  },
+  {
+      "_id" : "myFGDs3mcqitE5F72",
+      "title" : "Turizm",
+      "description" : "<p>Türkiye'nin turizm sektöründeki güncel haber, makale ve sektörel haberlerin yer aldığı sayfa.</p>",
+      "slugUrl" : "turizm",
+      "metaContent" : {
+          "metaTitle" : "Bordo Haber - Turizm Haberleri",
+          "noIndex" : false,
+          "noFollow" : false
+      },
+      "createdAt" : "2022-04-16T13:25:49.789Z",
+      "lastEditUserId" : "jKu3f6RD5JZSZY9X8",
+      "createdUserId" : "jKu3f6RD5JZSZY9X8"
+  }
+]
