@@ -55,7 +55,11 @@
             <div class="col-12">
               <div class="mb-3">
                 <label for="featuredImageUpload" class="form-label">Featured Image</label>
-                <input class="form-control" type="file" id="featuredImageUpload" disabled>
+                {{>adminComponentFile
+                  fileAreaID = "newsFeaturedImage"
+                  multiple = false
+                  onlyCurrentUser = false
+                }}
               </div>
             </div>
 

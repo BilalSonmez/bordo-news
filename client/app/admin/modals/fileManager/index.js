@@ -166,7 +166,7 @@ Template.adminModalsFileManager.onRendered(function () {
       const createResult = await Meteor.callWithPromise("file.create", obj);
       if (createResult) {
         let files = self.state.get('files');
-        files.unshift(obj.file);
+        files.unshift(createResult);
         self.state.set('files', files);
         uppy.removeFile(val.id);
       }

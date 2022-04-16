@@ -9,9 +9,14 @@ new ValidatedMethod({
     this.unblock();
     const { _id } = data;
 
-    return News.findOne({
+    const news = News.findOne({
       _id: _id
     });
+
+    news.featuredImage = Files.findOne({
+      _id: news.featuredImage
+    });
+    return news;
   }
 });
 
