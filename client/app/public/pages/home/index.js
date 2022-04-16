@@ -1,36 +1,56 @@
 Template.publicPagesHome.onCreated(function () {
   this.state = new ReactiveDict(null, {
     breakingNews: [],
+    news: [],
   });
 
-  this.pagination = new ReactiveDict(null, {
+  this.newsPagination = new ReactiveDict(null, {
     currentPage: 1,
-    pageItems: 5,
+    pageItems: 8,
     totalCount: 0,
     totalPages: 0
   });
 
-  this.sorting = new ReactiveDict(null, {
-    sortField: 'name',
-    sortOrder: 'asc'
-  });
 
-  this.filtering = new ReactiveDict(null, {});
 });
 
 Template.publicPagesHome.onRendered(function () {
   const self = this;
-
-  const listOptions = {
-    options: {
-      filtering: {  isImportant: { $eq: true }  },
-      sorting: {
-        sortField: 'createdAt',
-        sortOrder: 'desc',
-      }
-    }
-  };
   this.autorun(function () {
+    const listOptions = {
+      options: {
+        pagination: {
+          currentPage: self.newsPagination.get("currentPage"),
+          pageItems: self.newsPagination.get("pageItems"),
+        },
+        filtering: {},
+        sorting: {
+          sortField: 'createdAt',
+          sortOrder: 'desc',
+        }
+      }
+    };
+
+    Meteor.call("news.list",listOptions, function (error, result) {
+      if (error) {
+        ErrorHandler.show(error.message);
+        return;
+      }
+      console.log(result);
+      self.state.set("news", self.state.get('news').concat(result.news));
+    })
+  });
+  
+  this.autorun(function () {
+    const listOptions = {
+      options: {
+        filtering: {  isImportant: { $eq: true }  },
+        sorting: {
+          sortField: 'createdAt',
+          sortOrder: 'desc',
+        }
+      }
+    };
     Meteor.call("news.list",listOptions, function (error, result) {
       if (error) {
         ErrorHandler.show(error.message);
@@ -40,12 +60,16 @@ Template.publicPagesHome.onRendered(function () {
       self.state.set("breakingNews", result.news);
     })
   });
+
 });
 
 
 Template.publicPagesHome.events({
   'mouseenter .btnCarousel': function (event, template) {
     $(event.target).click();
+  },
+  'click .btnNewsMore': function (event, template) {
+    template.newsPagination.set("currentPage",template.newsPagination.get("currentPage")+1);
   },
   "click .btnMore": function (event, template) {
     let moretext = document.getElementById("more");
