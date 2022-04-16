@@ -45,11 +45,14 @@
           {{/each}}
           <div class="col-12">
             <div class="mb-3">
-              <label for="featuredImageUpload" class="form-label">Featured Image</label>
-              <input class="form-control" type="file" id="featuredImageUpload" disabled>
+              <label class="form-label">Featured Image</label>
+              {{>adminComponentFile
+                fileAreaID = "newsFeaturedImage"
+                multiple = false
+                onlyCurrentUser = true
+              }}
             </div>
           </div>
-
           <div class="col-12 h-50">
             <label for="inputContent" class="form-label">Content</label>
             <div id="news-add-editor"></div>

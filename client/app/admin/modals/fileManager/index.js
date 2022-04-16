@@ -4,12 +4,16 @@ import Swal from 'sweetalert2';
 import { getDownloadURL, getStorage, ref, uploadBytes, deleteObject } from "firebase/storage";
 
 Template.adminModalsFileManager.onCreated(function () {
+  this.currentArea = AppUtil.temp.get('currentArea');
   this.storage = getStorage();
   this.fileUpload = new ReactiveVar(false);
   this.fileUploadError = new ReactiveVar(false);
 
   this.state = new ReactiveDict(null, {
     files: [],
+    selectedFiles: [
+      "tDbavQNpfkY8pQPxq"
+    ]
   });
 
   this.pagination = new ReactiveDict(null, {
@@ -52,9 +56,25 @@ Template.adminModalsFileManager.onRendered(function () {
     browserBackButtonClose: false
   });
 
-  $('#brdAdminModalsFileManager').modal('show');
+  $('#brdAdminModalsFileManager').on('hide.bs.modal', function(event){
+    AppUtil.temp.set('currentArea', undefined);
+  });
 
-  this.autorun(function () {
+  this.autorun(function(){
+    self.currentArea = AppUtil.temp.get('currentArea');
+    console.log(123);
+    if (self.currentArea) {
+      self.state.set('selectedFiles', AppUtil.temp.get(self.currentArea.fileAreaID));
+    }
+  });
+  /*
+  obj[key] = {
+          $regex: `${_options.filtering[key]}`,
+          $options: 'i'
+        };
+  */
+
+  this.autorun(function() {
     $('.fileLoading').show();
     const currentPage = self.pagination.get('currentPage');
     const pageItems = self.pagination.get('pageItems');
@@ -87,7 +107,7 @@ Template.adminModalsFileManager.onRendered(function () {
         }
       });
 
-      console.log(result);
+
 
       self.state.set('files', self.state.get('files').concat(result.files));
       self.state.set('notFound', result.options.pagination.totalCount === 0);
@@ -107,7 +127,6 @@ Template.adminModalsFileManager.onRendered(function () {
   });
 
   uppy.on('complete', async (result) => {
-    const storage = getStorage();
     self.fileUpload.set(true);
     Swal.fire({
       title: 'Please Wait!',
@@ -150,7 +169,6 @@ Template.adminModalsFileManager.onRendered(function () {
         files.unshift(obj.file);
         self.state.set('files', files);
         uppy.removeFile(val.id);
-        console.log(self.state.get('files'))
       }
       return;
     }));
@@ -159,20 +177,24 @@ Template.adminModalsFileManager.onRendered(function () {
 });
 
 Template.adminModalsFileManager.events({
-  'submit #search-form': function (event, template) {
-    event.preventDefault();
-    const searchInput = event.target.fileSearchInput.value;
-    console.log(searchInput);
-    template.state.set('files', []);
-    if (searchInput === "") {
-      template.filtering.set({});
+  'click .image_picker_selector li': function(event, template) {
+    const selectedFiles = template.state.get('selectedFiles');
+    if (template.currentArea.multiple) {
+      const selectedFilesIndex = selectedFiles.findIndex(_file => _file._id === this._id);
+      if (selectedFilesIndex > -1) {
+        selectedFiles.splice(selectedFilesIndex, 1);
+      } else {
+        selectedFiles.push(this);
+      }
     } else {
-      template.filtering.set({ $or: [{ name: searchInput }] });
+      selectedFiles.splice(0, selectedFiles.length);
+      selectedFiles.push(this);
     }
+    template.state.set('selectedFiles', selectedFiles);
   },
-  'click .image_picker_selector li': function (event, template) {
-    $('.image_picker_selector li .selected').removeClass('selected');
-    $(`#${this._id}`).addClass('selected');
+  'click .btnBrdFileManagerSave': function(event, template) {
+    AppUtil.temp.set(template.currentArea.fileAreaID, template.state.get('selectedFiles'));
+    $('#brdAdminModalsFileManager').modal('hide');
   },
   'click .image_picker_selector .btn-brd-media-image-delete': function (event, template) {
     const item = this;

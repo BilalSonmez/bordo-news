@@ -1,12 +1,13 @@
 <template name="adminModalsFileManager">
   <link href="https://releases.transloadit.com/uppy/v2.9.1/uppy.min.css" rel="stylesheet">
-  {{#let _files=(state.get 'files') }}
+  {{#let _files=(state.get 'files') _selectedFiles = (state.get 'selectedFiles') }}
   <div class="modal fade" id="brdAdminModalsFileManager" tabindex="-1" aria-labelledby="brdAdminModalsFileManagerLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="brdAdminModalsFileManagerLabel" style="margin-right: 1rem;">File Manager</h5>
+          {{#if multiple}}test{{/if}}
           <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
             data-bs-target="#drag-drop-area" aria-expanded="false" aria-controls="drag-drop-area">Upload Files</button>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -27,7 +28,7 @@
           <ul class="thumbnails image_picker_selector row">
             {{#each _files}}
             <li class="col-6 col-md-2">
-              <div class="thumbnail" id="{{_id}}">
+              <div class="thumbnail{{#if eqInArray _id _selectedFiles}} selected{{/if}}" id="{{_id}}">
                 <div class="brd-media-image-container">
                   <div class="brd-media-image"><img class="image_picker_image img-fluid"
                       src="{{url}}"></div>
@@ -48,7 +49,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" form="brdCategoryCreateForm" class="btn btn-primary">Save</button>
+          <button type="button" class="btn btn-primary btnBrdFileManagerSave">Save</button>
         </div>
       </div>
     </div>

@@ -113,3 +113,16 @@ ul.thumbnails.image_picker_selector li .thumbnail .brd-media-buttons .btn-brd-me
     border: 2px solid red;
   }
 }
+
+.btn-media-all {
+    background: #fff;
+    border: 2px dashed #ebedf2;
+    width: 100%;
+    padding: 10px 0 20px;
+    color: #6c7293;
+    transition: all .2s;
+    .btn-media-icon {
+      font-size: 36px;
+      margin: 0 0 3px;
+    }
+}

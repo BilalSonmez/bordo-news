@@ -1,0 +1,43 @@
+
+.btn-media-info {
+  top: 0;
+  left: 0;
+  background-color: red;
+  position: absolute;
+  img {
+    height: 1%;
+    width: 100%;
+    display: none;
+  }
+}
+
+.media-preview-container {
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  .media-preview {
+    .media-preview-item {
+      padding: 5px;
+      width: 100%;
+      position: relative;
+      float: left;
+      display: table-row;
+      border: 1px solid rgb(59, 59, 255);
+      border-radius: 0.5rem;
+      .btn-preview-remove {
+        position: absolute;
+        background: rgba(0, 0, 0, 0.4);
+        border: 0;
+        border-radius: 1rem;
+        color: white;
+        top: 10px;
+        right: 10px;
+      }
+    }
+  }
+  .multiple {
+    .media-preview-item {
+      width: 50%!important;
+    }
+  }
+}

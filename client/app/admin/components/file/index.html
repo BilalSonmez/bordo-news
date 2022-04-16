@@ -1,3 +1,22 @@
 <template name="adminComponentFile">
-  
+  {{#let _fileArea = (appUtilTemp.get fileAreaID)}}
+  <div class="row">
+    <div class="col-md-6">
+      <button type="button" class="btn btn-media-all" data-bs-toggle="modal" data-bs-target="#brdAdminModalsFileManager">
+        <div class="btn-media-icon"><i class="fa-solid fa-cloud-upload"></i></div>
+        <div class="btn-media-text">Dosya yüklemek veya seçmek için tıklayın.</div>
+      </button>
+    </div>
+    <div class="col-md-6 media-preview-container" id="{{fileAreaID}}">
+      <div class="media-preview{{#if multiple}} multiple{{/if}}">
+        {{#each _fileArea}}
+        <div class="media-preview-item" data-img-id="{{_id}}">
+          <button type="button" class="btn-preview-remove"><i class="fa-solid fa-xmark"></i></button>
+          <img src="{{url}}" class="img-fluid">
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  {{/let}}
 </template>
