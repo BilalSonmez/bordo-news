@@ -44,7 +44,7 @@ Template.adminPageCategoryEdit.events({
     const metaDescription = event.target.inputMetaDescription.value;
     const noIndex = event.target.noIndexSelect.checked;
     const noFollow = event.target.noFollowSelect.checked;
-    const slugUrl = Slugify(event.target.slugUrl.value, '-');
+    const slugUrl = Slugify(event.target.slugUrl.value,{replacement: '-',lower:true});
     const obj = {
       _id: FlowRouter.getParam("_id"),
       category: {
@@ -82,6 +82,6 @@ Template.adminPageCategoryEdit.events({
     })
   },
   'input #inputTitle': function (event, template) {
-    $('#slugUrl').val(Slugify(event.target.value));
+    $('#slugUrl').val(Slugify(event.target.value,{replacement: '-',lower:true}));
   },
 });
