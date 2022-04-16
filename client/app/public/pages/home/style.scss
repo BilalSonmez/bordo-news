@@ -1,6 +1,29 @@
-.brd-carousel-img{
-    height: 20rem;
-}
+// .brd-carousel-img{
+//     height: 20rem;
+// }
 #more{
     display: none;
+}
+.stickycard{
+  top:85px;
+}
+
+
+
+
+
+
+.newsCard{
+  height: 320px;
+  .card-title{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  .card-img-top {
+    height: 16rem;
+    object-fit: cover;
+  } 
 }
