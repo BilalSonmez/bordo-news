@@ -9,9 +9,16 @@ new ValidatedMethod({
     this.unblock();
     const { _id } = data;
 
-    return Columns.findOne({
+    const column = Columns.findOne({
       _id: _id
     });
+
+
+    column.featuredImage = Files.findOne({
+      _id: column.featuredImage
+    });
+
+    return column;
   }
 });
 

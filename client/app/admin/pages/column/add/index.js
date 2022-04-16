@@ -23,6 +23,7 @@ Template.adminPageColumnAdd.events({
   "submit form#brdColumnAddForm": function (event, template) {
     event.preventDefault();
     const title = event.target.inputTitle.value;
+    const images = AppUtil.temp.get('columnFeaturedImage');
     if (title === '') {
       ErrorHandler.show("Title cannot be empty");
       return;
@@ -31,7 +32,7 @@ Template.adminPageColumnAdd.events({
     const content = template.quill.root.innerHTML;
     const slugUrl = Slugify(event.target.slugUrl.value, '-');
     //TODO will change after upload system
-    const featuredImage = 'YSsf6nLfoKjAAekKo';
+    const featuredImage = images.length > 0 ? images[0]._id : null;
     const metaTitle = event.target.inputMetaTitle.value;
     const metaDescription = event.target.inputMetaDescription.value;
     const noIndex = event.target.noIndexSelect.checked;

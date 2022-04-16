@@ -25,6 +25,9 @@ Template.adminPageColumnEdit.onRendered(function () {
         return;
       }
       self.state.set("column", result);
+      if (result.featuredImage) {
+        AppUtil.temp.set('columnFeaturedImage', [result.featuredImage]);
+      }
       self.quill.root.innerHTML = result.content;
     });
   });
@@ -34,6 +37,7 @@ Template.adminPageColumnEdit.events({
   "submit form#brdColumnAddForm": function (event, template) {
     event.preventDefault();
     const title = event.target.inputTitle.value;
+    const images = AppUtil.temp.get('columnFeaturedImage');
     if (title === "") {
       ErrorHandler.show("Title cannot be empty");
       return;
@@ -41,8 +45,7 @@ Template.adminPageColumnEdit.events({
     const subTitle = event.target.inputSubTitle.value;
     const content = template.quill.root.innerHTML;
     const slugUrl = Slugify(event.target.slugUrl.value, "-");
-    //TODO will change after upload system
-    const featuredImage = "YSsf6nLfoKjAAekKo";
+    const featuredImage = images.length > 0 ? images[0]._id : null;
     const metaTitle = event.target.inputMetaTitle.value;
     const metaDescription = event.target.inputMetaDescription.value;
     const noIndex = event.target.noIndexSelect.checked;
