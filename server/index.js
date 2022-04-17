@@ -1,8 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 
 Meteor.startup(() => {
-  // Migrations.unlock();
+  //Migrations.unlock();
   // Migrations.migrateTo("1,rerun");
-  Migrations.migrateTo(1);
+  Migrations.migrateTo('latest');
 });
 
