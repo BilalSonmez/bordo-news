@@ -62,7 +62,6 @@ Template.adminModalsFileManager.onRendered(function () {
 
   this.autorun(function(){
     self.currentArea = AppUtil.temp.get('currentArea');
-    console.log(123);
     if (self.currentArea) {
       self.state.set('selectedFiles', AppUtil.temp.get(self.currentArea.fileAreaID));
     }

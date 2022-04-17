@@ -1,5 +1,5 @@
 <template name="publicPagesHome">
-  {{#let _news=(state.get'news') _columns=(state.get'columns') _breakingNews=(state.get'breakingNews') }}
+  {{#let _news=(state.get'news') _topNews=(state.get'topNews') _columns=(state.get'columns') _topColumns=(state.get'topColumns') _breakingNews=(state.get'breakingNews') }}
     <div class="publicPagesHome">
       <div class="container-md mb-4">
         <div class="row">
@@ -9,19 +9,22 @@
                 {{#each _breakingNews}}
                   {{#if eq @index 0}}
                     <div class="carousel-item h-100 active">
-                      <img src="{{featuredImage.url}}" class=" d-block w-100 img-fluid brd-carousel-img h-100"
-                        alt="...">
-                      <h4 class="position-absolute start-0 bottom-0 text-white p-2 m-0 bg-primary w-100 "
-                        style="opacity:0.7">
-                        {{title}}</h4>
+                      <img src="{{featuredImage.url}}" class=" d-block w-100 img-fluid brd-carousel-img h-100">
+                        <a href="{{pathFor '/news/:slugUrl' slugUrl=slugUrl}}">
+                          <h4 class="position-absolute start-0 bottom-0 text-white p-2 m-0 bg-primary w-100 "
+                          style="opacity:0.7">
+                          {{title}}</h4>
+                        </a>  
+                      
                     </div>
                   {{else}}
                     <div class="carousel-item h-100">
-                      <img src="{{featuredImage.url}}" class=" d-block w-100 img-fluid brd-carousel-img h-100"
-                        alt="...">
+                      <img src="{{featuredImage.url}}" class=" d-block w-100 img-fluid brd-carousel-img h-100">
+                        <a href="{{pathFor '/news/:slugUrl' slugUrl=slugUrl}}">
                       <h4 class="position-absolute start-0 bottom-0 text-white p-2 m-0 bg-primary w-100 "
                         style="opacity:0.7">
                         {{title}}</h4>
+                      </a>
                     </div>
                   {{/if}}
                 {{/each}}
@@ -43,7 +46,6 @@
                 <button type="button" data-bs-target-slide="{{@index}}"
                   class="btnCarousel btn btn-primary mx-2">{{add @index}}</button>
               {{/each}}
-
             </div>
 
           </div>
@@ -60,10 +62,7 @@
                 <h6 class="position-absolute start-0 bottom-0 text-white bg-dark p-2 m-0">{{_columns.[1].title}}</h6>
               </div>
             </a>
-
-
           </div>
-
         </div>
 
         <div class="row mt-3 ">
@@ -85,35 +84,32 @@
             </div>
             <div class="row">
               <div class="col-md-12 text-center p-3">
-                <button class="btn btn-primary text-center btnNewsMore">Daha fazla haber</button>
+                <!-- TODO hide on start if not enough data -->
+                <button class="btn text-center btnBordoNews btnNewsMore">Daha fazla haber</button>
               </div>
             </div>
           </div>
           <div class="col-md-4 my-4">
-            <div class="card text-center position-sticky stickycard">
-              <div class="card-header">
-                Popüler Haberler
-              </div>
+            <div class="card position-sticky stickycard">
+              <div class="card-header text-center">Popüler Haberler</div>
               <div class="card-body">
-                <h5 class="card-title">Haber Başlıkları</h5>
-                <p class="card-text">
-                  <a>1.Haber</a><br>
-                  <a>2.Haber</a><br>
-                  <a>3.Haber</a><br>
-                  <a>4.Haber</a><br>
-                  <a>5.Haber</a><br>
-                  <span id="more">
-                    <a>6.Haber</a><br>
-                    <a>7.Haber</a><br>
-                    <a>8.Haber</a><br>
-                    <a>9.Haber</a><br>
-                    <a>10.Haber</a><br>
-                  </span>
-                </p>
-                <a href="" id="myBtn" class="btn btn-primary btnMore">Daha Fazla Göster</a>
-
+                <div class="list-group moreNewsList">
+                  {{#each _topNews}}
+                    {{#if gt @index 4}}
+                      <span class="moreNewsSpan d-none">
+                        <a href="{{pathFor '/news/:slugUrl' slugUrl=slugUrl}}"
+                          class="list-group-item list-group-item-action list-group-item-light">{{title}}</a>
+                      </span>
+                    {{else}}
+                      <a href="{{pathFor '/news/:slugUrl' slugUrl=slugUrl}}"
+                        class="list-group-item list-group-item-action list-group-item-light">{{title}}</a>
+                    {{/if}}
+                  {{/each}}
+                  {{#if gt _topNews.length 5}}
+                    <a href="" id="myBtn" class="btn btnMoreNews mt-3 btnBordoNews btn-sm">Daha Fazla Göster</a>
+                  {{/if}}
+                </div>
               </div>
-
             </div>
           </div>
 
@@ -123,6 +119,7 @@
               {{#each _columns}}
                 <div class="col-md-6 p-2">
                   <div class="card newsCard">
+                    <!-- TODO Links -->
                     <a href="">
                       <img src="{{featuredImage.url}}" class="card-img-top w-100" alt="" />
                     </a>
@@ -135,38 +132,34 @@
             </div>
             <div class="row">
               <div class="col-md-12 text-center p-3">
-                <button class="btn btn-primary text-center btnColumnsMore">Daha fazla köşe yazısı</button>
+                <!-- TODO hide on start if not enough data -->
+                <button class="btn btnBordoNews text-center btnColumnsMore">Daha fazla köşe yazısı</button>
               </div>
             </div>
           </div>
           <div class="col-md-4 my-4">
             <div class="card text-center position-sticky stickycard">
-              <div class="card-header">
-                Popüler Haberler
-              </div>
+              <div class="card-header text-center">Popüler Köşe Yazıları</div>
               <div class="card-body">
-                <h5 class="card-title">Haber Başlıkları</h5>
-                <p class="card-text">
-                  <a>1.Haber</a><br>
-                  <a>2.Haber</a><br>
-                  <a>3.Haber</a><br>
-                  <a>4.Haber</a><br>
-                  <a>5.Haber</a><br>
-                  <span id="more">
-                    <a>6.Haber</a><br>
-                    <a>7.Haber</a><br>
-                    <a>8.Haber</a><br>
-                    <a>9.Haber</a><br>
-                    <a>10.Haber</a><br>
-                  </span>
-                </p>
-                <a href="" id="myBtn" class="btn btn-primary btnMore">Daha Fazla Göster</a>
-
+                <div class="list-group moreNewsList">
+                  {{#each _topColumns}}
+                    {{#if gt @index 4}}
+                      <span class="moreColumnsSpan d-none">
+                        <!-- TODO Links -->
+                        <a href="" class="list-group-item list-group-item-action list-group-item-light">{{title}}</a>
+                      </span>
+                    {{else}}
+                      <!-- TODO Links -->
+                      <a href="" class="list-group-item list-group-item-action list-group-item-light">{{title}}</a>
+                    {{/if}}
+                  {{/each}}
+                  {{#if gt _topNews.length 5}}
+                    <a href="" id="myBtn" class="btn btnMoreColumns mt-3 btnBordoNews btn-sm">Daha Fazla Göster</a>
+                  {{/if}}
+                </div>
               </div>
-
             </div>
           </div>
-
         </div>
       </div>
     </div>

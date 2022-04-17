@@ -4,6 +4,8 @@ Template.publicPagesHome.onCreated(function () {
     breakingNews: [],
     news: [],
     columns: [],
+    topNews: [],
+    topColumns: [],
   });
 
   this.newsPagination = new ReactiveDict(null, {
@@ -44,11 +46,57 @@ Template.publicPagesHome.onRendered(function () {
         ErrorHandler.show(error.message);
         return;
       }
-      console.log(result);
       self.newsPagination.set("totalCount", result.options.pagination.totalCount);
       self.newsPagination.set("totalPages", Math.ceil(result.options.pagination.totalCount / result.options.pagination.pageItems));
-      console.log(self.newsPagination);
       self.state.set("news", self.state.get('news').concat(result.news));
+    })
+  });
+
+  this.autorun(function () {
+    const listOptions = {
+      options: {
+        pagination: {
+          currentPage: 1,
+          pageItems: 10,
+        },
+        filtering: {},
+        sorting: {
+          sortField: 'communityData.views',
+          sortOrder: 'desc',
+        }
+      }
+    };
+
+    Meteor.call("news.list", listOptions, function (error, result) {
+      if (error) {
+        ErrorHandler.show(error.message);
+        return;
+      }
+      self.state.set("topNews", result.news);
+    })
+  });
+
+  this.autorun(function () {
+    const listOptions = {
+      options: {
+        pagination: {
+          currentPage: 1,
+          pageItems: 10,
+        },
+        filtering: {},
+        sorting: {
+          sortField: 'communityData.views',
+          sortOrder: 'desc',
+        }
+      }
+    };
+
+    Meteor.call("column.list", listOptions, function (error, result) {
+      if (error) {
+        ErrorHandler.show(error.message);
+        return;
+      }
+      self.state.set("topColumns", result.columns);
     })
   });
 
@@ -70,12 +118,10 @@ Template.publicPagesHome.onRendered(function () {
     Meteor.call("column.list", listOptions, function (error, result) {
       if (error) {
         ErrorHandler.show(error.message);
-        return; 
+        return;
       }
-      console.log(result);
       self.columnsPagination.set("totalCount", result.options.pagination.totalCount);
       self.columnsPagination.set("totalPages", Math.ceil(result.options.pagination.totalCount / result.options.pagination.pageItems));
-      console.log(self.columnsPagination);
       self.state.set("columns", self.state.get('columns').concat(result.columns));
     })
   });
@@ -99,7 +145,6 @@ Template.publicPagesHome.onRendered(function () {
         ErrorHandler.show(error.message);
         return;
       }
-      console.log(result);
       self.state.set("breakingNews", result.news);
     })
   });
@@ -126,15 +171,19 @@ Template.publicPagesHome.events({
       $(event.target).hide();
     }
   },
-  "click .btnMore": function (event, template) {
-    let moretext = document.getElementById("more");
-    if (moretext.style.display == "none") {
-      moretext.style.display = "inline";
-      //moretext.value ="Daha Az Göster";
-    } else {
-      moretext.style.display = "none";
-      //moretext.value ="Daha Fazla Göster";
+  "click .btnMoreNews": function (event, template) {
+    let moretext = document.getElementsByClassName("moreNewsSpan");;
+    for (let data of moretext) {
+      data.classList.remove('d-none');
     }
+    $(event.target).hide();
+  },
+  "click .btnMoreColumns": function (event, template) {
+    let moretext = document.getElementsByClassName("moreColumnsSpan");;
+    for (let data of moretext) {
+      data.classList.remove('d-none');
+    }
+    $(event.target).hide();
   },
 
 });

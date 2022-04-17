@@ -1,33 +1,42 @@
-// .brd-carousel-img{
-//     height: 20rem;
-// }
-#more{
-    display: none;
-}
-.stickycard{
-  top:85px;
+.stickycard {
+  top: 85px;
 }
 
-
-.featuredColumns{
+.featuredColumns {
   background-color: #fff;
   width: 100vh;
   height: 260px !important;
 }
 
-
-
-.newsCard{
+.newsCard {
   height: 340px;
-  .card-title{
+
+  .card-title {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
   }
+
   .card-img-top {
     height: 16rem;
     object-fit: cover;
-  } 
+  }
+}
+
+.btnBordoNews {
+  background-color: #1f2a4c !important;
+  color: #fff !important;
+  border: 2px solid #1f2a4c;
+}
+
+.btnBordoNews:hover {
+  background-color: #fff !important;
+  color: #1f2a4c !important;
+  border: 2px solid #1f2a4c;
+}
+
+.moreNewsList {
+  font-size: 0.8rem;
 }
