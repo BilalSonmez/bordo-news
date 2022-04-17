@@ -73,7 +73,7 @@
               {{#each _news}}
                 <div class="col-md-6 p-2">
                   <div class="card newsCard">
-                    <a href="">
+                    <a href="{{pathFor '/news/:slugUrl' slugUrl=slugUrl}}">
                       <img src="{{featuredImage.url}}" class="card-img-top w-100" alt="" />
                     </a>
                     <div class="card-body">
