@@ -16,6 +16,7 @@ new ValidatedMethod({
     news.featuredImage = Files.findOne({
       _id: news.featuredImage
     });
+
     return news;
   }
 });

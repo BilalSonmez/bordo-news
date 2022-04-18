@@ -1,0 +1,68 @@
+<template name="publicPagesNewDetail">
+  {{#let _news=(state.get 'news') _popNews=(state.get'popNews')}}
+    <div class="publicPagesNewDetail">
+      <div class="container mb-4 mr-3">
+        <div class="row mt-2 pt-5">
+          <div class="h2">{{_news.title}}</div>
+        </div>
+        <div class="row my-1">
+          <div class="h4 text-secondary">{{_news.subTitle}}</div>
+        </div>
+        <div class="row mt-3 mb-2 justify-content-center ">
+
+          <div class="col-lg-8 mt-2 mb-2 position-relative">
+            <div class="row bg-white">
+              <div class="position-relative  mt-3  ">
+                <img src="{{_news.featuredImage.url}}" class="  w-100 img-fluid  h-100" alt="...">
+              </div>
+
+              <div id="newsDetailContent" class="pt-5">
+                {{strtohtml _news.content "newsDetailContent"}}
+              </div>
+              <div>
+              </div>
+            </div>
+
+
+            <div class="row mt-3">
+              <div class="d-flex justify-content-center">
+                <a class="btn btn-primary m-1" style="background-color: #3b5998;" href="#!" role="button"><i
+                    class="fab fa-facebook-f ms-1"></i></a>
+                <a class="btn btn-primary m-1" style="background-color: #3b5998;" href="#!" role="button"><i
+                    class="fab fa-facebook-f ms-1"></i></a>
+                <a class="btn btn-primary m-1" style="background-color: #3b5998;" href="#!" role="button"><i
+                    class="fab fa-facebook-f ms-1"></i></a>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-lg-4 my-4">
+            <div class="card position-sticky stickycard">
+              <div class="card-header text-center">Popüler Haberler</div>
+              <div class="card-body">
+                <div class="list-group moreNewsList">
+                  {{#each _popNews}}
+                    {{#if gt @index 4}}
+                      <span class="moreNewsSpan d-none">
+                        <a href="{{pathFor '/news/:slugUrl' slugUrl=slugUrl}}"
+                          class="list-group-item list-group-item-action list-group-item-light">{{title}}</a>
+                      </span>
+                    {{else}}
+                      <a href="{{pathFor '/news/:slugUrl' slugUrl=slugUrl}}"
+                        class="list-group-item list-group-item-action list-group-item-light">{{title}}</a>
+                    {{/if}}
+                  {{/each}}
+                  {{#if gt _popNews.length 5}}
+                    <a href="" id="myBtn" class="btn btnMoreNews mt-3 btnBordoNews btn-sm">Daha Fazla Göster</a>
+                  {{/if}}
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  {{/let}}
+</template>
