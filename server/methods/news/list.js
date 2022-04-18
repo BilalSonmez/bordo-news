@@ -9,7 +9,12 @@ new ValidatedMethod({
     this.unblock();
     
     const { options } = data
-
-    return Fetch(News, {}, options, 'news');
+    let news = Fetch(News, {}, options, 'news');
+    news.news.map((data)=>{
+      data.featuredImage = Files.findOne({
+        _id: data.featuredImage
+      });
+    })
+    return news;
   }
 });

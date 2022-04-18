@@ -39,7 +39,7 @@ Template.adminPageNewsAdd.events({
     }
     const subTitle = event.target.inputSubTitle.value;
     const content = template.quill.root.innerHTML;
-    const slugUrl = Slugify(event.target.slugUrl.value, '-');
+    const slugUrl = Slugify(event.target.slugUrl.value,{replacement: '-',lower:true});
     const featuredImage = images.length > 0 ? images[0]._id : null;
     const metaTitle = event.target.inputMetaTitle.value;
     const metaDescription = event.target.inputMetaDescription.value;
@@ -99,6 +99,6 @@ Template.adminPageNewsAdd.events({
     })
   },
   'input #inputTitle': function (event, template) {
-    $('#slugUrl').val(Slugify(event.target.value));
+    $('#slugUrl').val(Slugify(event.target.value,{replacement: '-',lower:true}));
   },
 });

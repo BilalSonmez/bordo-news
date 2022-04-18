@@ -7,6 +7,14 @@ FlowRouter.route('/', {
   }
 });
 
+FlowRouter.route('/news/:slugUrl', {
+  name: 'public.news',
+  action: function (params, queryParams) {
+    this.render('publicLayoutDefault', {page: 'publicPagesNew'});
+  }
+});
+
+
 FlowRouter.route('/about', {
   name: 'public.about',
   action: function (params, queryParams) {

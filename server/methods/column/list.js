@@ -9,7 +9,13 @@ new ValidatedMethod({
     this.unblock();
     
     const { options } = data
+    let columns = Fetch(Columns, {}, options, 'columns');
+    columns.columns.map((data)=>{
+      data.featuredImage = Files.findOne({
+        _id: data.featuredImage
+      });
+    })
 
-    return Fetch(Columns, {}, options, 'columns');
+    return columns;
   }
 });
