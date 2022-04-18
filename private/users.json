@@ -1,0 +1,192 @@
+[
+  {
+      "_id" : "4sJpxQRwjfPCjnGM7",
+      "createdAt" : "2022-04-18T12:55:23.308Z",
+      "services" : {
+          "password" : {
+              "bcrypt" : "$2b$10$Pwjdh1xHCATqSIFFBXsDp.hOpXyjCUCDS65iBepuFyWu1/UAElk6i"
+          },
+          "resume" : {
+              "loginTokens" : []
+          }
+      },
+      "emails" : [ 
+          {
+              "address" : "ahmethakan@bordonews.com",
+              "verified" : false
+          }
+      ],
+      "profile" : {
+          "name" : "Ahmet",
+          "lastName" : "Hakan",
+          "status" : "active",
+          "isAdmin" : false,
+          "isEditor" : false,
+          "isColumnist" : true,
+          "picture" : {
+              "name" : "4sJpxQRwjfPCjnGM7.jpg",
+              "url" : "https://firebasestorage.googleapis.com/v0/b/bordo-news.appspot.com/o/profilePictures%2F4sJpxQRwjfPCjnGM7.jpg?alt=media&token=e58f79e6-2a03-4463-b4be-22726d3cb153"
+          }
+      },
+      "updatedAt" : "2022-04-18T13:20:58.254Z",
+      "status" : {
+          "lastLogin" : {
+              "date" : "2022-04-18T13:02:34.168Z",
+              "ipAddr" : "127.0.0.1"
+          },
+          "online" : false
+      }
+  },
+  {
+      "_id" : "vLvp233WPiKKjMmkR",
+      "createdAt" : "2022-04-18T13:07:59.653Z",
+      "services" : {
+          "password" : {
+              "bcrypt" : "$2b$10$dOAj2inwU9qFax0ovQJ7ZeCK.ikgV68Hfczaqdsh.dAMfIPSfS8Bm"
+          },
+          "resume" : {
+              "loginTokens" : []
+          }
+      },
+      "emails" : [ 
+          {
+              "address" : "cemkucuk@bordonews.com",
+              "verified" : false
+          }
+      ],
+      "profile" : {
+          "name" : "Cem",
+          "lastName" : "Küçük",
+          "status" : "active",
+          "isAdmin" : false,
+          "isEditor" : false,
+          "isColumnist" : true,
+          "picture" : {
+              "name" : "vLvp233WPiKKjMmkR.jpg",
+              "url" : "https://firebasestorage.googleapis.com/v0/b/bordo-news.appspot.com/o/profilePictures%2FvLvp233WPiKKjMmkR.jpg?alt=media&token=cfd8ba58-de0d-4b93-a67f-9625030cec05"
+          }
+      },
+      "updatedAt" : "2022-04-18T13:20:58.254Z",
+      "status" : {
+          "lastLogin" : {
+              "date" : "2022-04-18T13:08:05.193Z",
+              "ipAddr" : "127.0.0.1"
+          },
+          "online" : false
+      }
+  },
+  {
+      "_id" : "R5xHxWtd9YeFQ45tJ",
+      "createdAt" : "2022-04-18T13:11:04.942Z",
+      "services" : {
+          "password" : {
+              "bcrypt" : "$2b$10$RxdTUaSPlLnBmX4rnVgzZOdlUSRW1nx1QF.s8wgHSosuT1LxljQfm"
+          },
+          "resume" : {
+              "loginTokens" : []
+          }
+      },
+      "emails" : [ 
+          {
+              "address" : "hakanalbayrak@bordonews.com",
+              "verified" : false
+          }
+      ],
+      "profile" : {
+          "name" : "Hakan",
+          "lastName" : "Albayrak",
+          "status" : "active",
+          "isAdmin" : false,
+          "isEditor" : false,
+          "isColumnist" : true,
+          "picture" : {
+              "name" : "R5xHxWtd9YeFQ45tJ.jpg",
+              "url" : "https://firebasestorage.googleapis.com/v0/b/bordo-news.appspot.com/o/profilePictures%2FR5xHxWtd9YeFQ45tJ.jpg?alt=media&token=8711fd0a-4f5b-4638-ba37-3143d9985b9e"
+          }
+      },
+      "updatedAt" : "2022-04-18T13:20:58.254Z",
+      "status" : {
+          "lastLogin" : {
+              "date" : "2022-04-18T13:11:14.697Z",
+              "ipAddr" : "127.0.0.1"
+          },
+          "online" : false
+      }
+  },
+  {
+      "_id" : "4CqMck2ziQNGC5tpE",
+      "createdAt" : "2022-04-18T13:13:22.044Z",
+      "services" : {
+          "password" : {
+              "bcrypt" : "$2b$10$gOPgwa0.xPnnFnWuSdCm6OD/gxQvoop2m9bVKsvslpeWKPNFmoYPa"
+          },
+          "resume" : {
+              "loginTokens" : []
+          }
+      },
+      "emails" : [ 
+          {
+              "address" : "ahmetcakar@bordonews.com",
+              "verified" : false
+          }
+      ],
+      "profile" : {
+          "name" : "Ahmet",
+          "lastName" : "Çakar",
+          "status" : "active",
+          "isAdmin" : false,
+          "isEditor" : false,
+          "isColumnist" : true,
+          "picture" : {
+              "name" : "4CqMck2ziQNGC5tpE.jpg",
+              "url" : "https://firebasestorage.googleapis.com/v0/b/bordo-news.appspot.com/o/profilePictures%2F4CqMck2ziQNGC5tpE.jpg?alt=media&token=18efea05-83b8-4bb8-a755-540258b64f93"
+          }
+      },
+      "updatedAt" : "2022-04-18T13:20:58.254Z",
+      "status" : {
+          "lastLogin" : {
+              "date" : "2022-04-18T13:13:44.088Z",
+              "ipAddr" : "127.0.0.1"
+          },
+          "online" : false
+      }
+  },
+  {
+      "_id" : "AAwwvT5scnaPqD2mv",
+      "createdAt" : "2022-04-18T13:17:41.377Z",
+      "services" : {
+          "password" : {
+              "bcrypt" : "$2b$10$S5ERbzaxnU0S/9Qj1onWGOMDjzjMcNsa/cQrwrfDWnoampzz0aUoW"
+          },
+          "resume" : {
+              "loginTokens" : []
+          }
+      },
+      "emails" : [ 
+          {
+              "address" : "editor@bordonews.com",
+              "verified" : false
+          }
+      ],
+      "profile" : {
+          "name" : "Editor",
+          "lastName" : "Bordo",
+          "status" : "active",
+          "isAdmin" : false,
+          "isEditor" : true,
+          "isColumnist" : false,
+          "picture" : {
+              "name" : "defaultPic",
+              "url" : "https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
+          }
+      },
+      "updatedAt" : "2022-04-18T13:20:58.254Z",
+      "status" : {
+          "lastLogin" : {
+              "date" : "2022-04-18T13:17:41.436Z",
+              "ipAddr" : "127.0.0.1"
+          },
+          "online" : false
+      }
+  }
+]

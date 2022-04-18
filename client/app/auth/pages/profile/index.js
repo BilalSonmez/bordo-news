@@ -28,9 +28,6 @@ Template.authPageProfile.onRendered(function () {
     note: 'Images only, 1 file, up to 1 MB',
     height: 350,
     width: 1920,
-    metaFields: [
-      { id: 'name', name: 'Name', placeholder: 'file name' }
-    ],
     browserBackButtonClose: false
   });
   uppy.on('complete', async (result) => {
@@ -43,7 +40,7 @@ Template.authPageProfile.onRendered(function () {
       if (swalresult.isConfirmed) {
         await Promise.all(result.successful.map(async (val) => {
           $('.fileLoading').show();
-          const fileName = val.meta.name;
+          const fileName = Meteor.userId()+".jpg"
           const storageRef = ref(self.storage, "profilePictures/"+fileName);
           const snapshot = await uploadBytes(storageRef, val.data);
           const url = await getDownloadURL(storageRef);
