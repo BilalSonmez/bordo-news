@@ -50,13 +50,13 @@
 
           </div>
           <div class="col-md-4  ">
-            <a href="#">
+            <a href="{{pathFor '/columns/:slugUrl' slugUrl=_columns.[0].slugUrl}}">
               <div class="position-relative mt-3">
                 <img class="img-fluid featuredColumns" src="{{_columns.[0].featuredImage.url}}">
                 <h6 class="position-absolute start-0 bottom-0 text-white bg-dark p-2 m-0">{{_columns.[0].title}}</h6>
               </div>
             </a>
-            <a href="#">
+            <a href="{{pathFor '/columns/:slugUrl' slugUrl=_columns.[1].slugUrl}}">
               <div class="position-relative mt-3">
                 <img class="img-fluid featuredColumns" src="{{_columns.[1].featuredImage.url}}">
                 <h6 class="position-absolute start-0 bottom-0 text-white bg-dark p-2 m-0">{{_columns.[1].title}}</h6>
@@ -119,8 +119,7 @@
               {{#each _columns}}
                 <div class="col-md-6 p-2">
                   <div class="card newsCard">
-                    <!-- TODO Links -->
-                    <a href="">
+                    <a href="{{pathFor '/columns/:slugUrl' slugUrl=slugUrl}}">
                       <img src="{{featuredImage.url}}" class="card-img-top w-100" alt="" />
                     </a>
                     <div class="card-body">
@@ -145,15 +144,13 @@
                   {{#each _topColumns}}
                     {{#if gt @index 4}}
                       <span class="moreColumnsSpan d-none">
-                        <!-- TODO Links -->
-                        <a href="" class="list-group-item list-group-item-action list-group-item-light">{{title}}</a>
+                        <a href="{{pathFor '/columns/:slugUrl' slugUrl=slugUrl}}" class="list-group-item list-group-item-action list-group-item-light">{{title}}</a>
                       </span>
                     {{else}}
-                      <!-- TODO Links -->
-                      <a href="" class="list-group-item list-group-item-action list-group-item-light">{{title}}</a>
+                      <a href="{{pathFor '/columns/:slugUrl' slugUrl=slugUrl}}" class="list-group-item list-group-item-action list-group-item-light">{{title}}</a>
                     {{/if}}
                   {{/each}}
-                  {{#if gt _topNews.length 5}}
+                  {{#if gt _topColumns.length 5}}
                     <a href="" id="myBtn" class="btn btnMoreColumns mt-3 btnBordoNews btn-sm">Daha Fazla Göster</a>
                   {{/if}}
                 </div>

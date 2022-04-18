@@ -10,7 +10,13 @@ FlowRouter.route('/', {
 FlowRouter.route('/news/:slugUrl', {
   name: 'public.news',
   action: function (params, queryParams) {
-    this.render('publicLayoutDefault', {page: 'publicPagesNew'});
+    this.render('publicLayoutDefault', {page: 'publicPagesNewDetail'});
+  }
+});
+FlowRouter.route('/columns/:slugUrl', {
+  name: 'public.columns',
+  action: function (params, queryParams) {
+    this.render('publicLayoutDefault', {page: 'publicPagesColumnDetail'});
   }
 });
 
@@ -34,8 +40,8 @@ FlowRouter.route('/category', {
     this.render('publicLayoutDefault', {page: 'publicPagesCategory'});
   }
 });
-FlowRouter.route('/columns', {
-  name: 'public.columns',
+FlowRouter.route('/allcolumns', {
+  name: 'public.all.columns',
   action: function (params, queryParams) {
     this.render('publicLayoutDefault', {page: 'publicPagesColumns'});
   }
@@ -44,11 +50,5 @@ FlowRouter.route('/dashboard', {
   name: 'public.dashboard',
   action: function (params, queryParams) {
     this.render('publicLayoutDefault', {page: 'publicPagesDashboard'});
-  }
-});
-FlowRouter.route('/content', {
-  name: 'public.content',
-  action: function (params, queryParams) {
-    this.render('publicLayoutContent', {page: 'publicPagesContent'});
   }
 });
