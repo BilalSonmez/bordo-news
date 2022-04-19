@@ -8,13 +8,13 @@ new ValidatedMethod({
   run: async function (data) {
     this.unblock();
     const { slugUrl } = data;
-    const column = Columns.findOne({
+    const column = await Columns.findOne({
       slugUrl: slugUrl
     });
-    column.featuredImage = Files.findOne({
+    column.featuredImage = await Files.findOne({
       _id: column.featuredImage
     });
-    const writer = Meteor.users.findOne({
+    const writer = await Meteor.users.findOne({
       _id:column.createdUserId,
     });
     column.writer={
@@ -22,6 +22,10 @@ new ValidatedMethod({
       lastName:writer.profile.lastName,
       picture:writer.profile.picture.url,
     }
+
+    Columns.update({slugUrl: slugUrl}, {$set:{
+      "communityData.views": column.communityData.views + 1,
+    }});
 
     return column;
   }

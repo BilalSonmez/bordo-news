@@ -9,7 +9,7 @@ Template.publicPagesNewDetail.onCreated(function () {
 Template.publicPagesNewDetail.onRendered(function () {
   const self = this;
   const slugUrl = FlowRouter.getParam("slugUrl");
-  console.log(slugUrl);
+  
   this.autorun(function () {
     Meteor.call("news.show.url", {
       slugUrl: slugUrl
@@ -18,8 +18,8 @@ Template.publicPagesNewDetail.onRendered(function () {
         ErrorHandler.show(error.message);
         return;
       }
+      document.getElementById("newsDetailContent").innerHTML=result.content;
       self.state.set("news", result);
-      console.log(result);
     });
   });
   this.autorun(function () {

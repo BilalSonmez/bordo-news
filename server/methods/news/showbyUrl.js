@@ -11,14 +11,18 @@ new ValidatedMethod({
     const news = News.findOne({
       slugUrl: slugUrl
     });
-    news.featuredImage = Files.findOne({
-      _id: news.featuredImage
+    news.featuredImage = await Files.findOne({
+      _id: news.featuredImage,
     });
     news.categories = await Categories.find({
       _id : {
         $in : news.categories,
        }
     }).fetch(); 
+    News.update({slugUrl: slugUrl}, {$set:{
+      "communityData.views": news.communityData.views + 1,
+    }});
+
     return news;
   }
 });

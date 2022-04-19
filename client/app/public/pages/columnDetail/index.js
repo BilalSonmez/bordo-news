@@ -10,7 +10,6 @@ Template.publicPagesColumnDetail.onCreated(function () {
 Template.publicPagesColumnDetail.onRendered(function () {
   const self = this;
   const slugUrl = FlowRouter.getParam("slugUrl");
-  console.log(slugUrl);
   this.autorun(function () {
     const listOptions = {
       options: {
@@ -44,7 +43,7 @@ Template.publicPagesColumnDetail.onRendered(function () {
         return;
       }
       self.state.set("column", result);
-      console.log(result);
+      document.getElementById("columnDetailContent").innerHTML=result.content;
     });
   });
   this.autorun(function () {
