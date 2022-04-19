@@ -19,7 +19,39 @@
               <div id="newsDetailContent" class="pt-5">
                 
               </div>
-              <div>
+              <div class="d-flex justify-content-center m-2">
+                {{#if eq (state.get 'currentUserLike') true}}
+                <span class="text-success">
+                  {{_news.totalLike}}
+                  <button class="btn likeBtn btnLike p-1 likeBtnGreen"><i class="fa fa-thumbs-up fa-lg px-2" aria-hidden="true"></i></button>
+                </span>
+                <span class="text-danger">
+                  <button class="btn likeBtn btnDislike p-1"><i class="fa fa-thumbs-down fa-lg px-2" aria-hidden="true"></i></button>
+                  {{_news.totalDislike}}
+                </span>
+                {{else}}
+                  {{#if eq (state.get 'currentUserLike') false}}
+                  <span class="text-success">
+                    {{_news.totalLike}}
+                    <button class="btn likeBtn btnLike p-1"><i class="fa fa-thumbs-up fa-lg px-2" aria-hidden="true"></i></button>
+                  </span>
+                  <span class="text-danger">
+                    <button class="btn likeBtn btnDislike p-1 likeBtnRed"><i class="fa fa-thumbs-down fa-lg px-2" aria-hidden="true"></i></button>
+                    {{_news.totalDislike}}
+                  </span>
+                  {{else}}
+                  <span class="text-success">
+                    {{_news.totalLike}}
+                    <button class="btn likeBtn btnLike p-1"><i class="fa fa-thumbs-up fa-lg px-2" aria-hidden="true"></i></button>
+                  </span>
+                  <span class="text-danger">
+                    <button class="btn likeBtn btnDislike p-1"><i class="fa fa-thumbs-down fa-lg px-2" aria-hidden="true"></i></button>
+                    {{_news.totalDislike}}
+                  </span>                 
+                  {{/if}}        
+                {{/if}}
+                
+                
               </div>
             </div>
 

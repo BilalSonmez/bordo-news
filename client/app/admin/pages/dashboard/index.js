@@ -7,7 +7,9 @@ Template.adminPageDashboard.onCreated(function () {
     newsView: Number,
     user: Number,
     view: Number,
-    like: Number, //TODO after datas
+    columnLikes: Number,
+    newsLikes:Number,
+    like:Number,
   });
 });
 
@@ -15,6 +17,9 @@ Template.adminPageDashboard.onRendered(function () {
   const self = this;
   this.autorun(function () {
     self.state.set("view",self.state.get("columnView")+self.state.get("newsView"))
+  });
+  this.autorun(function () {
+    self.state.set("like",self.state.get("columnLikes")+self.state.get("newsLikes"))
   });
   this.autorun(function () {
     Meteor.call("category.list", {}, function (error, result) {
@@ -30,9 +35,12 @@ Template.adminPageDashboard.onRendered(function () {
         return;
       }
       let counter=0;
+      let likeCounter=0;
       result.columns.forEach(function (data){
         counter += data.communityData.views;
+        likeCounter += data.communityData.like.length;
       })
+      self.state.set("columnLikes", likeCounter);
       self.state.set("columnView", counter);
       self.state.set("column", result.columns.length);
     });
@@ -42,9 +50,12 @@ Template.adminPageDashboard.onRendered(function () {
         return;
       }
       let counter=0;
+      let likeCounter=0;
       result.news.forEach(function (data){
         counter += data.communityData.views;
+        likeCounter += data.communityData.like.length;
       })
+      self.state.set("newsLikes", likeCounter);
       self.state.set("newsView", counter);
       self.state.set("news", result.news.length);
     });

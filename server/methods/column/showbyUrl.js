@@ -26,6 +26,17 @@ new ValidatedMethod({
     Columns.update({slugUrl: slugUrl}, {$set:{
       "communityData.views": column.communityData.views + 1,
     }});
+    let totalLike=0;
+    let totalDislike=0;
+    column.communityData.like.forEach((like)=>{
+      if(like.status){
+        totalLike++;
+      }else{
+        totalDislike++;
+      }
+    })
+    column.totalLike=totalLike;
+    column.totalDislike=totalDislike;
 
     return column;
   }
