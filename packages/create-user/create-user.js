@@ -12,6 +12,9 @@ const _schema = new SimpleSchema({
   createdUserId: {
     type: SimpleSchema.RegEx.Id,
     autoValue: function () {
+      if (this.isUpdate) {
+        return
+      }
       try {
         if (Meteor.userId()) {
           return Meteor.userId()
@@ -20,7 +23,8 @@ const _schema = new SimpleSchema({
         console.log('Veri kullanıcı kaydı olmadan kayıt edildi.');
       }
     },
-    optional: true
+    optional: true,
+    denyUpdate: true
   }
 });
 
