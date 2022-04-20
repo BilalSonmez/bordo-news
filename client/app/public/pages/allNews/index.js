@@ -1,24 +1,26 @@
-Template.publicPagesAllColumns.onCreated(function () {
+
+Template.publicPagesAllNews.onCreated(function () {
   this.state = new ReactiveDict(null, {
-    columns: [],
-    columnists: [],
+    news: [],
+    categories: [],
   });
   this.pagination = new ReactiveDict(null, {
     currentPage: 1,
-    pageItems: 6,
+    pageItems: 8,
     totalCount: 0,
     totalPages: 0
   });
+
   this.sorting = new ReactiveDict(null, {
     sortField: 'createdAt',
     sortOrder: 'asc'
   });
 
   this.filtering = new ReactiveDict(null, {});
-
 });
-Template.publicPagesAllColumns.onRendered(function () {
+Template.publicPagesAllNews.onRendered(function () {
   const self = this;
+
   $(window).on('scroll', (event) => {
     if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
       if (!(self.pagination.get("currentPage") >= self.pagination.get("totalPages"))) {
@@ -27,7 +29,20 @@ Template.publicPagesAllColumns.onRendered(function () {
     }
 
   })
+  
   this.autorun(function () {
+    Meteor.call("category.list", {}, function (error, result) {
+      if (error) {
+        ErrorHandler.show(error.message);
+        return;
+      }
+      console.log(result);
+      self.state.set("categories",result.categories) ;
+    })
+  });
+
+  this.autorun(function () {
+   
     const listOptions = {
       options: {
         pagination: {
@@ -41,8 +56,7 @@ Template.publicPagesAllColumns.onRendered(function () {
         }
       }
     };
-
-    Meteor.call("column.list", listOptions, function (error, result) {
+    Meteor.call("news.list", listOptions, function (error, result) {
       if (error) {
         ErrorHandler.show(error.message);
         return;
@@ -50,30 +64,24 @@ Template.publicPagesAllColumns.onRendered(function () {
       self.pagination.set("totalCount", result.options.pagination.totalCount);
       const pages = Math.ceil(result.options.pagination.totalCount / result.options.pagination.pageItems);
       self.pagination.set("totalPages", pages);
-      self.state.set("columns", self.state.get('columns').concat(result.columns));
+      self.state.set("news", self.state.get('news').concat(result.news));
     })
   });
-  this.autorun(function () {
 
-    Meteor.call("columnist.list", {}, function (error, result) {
-      if (error) {
-        ErrorHandler.show(error.message);
-        return;
-      }
-      self.state.set("columnists",result);
-    })
-  });
 
 });
-Template.publicPagesAllColumns.events({
-  'click .btnColumnsMore': function (event, template) {
+
+Template.publicPagesAllNews.events({
+
+
+  'click .btnNewsMore': function (event, template) {
     template.pagination.set("currentPage", template.pagination.get("currentPage") + 1);
     if (template.pagination.get("currentPage") >= template.pagination.get("totalPages")) {
       $(event.target).hide();
     }
   },
-  "click .btnMoreColumns": function (event, template) {
-    let moretext = document.getElementsByClassName("moreColumnsSpan");;
+  'click .btnCategoryMore': function (event, template) {
+    let moretext = document.getElementsByClassName("moreCategoriesSpan");;
     for (let data of moretext) {
       data.classList.remove('d-none');
     }

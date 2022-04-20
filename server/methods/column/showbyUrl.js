@@ -18,6 +18,7 @@ new ValidatedMethod({
       _id:column.createdUserId,
     });
     column.writer={
+      _id:writer._id,
       name:writer.profile.name,
       lastName:writer.profile.lastName,
       picture:writer.profile.picture.url,

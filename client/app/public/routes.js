@@ -25,6 +25,12 @@ FlowRouter.route('/category/:slugUrl', {
     this.render('publicLayoutDefault', {page: 'publicPagesCategoryDetail'});
   }
 });
+FlowRouter.route('/columnist/:_id', {
+  name: 'public.columnist',
+  action: function (params, queryParams) {
+    this.render('publicLayoutDefault', {page: 'publicPagesColumnistDetail'});
+  }
+});
 
 FlowRouter.route('/about', {
   name: 'public.about',
@@ -40,10 +46,10 @@ FlowRouter.route('/contact', {
   }
 });
 
-FlowRouter.route('/allcategory', {
-  name: 'public.all.category',
+FlowRouter.route('/allnews', {
+  name: 'public.all.news',
   action: function (params, queryParams) {
-    this.render('publicLayoutDefault', {page: 'publicPagesAllCategory'});
+    this.render('publicLayoutDefault', {page: 'publicPagesAllNews'});
   }
 });
 
@@ -51,11 +57,5 @@ FlowRouter.route('/allcolumns', {
   name: 'public.all.columns',
   action: function (params, queryParams) {
     this.render('publicLayoutDefault', {page: 'publicPagesAllColumns'});
-  }
-});
-FlowRouter.route('/dashboard', {
-  name: 'public.dashboard',
-  action: function (params, queryParams) {
-    this.render('publicLayoutDefault', {page: 'publicPagesDashboard'});
   }
 });
