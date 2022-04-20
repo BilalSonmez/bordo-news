@@ -34,16 +34,16 @@ FlowRouter.route('/contact', {
     this.render('publicLayoutDefault', {page: 'publicPagesContact'});
   }
 });
-FlowRouter.route('/category', {
-  name: 'public.category',
+FlowRouter.route('/allcategory', {
+  name: 'public.all.category',
   action: function (params, queryParams) {
-    this.render('publicLayoutDefault', {page: 'publicPagesCategory'});
+    this.render('publicLayoutDefault', {page: 'publicPagesAllCategory'});
   }
 });
 FlowRouter.route('/allcolumns', {
   name: 'public.all.columns',
   action: function (params, queryParams) {
-    this.render('publicLayoutDefault', {page: 'publicPagesColumns'});
+    this.render('publicLayoutDefault', {page: 'publicPagesAllColumns'});
   }
 });
 FlowRouter.route('/dashboard', {

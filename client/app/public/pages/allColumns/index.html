@@ -1,0 +1,56 @@
+<template name="publicPagesAllColumns">
+  {{#let  _columns=(state.get'columns') _columnwriter=(state.get'columnwriter')}}
+  <div class="container">
+    <div class="row mt-3 ">
+      <div class="col-md-8 p-0 my-3">
+        <h4>Köşe Yazıları</h4>
+        <div class="row">
+          {{#each _columns}}
+          <div class="col-md-6 p-2">
+            <div class="card columnsCard">
+              <a href="{{pathFor '/columns/:slugUrl' slugUrl=slugUrl}}">
+                <img src="{{featuredImage.url}}" class="card-img-top w-100" alt="" />
+              </a>
+              <div class="card-body">
+                <h5 class="card-title">{{title}}</h5>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center p-3">
+            <!-- TODO hide on start if not enough data -->
+            <button class="btn text-center btnBordoColumns btnColumnsMore">Daha fazla haber</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 my-4">
+        <div class="card position-sticky stickycard">
+          <div class="card-header text-center">Köşe Yazarları</div>
+          <div class="card-body">
+            
+              <div class="list-group moreColumnsList">
+                  {{#each _columnwriter}}
+                    {{#if gt @index 4}}
+                      <span class="moreColumnsSpan d-none">
+                        <a href=""
+                          class="list-group-item list-group-item-action list-group-item-light">{{_columnwriter.writer.name}} {{_columnwriter.writer.lastName}}</a>
+                      </span>
+                    {{else}}
+                      <a href=""
+                        class="list-group-item list-group-item-action list-group-item-light">{{_columnwriter.writer.name}} {{_columnwriter.writer.lastName}} </a>
+                    {{/if}}
+                  {{/each}}
+                  {{#if gt _columnwriter.length 5}}
+                    <a href="" id="myBtn" class="btn btnMoreColumns mt-3 btnMoreColumns btn-sm">Daha Fazla Göster</a>
+                  {{/if}}
+                </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/let}}
+</template>
