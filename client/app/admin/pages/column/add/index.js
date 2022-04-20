@@ -31,7 +31,6 @@ Template.adminPageColumnAdd.events({
     const subTitle = event.target.inputSubTitle.value;
     const content = template.quill.root.innerHTML;
     const slugUrl = Slugify(event.target.slugUrl.value,{replacement: '-',lower:true});
-    //TODO will change after upload system
     const featuredImage = images.length > 0 ? images[0]._id : null;
     const metaTitle = event.target.inputMetaTitle.value;
     const metaDescription = event.target.inputMetaDescription.value;

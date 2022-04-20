@@ -4,3 +4,22 @@
 .moreNewsList {
   font-size: 0.8rem;
 }
+
+.likeBtn{
+  cursor: pointer !important;
+  outline: 0 !important;
+  color: #AAA !important;
+
+}
+
+.likeBtn:focus {
+  outline: none !important;
+}
+
+.likeBtnGreen{
+  color: green !important;
+}
+
+.likeBtnRed{
+  color: red !important;
+}

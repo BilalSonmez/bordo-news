@@ -8,13 +8,13 @@ new ValidatedMethod({
   run: async function (data) {
     this.unblock();
     const { slugUrl } = data;
-    const column = Columns.findOne({
+    const column = await Columns.findOne({
       slugUrl: slugUrl
     });
-    column.featuredImage = Files.findOne({
+    column.featuredImage = await Files.findOne({
       _id: column.featuredImage
     });
-    const writer = Meteor.users.findOne({
+    const writer = await Meteor.users.findOne({
       _id:column.createdUserId,
     });
     column.writer={
@@ -22,6 +22,21 @@ new ValidatedMethod({
       lastName:writer.profile.lastName,
       picture:writer.profile.picture.url,
     }
+
+    Columns.update({slugUrl: slugUrl}, {$set:{
+      "communityData.views": column.communityData.views + 1,
+    }});
+    let totalLike=0;
+    let totalDislike=0;
+    column.communityData.like.forEach((like)=>{
+      if(like.status){
+        totalLike++;
+      }else{
+        totalDislike++;
+      }
+    })
+    column.totalLike=totalLike;
+    column.totalDislike=totalDislike;
 
     return column;
   }

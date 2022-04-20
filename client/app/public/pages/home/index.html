@@ -1,7 +1,7 @@
 <template name="publicPagesHome">
   {{#let _news=(state.get'news') _topNews=(state.get'topNews') _columns=(state.get'columns') _topColumns=(state.get'topColumns') _breakingNews=(state.get'breakingNews') }}
     <div class="publicPagesHome">
-      <div class="container-md mb-4">
+      <div class="container mb-4">
         <div class="row">
           <div class="col-md-8 pb-5 px-0">
             <div id="carouselExampleControls" class="carousel position-relative slide mt-3  w-100 h-100 ">
@@ -84,7 +84,6 @@
             </div>
             <div class="row">
               <div class="col-md-12 text-center p-3">
-                <!-- TODO hide on start if not enough data -->
                 <button class="btn text-center btnBordoNews btnNewsMore">Daha fazla haber</button>
               </div>
             </div>
@@ -98,11 +97,11 @@
                     {{#if gt @index 4}}
                       <span class="moreNewsSpan d-none">
                         <a href="{{pathFor '/news/:slugUrl' slugUrl=slugUrl}}"
-                          class="list-group-item list-group-item-action list-group-item-light">{{title}}</a>
+                          class="list-group-item list-group-item-action list-group-item-light"><b>{{add @index}}.</b> {{title}}</a>
                       </span>
                     {{else}}
                       <a href="{{pathFor '/news/:slugUrl' slugUrl=slugUrl}}"
-                        class="list-group-item list-group-item-action list-group-item-light">{{title}}</a>
+                        class="list-group-item list-group-item-action list-group-item-light"><b>{{add @index}}.</b> {{title}}</a>
                     {{/if}}
                   {{/each}}
                   {{#if gt _topNews.length 5}}
@@ -131,7 +130,6 @@
             </div>
             <div class="row">
               <div class="col-md-12 text-center p-3">
-                <!-- TODO hide on start if not enough data -->
                 <button class="btn btnBordoNews text-center btnColumnsMore">Daha fazla köşe yazısı</button>
               </div>
             </div>
@@ -144,10 +142,10 @@
                   {{#each _topColumns}}
                     {{#if gt @index 4}}
                       <span class="moreColumnsSpan d-none">
-                        <a href="{{pathFor '/columns/:slugUrl' slugUrl=slugUrl}}" class="list-group-item list-group-item-action list-group-item-light">{{title}}</a>
+                        <a href="{{pathFor '/columns/:slugUrl' slugUrl=slugUrl}}" class="list-group-item list-group-item-action list-group-item-light"><b>{{add @index}}.</b> {{title}}</a>
                       </span>
                     {{else}}
-                      <a href="{{pathFor '/columns/:slugUrl' slugUrl=slugUrl}}" class="list-group-item list-group-item-action list-group-item-light">{{title}}</a>
+                      <a href="{{pathFor '/columns/:slugUrl' slugUrl=slugUrl}}" class="list-group-item list-group-item-action list-group-item-light"><b>{{add @index}}.</b> {{title}}</a>
                     {{/if}}
                   {{/each}}
                   {{#if gt _topColumns.length 5}}

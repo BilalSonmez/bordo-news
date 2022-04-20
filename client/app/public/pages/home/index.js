@@ -1,3 +1,4 @@
+import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import bootstrap from "bootstrap";
 Template.publicPagesHome.onCreated(function () {
   this.state = new ReactiveDict(null, {
@@ -157,7 +158,9 @@ Template.publicPagesHome.events({
     $("#carouselExampleControls").carousel(parseInt(event.currentTarget.dataset.bsTargetSlide));
   },
   'click .btnCarousel': function (event, template) {
-    //TODO Flow router link to new
+    FlowRouter.go("public.news", {
+      slugUrl: this.slugUrl
+    });
   },
   'click .btnNewsMore': function (event, template) {
     template.newsPagination.set("currentPage", template.newsPagination.get("currentPage") + 1);
