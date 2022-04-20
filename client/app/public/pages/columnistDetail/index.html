@@ -1,0 +1,34 @@
+<template name="publicPagesColumnistDetail">
+  {{#let _columns=(state.get 'columns') _columnist=(state.get'columnist')}}
+  <div class="container columnistContainer mb-4">
+    <div class="row mt-3">
+      <div class="col-md-8 p-0 my-3">
+        <h4>Köşe Yazıları</h4>
+        <div class="row">
+          {{#each _columns}}
+            <div class="col-md-6 p-2">
+              <div class="card newsCard">
+                <a href="{{pathFor '/columns/:slugUrl' slugUrl=slugUrl}}">
+                  <img src="{{featuredImage.url}}" class="card-img-top w-100" alt="" />
+                </a>
+                <div class="card-body">
+                  <h5 class="card-title">{{title}}</h5>
+                </div>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      </div>
+      <div class="col-md-4 my-4">
+        <div>
+          <div class="position-relative my-3 text-center">
+            <img src="{{_columnist.picture}}" class="  w-50 img-fluid  h-50" alt="...">
+            <h5 class="my-2">Yazar: {{_columnist.name}} {{_columnist.lastName}}</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  {{/let}}
+</template>
