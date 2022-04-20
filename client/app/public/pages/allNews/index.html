@@ -1,9 +1,9 @@
-<template name="publicPagesAllCategory">
+<template name="publicPagesAllNews">
   {{#let _news=(state.get 'news')  _categories=(state.get 'categories')}}
   <div class="container">
     <div class="row mt-3 ">
       <div class="col-md-8 p-0 my-3">
-        <h4>Haberler</h4>
+        <div class="h3 my-3">Haberler</div>
         <div class="row">
           {{#each _news}}
           <div class="col-md-6 p-2">
@@ -18,12 +18,6 @@
           </div>
           {{/each}}
         </div>
-        <div class="row">
-          <div class="col-md-12 text-center p-3">
-            <!-- TODO hide on start if not enough data -->
-            <button class="btn text-center btnBordoNews btnNewsMore">Daha fazla haber</button>
-          </div>
-        </div>
       </div>
       <div class="col-md-4 my-4">
         <div class="card position-sticky stickycard">
@@ -33,19 +27,9 @@
 
               <div class="list-group moreNewsList">
                   {{#each _categories}}
-                    {{#if gt @index 4}}
-                      <span class="moreCategoriesSpan d-none">
-                        <a href=""
-                          class="list-group-item list-group-item-action list-group-item-light">{{title}}</a>
-                      </span>
-                    {{else}}
-                      <a href=""
-                        class="list-group-item list-group-item-action list-group-item-light">{{title}}</a>
-                    {{/if}}
+                      <a href="{{pathFor '/category/:slugUrl' slugUrl=slugUrl}}"
+                        class="list-group-item list-group-item-action list-group-item-light"><b>{{add @index}}.</b> {{title}}</a>
                   {{/each}}
-                  {{#if gt _categories.length 5}}
-                    <a href="" id="myBtn" class="btn btnMoreNews mt-3 btnCategoryMore btn-sm">Daha Fazla Göster</a>
-                  {{/if}}
                 </div>
             </div>
           </div>

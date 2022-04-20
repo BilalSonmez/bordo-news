@@ -67,7 +67,7 @@
 
         <div class="row mt-3 ">
           <div class="col-md-8 p-0 my-3">
-            <h4>Haberler</h4>
+            <a href="{{pathFor 'public.all.news'}}" class="text-decoration-none h4 px-1">Haberler</a> 
             <div class="row">
               {{#each _news}}
                 <div class="col-md-6 p-2">
@@ -113,7 +113,7 @@
           </div>
 
           <div class="col-md-8 p-0 my-3">
-            <h4>Köşe Yazıları</h4>
+            <a href="{{pathFor 'public.all.columns'}}" class="text-decoration-none h4 px-1">Köşe Yazıları</a> 
             <div class="row">
               {{#each _columns}}
                 <div class="col-md-6 p-2">
@@ -135,7 +135,7 @@
             </div>
           </div>
           <div class="col-md-4 my-4">
-            <div class="card text-center position-sticky stickycard">
+            <div class="card position-sticky stickycard">
               <div class="card-header text-center">Popüler Köşe Yazıları</div>
               <div class="card-body">
                 <div class="list-group moreNewsList">

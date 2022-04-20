@@ -40,10 +40,10 @@ FlowRouter.route('/contact', {
   }
 });
 
-FlowRouter.route('/allcategory', {
-  name: 'public.all.category',
+FlowRouter.route('/allnews', {
+  name: 'public.all.news',
   action: function (params, queryParams) {
-    this.render('publicLayoutDefault', {page: 'publicPagesAllCategory'});
+    this.render('publicLayoutDefault', {page: 'publicPagesAllNews'});
   }
 });
 
