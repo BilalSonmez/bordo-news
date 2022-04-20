@@ -19,36 +19,43 @@
               <div id="columnDetailContent" class="pt-5">
 
               </div>
+              <p class="text-end m-0 pe-5 text-muted">Total view : {{_column.communityData.views}}</p>
               <div class="d-flex justify-content-center m-2">
                 {{#if eq (state.get 'currentUserLike') true}}
-                <span class="text-success">
-                  {{_column.totalLike}}
-                  <button class="btn likeBtn btnLike p-1 likeBtnGreen"><i class="fa fa-thumbs-up fa-lg px-2" aria-hidden="true"></i></button>
-                </span>
-                <span class="text-danger">
-                  <button class="btn likeBtn btnDislike p-1"><i class="fa fa-thumbs-down fa-lg px-2" aria-hidden="true"></i></button>
-                  {{_column.totalDislike}}
-                </span>
+                  <span class="text-success">
+                    {{_column.totalLike}}
+                    <button class="btn likeBtn btnLike p-1 likeBtnGreen"><i class="fa fa-thumbs-up fa-lg px-2"
+                        aria-hidden="true"></i></button>
+                  </span>
+                  <span class="text-danger">
+                    <button class="btn likeBtn btnDislike p-1"><i class="fa fa-thumbs-down fa-lg px-2"
+                        aria-hidden="true"></i></button>
+                    {{_column.totalDislike}}
+                  </span>
                 {{else}}
                   {{#if eq (state.get 'currentUserLike') false}}
-                  <span class="text-success">
-                    {{_column.totalLike}}
-                    <button class="btn likeBtn btnLike p-1"><i class="fa fa-thumbs-up fa-lg px-2" aria-hidden="true"></i></button>
-                  </span>
-                  <span class="text-danger">
-                    <button class="btn likeBtn btnDislike p-1 likeBtnRed"><i class="fa fa-thumbs-down fa-lg px-2" aria-hidden="true"></i></button>
-                    {{_column.totalDislike}}
-                  </span>
+                    <span class="text-success">
+                      {{_column.totalLike}}
+                      <button class="btn likeBtn btnLike p-1"><i class="fa fa-thumbs-up fa-lg px-2"
+                          aria-hidden="true"></i></button>
+                    </span>
+                    <span class="text-danger">
+                      <button class="btn likeBtn btnDislike p-1 likeBtnRed"><i class="fa fa-thumbs-down fa-lg px-2"
+                          aria-hidden="true"></i></button>
+                      {{_column.totalDislike}}
+                    </span>
                   {{else}}
-                  <span class="text-success">
-                    {{_column.totalLike}}
-                    <button class="btn likeBtn btnLike p-1"><i class="fa fa-thumbs-up fa-lg px-2" aria-hidden="true"></i></button>
-                  </span>
-                  <span class="text-danger">
-                    <button class="btn likeBtn btnDislike p-1"><i class="fa fa-thumbs-down fa-lg px-2" aria-hidden="true"></i></button>
-                    {{_column.totalDislike}}
-                  </span>                 
-                  {{/if}}        
+                    <span class="text-success">
+                      {{_column.totalLike}}
+                      <button class="btn likeBtn btnLike p-1"><i class="fa fa-thumbs-up fa-lg px-2"
+                          aria-hidden="true"></i></button>
+                    </span>
+                    <span class="text-danger">
+                      <button class="btn likeBtn btnDislike p-1"><i class="fa fa-thumbs-down fa-lg px-2"
+                          aria-hidden="true"></i></button>
+                      {{_column.totalDislike}}
+                    </span>
+                  {{/if}}
                 {{/if}}
               </div>
             </div>
@@ -71,20 +78,24 @@
             <div>
               <div class="position-relative my-3 text-center">
                 <img src="{{_column.writer.picture}}" class="  w-50 img-fluid  h-50" alt="...">
-                <h5 class="my-2">{{_column.writer.name}} {{_column.writer.lastName}}</h5>
+                <h5 class="my-2">Yazar: {{_column.writer.name}} {{_column.writer.lastName}}</h5>
               </div>
             </div>
-            <div class="card text-center position-sticky stickycard">
+            <div class="card position-sticky stickycard">
               <div class="card-header text-center">Popüler Köşe Yazıları</div>
               <div class="card-body">
                 <div class="list-group moreNewsList">
                   {{#each _topColumns}}
                     {{#if gt @index 4}}
                       <span class="moreColumnsSpan d-none">
-                        <a href="{{pathFor '/columns/:slugUrl' slugUrl=slugUrl}}" class="list-group-item list-group-item-action list-group-item-light">{{title}}</a>
+                        <a href="{{pathFor '/columns/:slugUrl' slugUrl=slugUrl}}"
+                          class="list-group-item list-group-item-action list-group-item-light"><b>{{add @index}}.</b>
+                          {{title}}</a>
                       </span>
                     {{else}}
-                      <a href="{{pathFor '/columns/:slugUrl' slugUrl=slugUrl}}" class="list-group-item list-group-item-action list-group-item-light">{{title}}</a>
+                      <a href="{{pathFor '/columns/:slugUrl' slugUrl=slugUrl}}"
+                        class="list-group-item list-group-item-action list-group-item-light"><b>{{add @index}}.</b>
+                        {{title}}</a>
                     {{/if}}
                   {{/each}}
                   {{#if gt _topColumns.length 5}}

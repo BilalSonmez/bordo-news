@@ -24,6 +24,7 @@ Template.publicPagesNewDetail.onRendered(function () {
       }
       document.getElementById("newsDetailContent").innerHTML = result.content;
       self.state.set("news", result);
+      console.log(result);
       result.communityData.like.forEach((data) => {
         if (data.userId === Meteor.userId()) {
           self.state.set("currentUserLike", data.status);

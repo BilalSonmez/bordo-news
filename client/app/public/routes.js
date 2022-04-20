@@ -19,7 +19,12 @@ FlowRouter.route('/columns/:slugUrl', {
     this.render('publicLayoutDefault', {page: 'publicPagesColumnDetail'});
   }
 });
-
+FlowRouter.route('/category/:slugUrl', {
+  name: 'public.category',
+  action: function (params, queryParams) {
+    this.render('publicLayoutDefault', {page: 'publicPagesCategoryDetail'});
+  }
+});
 
 FlowRouter.route('/about', {
   name: 'public.about',
@@ -34,12 +39,7 @@ FlowRouter.route('/contact', {
     this.render('publicLayoutDefault', {page: 'publicPagesContact'});
   }
 });
-FlowRouter.route('/category', {
-  name: 'public.category',
-  action: function (params, queryParams) {
-    this.render('publicLayoutDefault', {page: 'publicPagesCategory'});
-  }
-});
+
 FlowRouter.route('/allcolumns', {
   name: 'public.all.columns',
   action: function (params, queryParams) {
