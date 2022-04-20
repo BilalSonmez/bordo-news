@@ -40,10 +40,17 @@ FlowRouter.route('/contact', {
   }
 });
 
+FlowRouter.route('/allcategory', {
+  name: 'public.all.category',
+  action: function (params, queryParams) {
+    this.render('publicLayoutDefault', {page: 'publicPagesAllCategory'});
+  }
+});
+
 FlowRouter.route('/allcolumns', {
   name: 'public.all.columns',
   action: function (params, queryParams) {
-    this.render('publicLayoutDefault', {page: 'publicPagesColumns'});
+    this.render('publicLayoutDefault', {page: 'publicPagesAllColumns'});
   }
 });
 FlowRouter.route('/dashboard', {
