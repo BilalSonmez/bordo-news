@@ -11,9 +11,7 @@ Template.adminModalsFileManager.onCreated(function () {
 
   this.state = new ReactiveDict(null, {
     files: [],
-    selectedFiles: [
-      "tDbavQNpfkY8pQPxq"
-    ]
+    selectedFiles: []
   });
 
   this.pagination = new ReactiveDict(null, {
@@ -62,7 +60,6 @@ Template.adminModalsFileManager.onRendered(function () {
 
   this.autorun(function(){
     self.currentArea = AppUtil.temp.get('currentArea');
-    console.log(123);
     if (self.currentArea) {
       self.state.set('selectedFiles', AppUtil.temp.get(self.currentArea.fileAreaID));
     }
@@ -73,7 +70,7 @@ Template.adminModalsFileManager.onRendered(function () {
           $options: 'i'
         };
   */
-
+  //Files.find({$or: [{name: {$regex: `${_options.filtering[key]}`, $options: 'i'}}]})
   this.autorun(function() {
     $('.fileLoading').show();
     const currentPage = self.pagination.get('currentPage');

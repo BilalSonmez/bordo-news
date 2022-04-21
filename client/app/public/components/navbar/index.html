@@ -1,53 +1,51 @@
 <template name="publicComponentsNavbar">
-  <div class="publicComponentsNavbar sticky-top   ">
-  <nav class="navbar brdf-navbar navbar-expand-lg ">
-    <div class="container ">
-      <div class="row  brdf-navbar-content">
-
-        <div class="navbar-brand-content text-center">
-          <a class="navbar-brand" href="{{pathFor 'public.home'}}">
-            <i class="fa-solid fa-newspaper"></i> Bordo Haber
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fa-solid fa-bars"></i>
-          </button>
-          <div class="collapse navbar-collapse " id="navbarSupportedContent">
-           
-            <ul class="navbar-nav mx-auto">
+  {{#let _categories = (state.get 'categories')}}
+  <div class="publicComponentsNavbar">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-bordo">
+      <div class="container">
+        <a class="navbar-brand" href="{{pathFor 'public.home'}}"><i class="fa-solid fa-newspaper"></i> Bordo Haber</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            {{#each _categories}}
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#">{{title}}</a>
+            </li>
+            {{/each}}
+          </ul>
+          <span class="navbar-text">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              {{#if currentUser }}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  {{ currentUser.profile.name }} {{ currentUser.profile.lastName }}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="{{pathFor 'auth.profile'}}">Profile</a></li>
+                  {{#if isInRole 'roles.admin'}}
+                  <li><a class="dropdown-item" href="{{pathFor 'admin.dashboard'}}">Admin</a></li>
+                  {{/if}}
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item brdNavbarLogout" href="javascript:;">Logout</a></li>
+                </ul>
+              </li>
+              {{else}}
               <li class="nav-item">
-                <a class="nav-link{{#if eq currentRouteName 'public.about'}} active{{/if}}" aria-current="page" href="{{pathFor 'public.about'}}">About Us</a>
+                <a class="nav-link" data-bs-toggle="modal" data-bs-target="#brdLoginModal" href="#">Sign In</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link{{#if eq currentRouteName 'public.contact'}} active{{/if}}" aria-current="page" href="{{pathFor 'public.contact'}}">Contact Us</a>
+                <a class="nav-link" data-bs-toggle="modal" data-bs-target="#brdSignUpModal" href="#">Sign Up</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="{{pathFor 'public.category'}}">Category</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="{{pathFor 'public.columns'}}">Columns</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="{{pathFor 'public.dashboard'}}">Dashboard</a>
-              </li>
-                    {{#if currentUser}}
-                    <li class="nav-item">
-                      <a class="nav-link btnLogout" href="#"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
-                    </li>
-                    {{else}}
-                    <li class="nav-item">
-                      <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#brdLoginModal"><i class="fa-solid fa-right-to-bracket"></i>Login</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#brdSignUpModal">Sign Up</a>
-                    </li>
-                    {{/if}}
+              {{/if}}
             </ul>
-          </div>
+          </span>
         </div>
       </div>
-    </div>
-  </nav>
-</div>
-{{>authModalSignIn}}
-{{>authModalSignUp}}
+    </nav>
+  </div>
+  {{/let}}
+  {{>authModalSignIn}}
+  {{>authModalSignUp}}
 </template>

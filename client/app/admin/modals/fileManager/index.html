@@ -28,7 +28,7 @@
           <ul class="thumbnails image_picker_selector row">
             {{#each _files}}
             <li class="col-6 col-md-2">
-              <div class="thumbnail{{#if eqInArray _id _selectedFiles}} selected{{/if}}" id="{{_id}}">
+              <div class="thumbnail{{#if eqInArray _selectedFiles _id}} selected{{/if}}" id="{{_id}}">
                 <div class="brd-media-image-container">
                   <div class="brd-media-image"><img class="image_picker_image img-fluid"
                       src="{{url}}"></div>

@@ -1,45 +1,92 @@
 <template name="publicComponentsFooter">
-
-  <footer class="gfooter text-white">
-    <div class="container ">
-
-      <div class="row justify-content-center">
-        <div class="col-md-4">
-          
-            <h4><i class="fa-solid fa-newspaper"></i> Bordo Haber</h4>
-              <a class="btn btn-primary btn-floating m-1 w-5 h-5 btn-md" style="background-color: #3b5998" href="#!"
-                role="button"><i class="fab fa-facebook-f"></i></a>
-              <a class="btn btn-primary btn-floating m-1 w-5 h-5 btn-md" style="background-color: #55acee" href="#!"
-                role="button"><i class="fab fa-twitter"></i></a>
-              <a class="btn btn-primary btn-floating m-1 w-5 h-5 btn-md" style="background-color: #ac2bac" href="#!"
-                role="button"><i class="fab fa-instagram"></i></a>
-
-            
-          
+  {{#let _categories = (state.get 'categories')}}
+  <div class="publicComponentsFooter">
+    <footer class="text-center text-lg-start bg-bordo text-muted">
+      <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        <div class="me-5 d-none d-lg-block">
+          <span>Get connected with us on social networks:</span>
         </div>
-        <div class="col-md-4">
-          <h4>Kategoriler</h4>
-          <ul class="ul-footer">
-            <li><a href="#">Gündem</a></li>
-            <li><a href="#">Kamu Haberleri</a></li>
-            <li><a href="#">Ekonomi</a></li>
-
-          </ul>
+        <div>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-google"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-github"></i>
+          </a>
         </div>
-        <div class="col-md-4">
-          <h4>Kurumsal</h4>
-          <ul class="ul-footer">
-            <li><a href="#">Gizlilik Politikası</a></li>
-            <li><a href="#">İletişim</a></li>
-
-
-          </ul>
+      </section>
+      <section class="">
+        <div class="container text-center text-md-start mt-5">
+          <div class="row mt-3">
+            <div class="col-md-4 col-lg-4 col-xl-3 mx-auto mb-4">
+              <h6 class="text-uppercase fw-bold mb-4">
+                <i class="fa-solid fa-newspaper me-3"></i> Bordo News
+              </h6>
+              <p>
+                Here you can use rows and columns to organize your footer content. Lorem ipsum
+                dolor sit amet, consectetur adipisicing elit.
+              </p>
+            </div>
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+              <h6 class="text-uppercase fw-bold mb-4">
+                Categories
+              </h6>
+              {{#each _categories}}
+              <p>
+                <a href="#" class="text-reset">{{title}}</a>
+              </p>
+              {{/each}}
+            </div>
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+              <h6 class="text-uppercase fw-bold mb-4">
+                Useful links
+              </h6>
+              <p>
+                <a href="{{pathFor 'public.about'}}" class="text-reset">About Us</a>
+              </p>
+              <p>
+                <a href="{{pathFor 'public.contact'}}" class="text-reset">Contact Us</a>
+              </p>
+              <p>
+                <a href="{{pathFor 'public.columns'}}" class="text-reset">Column</a>
+              </p>
+              <p>
+                <a href="#" class="text-reset">Help</a>
+              </p>
+            </div>
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+              <h6 class="text-uppercase fw-bold mb-4">
+                Contact
+              </h6>
+              <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+              <p>
+                <i class="fas fa-envelope me-3"></i>
+                info@bordonews.com
+              </p>
+              <p><i class="fas fa-phone me-3"></i> +90 546 591 70 99</p>
+              <p><i class="fas fa-phone me-3"></i> +90 531 523 05 44</p>
+              <p><i class="fas fa-phone me-3"></i> +90 537 602 84 45</p>
+            </div>
+          </div>
         </div>
+      </section>
+      <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2022 Copyright:
+        <a class="text-reset fw-bold" href="/">bordonews.com</a>
       </div>
-      <div class="text-center text-black  ">
-        <span class="copyright quick-links">Bordo News &copy; Tüm Haber Hakları Saklıdır</span>
-      </div>
-    </div>
-  </footer>
-
+    </footer>
+  </div>
+  {{/let}}
 </template>
