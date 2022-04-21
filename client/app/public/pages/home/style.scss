@@ -1,5 +1,36 @@
+@import '../../../../style.scss';
+
 .stickycard {
   top: 85px;
+}
+
+.card {
+  background-color: #1f2a4c;
+}
+
+.publicPagesHome {
+  h4 {
+    a {
+      color: $color-base-dark!important;
+      font-weight: 600;
+      text-decoration: none !important;
+    }
+  }
+  .newsArea {
+    h6 {
+      width: 100%;
+      background-color: rgba($color: $color-base-dark, $alpha: 0.8);
+    }
+  }
+}
+
+#carouselExampleControls {
+  .carousel-item {
+    h4 {
+      background-color: $color-base-dark;
+      
+    }
+  }
 }
 
 .featuredColumns {

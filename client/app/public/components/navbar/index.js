@@ -1,4 +1,5 @@
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+import Swal from 'sweetalert2';
 
 Template.publicComponentsNavbar.onCreated(function(){
   this.state = new ReactiveDict(null, {
@@ -49,4 +50,20 @@ Template.publicComponentsNavbar.onRendered(function(){
       self.state.set("categories", result.categories);
     })
   });
+});
+
+Template.publicComponentsNavbar.events({
+  "click .brdNavbarLogout": function (event, template) {
+    event.preventDefault();
+    Meteor.logout(function () {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'info',
+        title: 'Goodbye!',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      FlowRouter.go("public.home");
+    });
+  },
 });

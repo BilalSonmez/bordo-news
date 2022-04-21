@@ -11,18 +11,15 @@
                     <div class="carousel-item h-100 active">
                       <img src="{{featuredImage.url}}" class=" d-block w-100 img-fluid brd-carousel-img h-100">
                         <a href="{{pathFor '/news/:slugUrl' slugUrl=slugUrl}}">
-                          <h4 class="position-absolute start-0 bottom-0 text-white p-2 m-0 bg-primary w-100 "
-                          style="opacity:0.7">
+                          <h4 class="position-absolute start-0 bottom-0 text-white p-2 m-0 w-100">
                           {{title}}</h4>
                         </a>  
-                      
                     </div>
                   {{else}}
                     <div class="carousel-item h-100">
                       <img src="{{featuredImage.url}}" class=" d-block w-100 img-fluid brd-carousel-img h-100">
                         <a href="{{pathFor '/news/:slugUrl' slugUrl=slugUrl}}">
-                      <h4 class="position-absolute start-0 bottom-0 text-white p-2 m-0 bg-primary w-100 "
-                        style="opacity:0.7">
+                      <h4 class="position-absolute start-0 bottom-0 text-white p-2 m-0 w-100 ">
                         {{title}}</h4>
                       </a>
                     </div>
@@ -49,17 +46,17 @@
             </div>
 
           </div>
-          <div class="col-md-4  ">
+          <div class="col-md-4 newsArea">
             <a href="{{pathFor '/columns/:slugUrl' slugUrl=_columns.[0].slugUrl}}">
               <div class="position-relative mt-3">
                 <img class="img-fluid featuredColumns" src="{{_columns.[0].featuredImage.url}}">
-                <h6 class="position-absolute start-0 bottom-0 text-white bg-dark p-2 m-0">{{_columns.[0].title}}</h6>
+                <h6 class="position-absolute start-0 bottom-0 text-white p-2 m-0">{{_columns.[0].title}}</h6>
               </div>
             </a>
             <a href="{{pathFor '/columns/:slugUrl' slugUrl=_columns.[1].slugUrl}}">
               <div class="position-relative mt-3">
                 <img class="img-fluid featuredColumns" src="{{_columns.[1].featuredImage.url}}">
-                <h6 class="position-absolute start-0 bottom-0 text-white bg-dark p-2 m-0">{{_columns.[1].title}}</h6>
+                <h6 class="position-absolute start-0 bottom-0 text-white p-2 m-0">{{_columns.[1].title}}</h6>
               </div>
             </a>
           </div>
@@ -67,7 +64,7 @@
 
         <div class="row mt-3 ">
           <div class="col-md-8 p-0 my-3">
-            <a href="{{pathFor 'public.all.news'}}" class="text-decoration-none h4 px-1">Haberler</a> 
+            <h4><a href="{{pathFor 'public.all.news'}}" class="text-decoration-none px-1">Haberler</a></h4>
             <div class="row">
               {{#each _news}}
                 <div class="col-md-6 p-2">
@@ -113,7 +110,7 @@
           </div>
 
           <div class="col-md-8 p-0 my-3">
-            <a href="{{pathFor 'public.all.columns'}}" class="text-decoration-none h4 px-1">Köşe Yazıları</a> 
+            <h4><a href="{{pathFor 'public.all.columns'}}" class="text-decoration-none h4 px-1">Köşe Yazıları</a></h4>
             <div class="row">
               {{#each _columns}}
                 <div class="col-md-6 p-2">

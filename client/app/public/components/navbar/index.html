@@ -25,6 +25,9 @@
           </ul>
           <span class="navbar-text">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item column-links">
+                <a class="nav-link{{#if eq currentRouteName 'public.all.columns'}} active{{/if}}" aria-current="page" href="{{pathFor 'public.all.columns'}}">Köşe Yazıları</a>
+              </li>
               {{#if currentUser }}
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -32,7 +35,7 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="{{pathFor 'auth.profile'}}">Profile</a></li>
-                  {{#if isInRole 'roles.admin'}}
+                  {{#if isUserHasRole}}
                   <li><a class="dropdown-item" href="{{pathFor 'admin.dashboard'}}">Dashboard</a></li>
                   {{/if}}
                   <li><hr class="dropdown-divider"></li>
