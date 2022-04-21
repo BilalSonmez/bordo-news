@@ -1,12 +1,12 @@
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 
-Template.publicComponentsNavbar.onCreated(function(){
+Template.publicComponentsFooter.onCreated(function(){
   this.state = new ReactiveDict(null, {
     categories: [],
   });
   this.pagination = new ReactiveDict(null, {
     currentPage: 1,
-    pageItems: 8,
+    pageItems: 5,
     totalCount: 0,
     totalPages: 0
   });
@@ -19,10 +19,10 @@ Template.publicComponentsNavbar.onCreated(function(){
   this.filtering = new ReactiveDict(null, {});
 });
 
-Template.publicComponentsNavbar.onRendered(function(){
+Template.publicComponentsFooter.onRendered(function(){
   const self = this;
   this.autorun(function () {
-    AppUtil.refreshTokens.get("category");
+    //AppUtil.refreshTokens.get("category");
     const listOptions = {
       options: {
         pagination: {
@@ -42,7 +42,7 @@ Template.publicComponentsNavbar.onRendered(function(){
         ErrorHandler.show(error.message);
         return;
       }
-      //console.log(result);
+      console.log(result);
       self.pagination.set("totalCount", result.options.pagination.totalCount);
       const pages = Math.ceil(result.options.pagination.totalCount / result.options.pagination.pageItems);
       self.pagination.set("totalPages", pages);
