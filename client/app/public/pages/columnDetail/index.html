@@ -5,48 +5,51 @@
         <div class="row mt-2 pt-5">
           <div class="h2">{{_column.title}}</div>
         </div>
-        <div class="row my-1">
-          <div class="h4 text-secondary">{{_column.subTitle}}</div>
-        </div>
         <div class="row mt-3 mb-2 justify-content-center ">
           <div class="col-lg-8 mt-2 mb-2 position-relative">
             <div class="row bg-white">
               <div class="position-relative  mt-3  ">
                 <img src="{{_column.featuredImage.url}}" class="  w-100 img-fluid  h-100" alt="...">
               </div>
+              <div class="content-sub-title my-2 text-muted">
+                <h5>{{_column.subTitle}}</h5>
+              </div>
               <div id="columnDetailContent" class="pt-5">
               </div>
-              <p class="text-end m-0 pe-5 text-muted">Total view : {{_column.communityData.views}}</p>
-              <div class="d-flex justify-content-center m-2">
+
+            <div class="d-flex flex-row-reverse">
+              <div class="p-2 bd-highlight text-muted">{{timeConventer _column.createdAt}}</div>
+              <div class="p-2 bd-highlight text-muted"><i class="fa-solid fa-eye"></i> {{_column.communityData.views}}</div>
+              <div class="p-2 bd-highlight">
                 {{#if eq (state.get 'currentUserLike') true}}
-                  <span class="text-success">
-                    {{_column.totalLike}}
-                    <button class="btn likeBtn btnLike p-1 likeBtnGreen"><i class="fa fa-thumbs-up fa-lg px-2"
-                        aria-hidden="true"></i></button>
-                  </span>
-                  <span class="text-danger">
-                    <button class="btn likeBtn btnDislike p-1"><i class="fa fa-thumbs-down fa-lg px-2"
-                        aria-hidden="true"></i></button>
-                    {{_column.totalDislike}}
-                  </span>
+                <span class="text-success">
+                  <button class="btn likeBtn btnLike p-1 likeBtnGreen"><i class="fa fa-thumbs-up fa-lg px-2"
+                      aria-hidden="true"></i></button>
+                </span>
+                {{_column.totalLike}}
+                <span class="text-danger">
+                  <button class="btn likeBtn btnDislike p-1"><i class="fa fa-thumbs-down fa-lg px-2"
+                      aria-hidden="true"></i></button>
+                  {{_column.totalDislike}}
+                </span>
                 {{else}}
                   {{#if eq (state.get 'currentUserLike') false}}
                     <span class="text-success">
-                      {{_column.totalLike}}
                       <button class="btn likeBtn btnLike p-1"><i class="fa fa-thumbs-up fa-lg px-2"
                           aria-hidden="true"></i></button>
                     </span>
+                    {{_column.totalLike}}
                     <span class="text-danger">
                       <button class="btn likeBtn btnDislike p-1 likeBtnRed"><i class="fa fa-thumbs-down fa-lg px-2"
                           aria-hidden="true"></i></button>
                       {{_column.totalDislike}}
                     </span>
-                  {{else}}
+                    {{else}}
                     <span class="text-success">
-                      {{_column.totalLike}}
                       <button class="btn likeBtn btnLike p-1"><i class="fa fa-thumbs-up fa-lg px-2"
                           aria-hidden="true"></i></button>
                     </span>
+                    {{_column.totalLike}}
                     <span class="text-danger">
                       <button class="btn likeBtn btnDislike p-1"><i class="fa fa-thumbs-down fa-lg px-2"
                           aria-hidden="true"></i></button>
@@ -56,23 +59,18 @@
                 {{/if}}
               </div>
             </div>
-
             <div class="row mt-3">
-              <div class="d-flex justify-content-center">
-                <a class="btn btn-primary m-1" style="background-color: #3b5998;" href="#!" role="button"><i
-                    class="fab fa-facebook-f ms-1"></i></a>
-                <a class="btn btn-primary m-1" style="background-color: #3b5998;" href="#!" role="button"><i
-                    class="fab fa-facebook-f ms-1"></i></a>
-                <a class="btn btn-primary m-1" style="background-color: #3b5998;" href="#!" role="button"><i
-                    class="fab fa-facebook-f ms-1"></i></a>
+              <div class="d-flex justify-content-center socialArea">
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
               </div>
             </div>
           </div>
-
           <div class="col-lg-4 my-4">
             <div>
               <div class="position-relative my-3 text-center">
-                <img src="{{_column.writer.picture}}" class="  w-50 img-fluid  h-50" alt="...">
+                <img src="{{_column.writer.picture}}" class="rounded-circle w-50 img-fluid  h-50" alt="...">
                 <h5 class="my-2">Yazar: 
                   <a href="{{pathFor 'public.columnist' _id=_column.writer._id}}" class="text-decoration-none">
                     {{_column.writer.name}} {{_column.writer.lastName}}

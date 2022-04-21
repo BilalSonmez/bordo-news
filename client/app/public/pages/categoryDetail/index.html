@@ -20,22 +20,21 @@
             {{/each}}
           </div>
         </div>
-        <div class="col-md-4 my-4">
-          <div class="card position-sticky stickycard">
-            <div class="card-header text-center">Kategoride Popüler Haberler</div>
-            <div class="card-body">
-              <div class="list-group moreNewsList">
-                {{#each _topNews}}
-                  {{#if gt @index 4}}
-                    <span class="moreNewsSpan d-none">
+      </div>
+      <div class="col-md-4 my-4">
+        <div class="card position-sticky stickycard">
+          <div class="card-header text-center">{{_category.title}} Popüler Haberler</div>
+          <div class="card-body">
+            <div class="list-group moreNewsList">
+              {{#each _topNews}}
+                {{#if gt @index 4}}
+                  <span class="moreNewsSpan d-none">
                       <a href="{{pathFor 'public.news' slugUrl=slugUrl}}"
-                        class="list-group-item list-group-item-action list-group-item-light"><b>{{add @index}}.</b>
-                        {{title}}</a>
-                    </span>
-                  {{else}}
+                      class="list-group-item list-group-item-action list-group-item-light"><b>{{add @index}}.</b> {{title}}</a>
+                  </span>
+                {{else}}
                     <a href="{{pathFor 'public.news' slugUrl=slugUrl}}"
-                      class="list-group-item list-group-item-action list-group-item-light"><b>{{add @index}}.</b>
-                      {{title}}</a>
+                    class="list-group-item list-group-item-action list-group-item-light"><b>{{add @index}}.</b> {{title}}</a>
                   {{/if}}
                 {{/each}}
                 {{#if gt _topNews.length 5}}

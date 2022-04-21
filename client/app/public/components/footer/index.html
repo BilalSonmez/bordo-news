@@ -45,7 +45,7 @@
               </h6>
               {{#each _categories}}
               <p>
-                <a href="#" class="text-reset">{{title}}</a>
+                <a href="{{pathFor 'public.category' slugUrl = slugUrl}}" class="text-reset">{{title}}</a>
               </p>
               {{/each}}
             </div>

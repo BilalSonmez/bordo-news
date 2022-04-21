@@ -1,5 +1,14 @@
+@import '../../../../style.scss';
 .stickycard {
   top: 85px;
+}
+
+.socialArea {
+  a {
+    margin: 0 0.5rem;
+    font-size: 1.3rem;
+    color: $color-base;
+  }
 }
 .moreNewsList {
   font-size: 0.8rem;

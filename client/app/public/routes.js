@@ -46,14 +46,14 @@ FlowRouter.route('/contact', {
   }
 });
 
-FlowRouter.route('/allnews', {
+FlowRouter.route('/news', {
   name: 'public.all.news',
   action: function (params, queryParams) {
     this.render('publicLayoutDefault', {page: 'publicPagesAllNews'});
   }
 });
 
-FlowRouter.route('/allcolumns', {
+FlowRouter.route('/columns', {
   name: 'public.all.columns',
   action: function (params, queryParams) {
     this.render('publicLayoutDefault', {page: 'publicPagesAllColumns'});
