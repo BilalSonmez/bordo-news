@@ -11,7 +11,15 @@
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             {{#each _categories}}
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#">{{title}}</a>
+              {{#if eq currentRouteName 'public.category'}}
+                {{#if eq slugUrl (param 'slugUrl')}}
+                <a class="nav-link active" aria-current="page" href="{{pathFor 'public.category' slugUrl = slugUrl}}">{{title}}</a>
+                {{else}}
+                <a class="nav-link" aria-current="page" href="{{pathFor 'public.category' slugUrl = slugUrl}}">{{title}}</a>
+                {{/if}}
+              {{else}}
+              <a class="nav-link" aria-current="page" href="{{pathFor 'public.category' slugUrl = slugUrl}}">{{title}}</a>
+              {{/if}}
             </li>
             {{/each}}
           </ul>
@@ -25,7 +33,7 @@
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="{{pathFor 'auth.profile'}}">Profile</a></li>
                   {{#if isInRole 'roles.admin'}}
-                  <li><a class="dropdown-item" href="{{pathFor 'admin.dashboard'}}">Admin</a></li>
+                  <li><a class="dropdown-item" href="{{pathFor 'admin.dashboard'}}">Dashboard</a></li>
                   {{/if}}
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item brdNavbarLogout" href="javascript:;">Logout</a></li>
