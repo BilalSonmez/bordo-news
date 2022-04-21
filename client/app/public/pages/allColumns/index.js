@@ -11,23 +11,24 @@ Template.publicPagesAllColumns.onCreated(function () {
   });
   this.sorting = new ReactiveDict(null, {
     sortField: 'createdAt',
-    sortOrder: 'asc'
+    sortOrder: 'desc'
   });
-
   this.filtering = new ReactiveDict(null, {});
 
 });
+
 Template.publicPagesAllColumns.onRendered(function () {
   const self = this;
   $(window).scrollTop(0);
+
   $(window).on('scroll', (event) => {
     if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
       if (!(self.pagination.get("currentPage") >= self.pagination.get("totalPages"))) {
         self.pagination.set("currentPage", self.pagination.get("currentPage") + 1);
       }
     }
-
   })
+
   this.autorun(function () {
     const listOptions = {
       options: {
@@ -54,8 +55,8 @@ Template.publicPagesAllColumns.onRendered(function () {
       self.state.set("columns", self.state.get('columns').concat(result.columns));
     })
   });
-  this.autorun(function () {
 
+  this.autorun(function () {
     Meteor.call("columnist.list", {}, function (error, result) {
       if (error) {
         ErrorHandler.show(error.message);
@@ -66,6 +67,7 @@ Template.publicPagesAllColumns.onRendered(function () {
   });
 
 });
+
 Template.publicPagesAllColumns.events({
   'click .btnColumnsMore': function (event, template) {
     template.pagination.set("currentPage", template.pagination.get("currentPage") + 1);

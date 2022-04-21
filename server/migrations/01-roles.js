@@ -15,14 +15,16 @@ Migrations.add({
       }
     });
 
-    Meteor.users.update({ _id: userId }, {
+    Meteor.users.update({
+      _id: userId
+    }, {
       $set: {
         'profile.isAdmin': true,
         'profile.isEditor': true,
-        'profile.isColumnist': true, 
+        'profile.isColumnist': true,
       }
     })
-    
+
     Roles.addUsersToRoles(userId, 'roles.admin', null);
     Roles.addUsersToRoles(userId, 'roles.editor', null);
     Roles.addUsersToRoles(userId, 'roles.columnist', null);

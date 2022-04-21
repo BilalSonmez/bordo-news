@@ -1,41 +1,41 @@
 <template name="publicPagesAllNews">
-  {{#let _news=(state.get 'news')  _categories=(state.get 'categories')}}
-  <div class="container">
-    <div class="row mt-3 ">
-      <div class="col-md-8 p-0 my-3">
-        <div class="h3 my-3">Haberler</div>
-        <div class="row">
-          {{#each _news}}
-          <div class="col-md-6 p-2">
-            <div class="card newsCard">
-              <a href="{{pathFor '/news/:slugUrl' slugUrl=slugUrl}}">
-                <img src="{{featuredImage.url}}" class="card-img-top w-100" alt="" />
-              </a>
-              <div class="card-body">
-                <h5 class="card-title">{{title}}</h5>
+  {{#let _news=(state.get 'news') _categories=(state.get 'categories')}}
+    <div class="container">
+      <div class="row mt-3 ">
+        <div class="col-md-8 p-0 my-3">
+          <div class="h3 my-3">Haberler</div>
+          <div class="row">
+            {{#each _news}}
+              <div class="col-md-6 p-2">
+                <div class="card newsCard">
+                  <a href="{{pathFor 'public.news' slugUrl=slugUrl}}">
+                    <img src="{{featuredImage.url}}" class="card-img-top w-100" alt="" />
+                  </a>
+                  <div class="card-body">
+                    <h5 class="card-title">{{title}}</h5>
+                  </div>
+                </div>
               </div>
-            </div>
+            {{/each}}
           </div>
-          {{/each}}
         </div>
-      </div>
-      <div class="col-md-4 my-4">
-        <div class="card position-sticky stickycard">
-          <div class="card-header text-center">Kategoriler</div>
-          <div class="card-body">
-            <div class="list-group moreNewsList">
-
+        <div class="col-md-4 my-4">
+          <div class="card position-sticky stickycard">
+            <div class="card-header text-center">Kategoriler</div>
+            <div class="card-body">
               <div class="list-group moreNewsList">
+                <div class="list-group moreNewsList">
                   {{#each _categories}}
-                      <a href="{{pathFor '/category/:slugUrl' slugUrl=slugUrl}}"
-                        class="list-group-item list-group-item-action list-group-item-light"><b>{{add @index}}.</b> {{title}}</a>
+                    <a href="{{pathFor 'public.category' slugUrl=slugUrl}}"
+                      class="list-group-item list-group-item-action list-group-item-light"><b>{{add @index}}.</b>
+                      {{title}}</a>
                   {{/each}}
                 </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
   {{/let}}
 </template>

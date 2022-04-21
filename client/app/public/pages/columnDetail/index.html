@@ -9,15 +9,12 @@
           <div class="h4 text-secondary">{{_column.subTitle}}</div>
         </div>
         <div class="row mt-3 mb-2 justify-content-center ">
-
           <div class="col-lg-8 mt-2 mb-2 position-relative">
             <div class="row bg-white">
               <div class="position-relative  mt-3  ">
                 <img src="{{_column.featuredImage.url}}" class="  w-100 img-fluid  h-100" alt="...">
               </div>
-
               <div id="columnDetailContent" class="pt-5">
-
               </div>
               <p class="text-end m-0 pe-5 text-muted">Total view : {{_column.communityData.views}}</p>
               <div class="d-flex justify-content-center m-2">
@@ -60,7 +57,6 @@
               </div>
             </div>
 
-
             <div class="row mt-3">
               <div class="d-flex justify-content-center">
                 <a class="btn btn-primary m-1" style="background-color: #3b5998;" href="#!" role="button"><i
@@ -70,7 +66,6 @@
                 <a class="btn btn-primary m-1" style="background-color: #3b5998;" href="#!" role="button"><i
                     class="fab fa-facebook-f ms-1"></i></a>
               </div>
-
             </div>
           </div>
 
@@ -78,7 +73,11 @@
             <div>
               <div class="position-relative my-3 text-center">
                 <img src="{{_column.writer.picture}}" class="  w-50 img-fluid  h-50" alt="...">
-                <h5 class="my-2">Yazar: <a href="{{pathFor '/columnist/:_id' _id=_column.writer._id}}" class="text-decoration-none">{{_column.writer.name}} {{_column.writer.lastName}}</a> </h5>
+                <h5 class="my-2">Yazar: 
+                  <a href="{{pathFor 'public.columnist' _id=_column.writer._id}}" class="text-decoration-none">
+                    {{_column.writer.name}} {{_column.writer.lastName}}
+                  </a> 
+                </h5>
               </div>
             </div>
             <div class="card position-sticky stickycard">
@@ -88,14 +87,14 @@
                   {{#each _topColumns}}
                     {{#if gt @index 4}}
                       <span class="moreColumnsSpan d-none">
-                        <a href="{{pathFor '/columns/:slugUrl' slugUrl=slugUrl}}"
-                          class="list-group-item list-group-item-action list-group-item-light"><b>{{add @index}}.</b>
-                          {{title}}</a>
+                        <a href="{{pathFor 'public.columns' slugUrl=slugUrl}}" class="list-group-item list-group-item-action list-group-item-light">
+                          <b>{{add @index}}.</b> {{title}}
+                        </a>
                       </span>
                     {{else}}
-                      <a href="{{pathFor '/columns/:slugUrl' slugUrl=slugUrl}}"
-                        class="list-group-item list-group-item-action list-group-item-light"><b>{{add @index}}.</b>
-                        {{title}}</a>
+                      <a href="{{pathFor 'public.columns' slugUrl=slugUrl}}" class="list-group-item list-group-item-action list-group-item-light">
+                        <b>{{add @index}}.</b> {{title}}
+                      </a>
                     {{/if}}
                   {{/each}}
                   {{#if gt _topColumns.length 5}}
@@ -105,7 +104,6 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>

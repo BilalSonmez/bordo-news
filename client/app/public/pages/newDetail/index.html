@@ -9,63 +9,54 @@
           <div class="h4 text-secondary">{{_news.subTitle}}</div>
         </div>
         <div class="row my-1">
-          <div class="h6 text-secondary">Categories: 
+          <div class="h6 text-secondary">Categories:
             {{#each _news.categories}}
-            <a href="{{pathFor '/category/:slugUrl' slugUrl=slugUrl}}" class="text-decoration-none px-1">{{title}}</a> 
+              <a href="{{pathFor 'public.category' slugUrl=slugUrl}}" class="text-decoration-none px-1">{{title}}</a>
             {{/each}}
           </div>
         </div>
-        <div class="row mt-3 mb-2 justify-content-center ">
 
+        <div class="row mt-3 mb-2 justify-content-center ">
           <div class="col-lg-8 mt-2 mb-2 position-relative">
             <div class="row bg-white">
               <div class="position-relative  mt-3  ">
                 <img src="{{_news.featuredImage.url}}" class="  w-100 img-fluid  h-100" alt="...">
               </div>
-              
-              <div id="newsDetailContent" class="pt-5">
-                
-              </div>
+              <div id="newsDetailContent" class="pt-5"></div>
               <p class="text-end m-0 pe-5 text-muted">Total view : {{_news.communityData.views}}</p>
               <div class="d-flex justify-content-center m-2">
                 {{#if eq (state.get 'currentUserLike') true}}
-                <span class="text-success">
-                  {{_news.totalLike}}
-                  <button class="btn likeBtn btnLike p-1 likeBtnGreen"><i class="fa fa-thumbs-up fa-lg px-2" aria-hidden="true"></i></button>
-                </span>
-                <span class="text-danger">
-                  <button class="btn likeBtn btnDislike p-1"><i class="fa fa-thumbs-down fa-lg px-2" aria-hidden="true"></i></button>
-                  {{_news.totalDislike}}
-                </span>
-                {{else}}
-                  {{#if eq (state.get 'currentUserLike') false}}
                   <span class="text-success">
                     {{_news.totalLike}}
-                    <button class="btn likeBtn btnLike p-1"><i class="fa fa-thumbs-up fa-lg px-2" aria-hidden="true"></i></button>
-                  </span>
-                  <span class="text-danger">
-                    <button class="btn likeBtn btnDislike p-1 likeBtnRed"><i class="fa fa-thumbs-down fa-lg px-2" aria-hidden="true"></i></button>
-                    {{_news.totalDislike}}
-                  </span>
-                  {{else}}
-                  <span class="text-success">
-                    {{_news.totalLike}}
-                    <button class="btn likeBtn btnLike p-1"><i class="fa fa-thumbs-up fa-lg px-2" aria-hidden="true"></i></button>
+                    <button class="btn likeBtn btnLike p-1 likeBtnGreen"><i class="fa fa-thumbs-up fa-lg px-2" aria-hidden="true"></i></button>
                   </span>
                   <span class="text-danger">
                     <button class="btn likeBtn btnDislike p-1"><i class="fa fa-thumbs-down fa-lg px-2" aria-hidden="true"></i></button>
                     {{_news.totalDislike}}
-                  </span>                 
-                  {{/if}}        
+                  </span>
+                {{else}}
+                  {{#if eq (state.get 'currentUserLike') false}}
+                    <span class="text-success">
+                      {{_news.totalLike}}
+                      <button class="btn likeBtn btnLike p-1"><i class="fa fa-thumbs-up fa-lg px-2" aria-hidden="true"></i></button>
+                    </span>
+                    <span class="text-danger">
+                      <button class="btn likeBtn btnDislike p-1 likeBtnRed"><i class="fa fa-thumbs-down fa-lg px-2" aria-hidden="true"></i></button>
+                      {{_news.totalDislike}}
+                    </span>
+                  {{else}}
+                    <span class="text-success">
+                      {{_news.totalLike}}
+                      <button class="btn likeBtn btnLike p-1"><i class="fa fa-thumbs-up fa-lg px-2" aria-hidden="true"></i></button>
+                    </span>
+                    <span class="text-danger">
+                      <button class="btn likeBtn btnDislike p-1"><i class="fa fa-thumbs-down fa-lg px-2" aria-hidden="true"></i></button>
+                      {{_news.totalDislike}}
+                    </span>
+                  {{/if}}
                 {{/if}}
-                
-                
               </div>
-
-                
-
             </div>
-
 
             <div class="row mt-3">
               <div class="d-flex justify-content-center">
@@ -76,10 +67,8 @@
                 <a class="btn btn-primary m-1" style="background-color: #3b5998;" href="#!" role="button"><i
                     class="fab fa-facebook-f ms-1"></i></a>
               </div>
-              
-              
             </div>
-            
+
           </div>
 
           <div class="col-lg-4 my-4">
@@ -90,12 +79,14 @@
                   {{#each _popNews}}
                     {{#if gt @index 4}}
                       <span class="moreNewsSpan d-none">
-                        <a href="{{pathFor '/news/:slugUrl' slugUrl=slugUrl}}"
-                          class="list-group-item list-group-item-action list-group-item-light"><b>{{add @index}}.</b> {{title}}</a>
+                        <a href="{{pathFor 'public.news' slugUrl=slugUrl}}" class="list-group-item list-group-item-action list-group-item-light">
+                          <b>{{add @index}}.</b> {{title}}
+                        </a>
                       </span>
                     {{else}}
-                      <a href="{{pathFor '/news/:slugUrl' slugUrl=slugUrl}}"
-                        class="list-group-item list-group-item-action list-group-item-light"><b>{{add @index}}.</b> {{title}}</a>
+                      <a href="{{pathFor 'public.news' slugUrl=slugUrl}}" class="list-group-item list-group-item-action list-group-item-light">
+                        <b>{{add @index}}.</b> {{title}}
+                      </a>
                     {{/if}}
                   {{/each}}
                   {{#if gt _popNews.length 5}}
@@ -105,7 +96,6 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>
