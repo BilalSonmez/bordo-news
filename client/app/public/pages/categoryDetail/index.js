@@ -28,7 +28,7 @@ Template.publicPagesCategoryDetail.onCreated(function () {
 Template.publicPagesCategoryDetail.onRendered(function () {
   const self = this;
   const slugUrl = FlowRouter.getParam("slugUrl");
-
+  $(window).scrollTop(0);
 
   $(window).on('scroll', (event) => {
     if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {

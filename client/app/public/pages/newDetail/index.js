@@ -12,6 +12,7 @@ Template.publicPagesNewDetail.onCreated(function () {
 Template.publicPagesNewDetail.onRendered(function () {
   const self = this;
   const slugUrl = FlowRouter.getParam("slugUrl");
+  $(window).scrollTop(0);
   this.autorun(function () {
     AppUtil.refreshTokens.get("newsDetail");
     self.state.set("currentUserLike", Boolean);

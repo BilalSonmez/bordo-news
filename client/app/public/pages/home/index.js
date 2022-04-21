@@ -27,6 +27,7 @@ Template.publicPagesHome.onCreated(function () {
 
 Template.publicPagesHome.onRendered(function () {
   const self = this;
+  $(window).scrollTop(0);
   this.autorun(function () {
     const listOptions = {
       options: {

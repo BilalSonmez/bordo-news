@@ -26,7 +26,7 @@ Template.publicPagesColumnistDetail.onCreated(function () {
 Template.publicPagesColumnistDetail.onRendered(function () {
   const self = this;
   const _id = FlowRouter.getParam("_id");
-
+  $(window).scrollTop(0);
   $(window).on('scroll', (event) => {
     if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
       if (!(self.pagination.get("currentPage") >= self.pagination.get("totalPages"))) {

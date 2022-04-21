@@ -20,7 +20,7 @@ Template.publicPagesAllNews.onCreated(function () {
 });
 Template.publicPagesAllNews.onRendered(function () {
   const self = this;
-
+  $(window).scrollTop(0);
   $(window).on('scroll', (event) => {
     if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
       if (!(self.pagination.get("currentPage") >= self.pagination.get("totalPages"))) {

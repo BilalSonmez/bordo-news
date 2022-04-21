@@ -10,6 +10,7 @@ Template.publicPagesColumnDetail.onCreated(function () {
 Template.publicPagesColumnDetail.onRendered(function () {
   const self = this;
   const slugUrl = FlowRouter.getParam("slugUrl");
+  $(window).scrollTop(0);
   this.autorun(function () {
     const listOptions = {
       options: {
