@@ -13,5 +13,3 @@ new ValidatedMethod({
     });
   }
 });
-
-

@@ -13,7 +13,7 @@ Template.publicComponentsFooter.onCreated(function(){
 
   this.sorting = new ReactiveDict(null, {
     sortField: 'createdAt',
-    sortOrder: 'asc'
+    sortOrder: 'desc'
   });
 
   this.filtering = new ReactiveDict(null, {});

@@ -1,7 +1,7 @@
-import SimpleSchema from 'simpl-schema';
+import SimpleSchema from "simpl-schema";
 
 new ValidatedMethod({
-  name: 'news.show',
+  name: "news.show",
   validate: new SimpleSchema({
     _id: SimpleSchema.RegEx.Id,
   }).validator(),
@@ -10,15 +10,13 @@ new ValidatedMethod({
     const { _id } = data;
 
     const news = News.findOne({
-      _id: _id
+      _id: _id,
     });
 
     news.featuredImage = Files.findOne({
-      _id: news.featuredImage
+      _id: news.featuredImage,
     });
 
     return news;
-  }
+  },
 });
-
-

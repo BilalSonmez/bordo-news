@@ -15,12 +15,14 @@ new ValidatedMethod({
     });
     like.userId=Meteor.userId();
     let likes = column.communityData.like;
+    
     likes.forEach((a)=>{
       if (a.userId===Meteor.userId()) {
         throw (new Meteor.Error("You already like this content"));
       }
     })
     likes.push(like);
+
     Columns.update({_id: _id}, {$set:{
       "communityData.like": likes,
     }});
