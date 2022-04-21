@@ -7,6 +7,7 @@ new ValidatedMethod({
     _id: SimpleSchema.RegEx.Id,
   }).validator(),
   run: function (data) {
+    //mongodb pull
     this.unblock();
     const { _id } = data
     const news = News.findOne({

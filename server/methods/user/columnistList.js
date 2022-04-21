@@ -10,6 +10,7 @@ new ValidatedMethod({
       "profile.isColumnist" : true,
       "profile.isAdmin" : false,
     }).fetch(); 
+    //,{fields:{services:0}}
     const editedColumnists =[];
     columnists.forEach(function (columnnist){
       editedColumnists.push({

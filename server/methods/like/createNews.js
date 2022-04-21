@@ -15,6 +15,7 @@ new ValidatedMethod({
     });
     like.userId=Meteor.userId();
     let likes = news.communityData.like;
+    //todo news find 
     likes.forEach((a)=>{
       if (a.userId===Meteor.userId()) {
         throw (new Meteor.Error("You already like this content"));
@@ -24,6 +25,7 @@ new ValidatedMethod({
     News.update({_id: _id}, {$set:{
       "communityData.like": likes,
     }});
+    //$addToSet
 
     return News.findOne({ _id: _id });
   }
