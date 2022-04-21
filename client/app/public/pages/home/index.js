@@ -1,4 +1,4 @@
-import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+import { FlowRouter } from "meteor/ostrio:flow-router-extra";
 import bootstrap from "bootstrap";
 Template.publicPagesHome.onCreated(function () {
   this.state = new ReactiveDict(null, {
@@ -13,21 +13,21 @@ Template.publicPagesHome.onCreated(function () {
     currentPage: 1,
     pageItems: 6,
     totalCount: 0,
-    totalPages: 0
+    totalPages: 0,
   });
 
   this.columnsPagination = new ReactiveDict(null, {
     currentPage: 1,
     pageItems: 4,
     totalCount: 0,
-    totalPages: 0
+    totalPages: 0,
   });
-
 });
 
 Template.publicPagesHome.onRendered(function () {
   const self = this;
   $(window).scrollTop(0);
+
   this.autorun(function () {
     const listOptions = {
       options: {
@@ -37,10 +37,10 @@ Template.publicPagesHome.onRendered(function () {
         },
         filtering: {},
         sorting: {
-          sortField: 'createdAt',
-          sortOrder: 'desc',
-        }
-      }
+          sortField: "createdAt",
+          sortOrder: "desc",
+        },
+      },
     };
 
     Meteor.call("news.list", listOptions, function (error, result) {
@@ -50,8 +50,8 @@ Template.publicPagesHome.onRendered(function () {
       }
       self.newsPagination.set("totalCount", result.options.pagination.totalCount);
       self.newsPagination.set("totalPages", Math.ceil(result.options.pagination.totalCount / result.options.pagination.pageItems));
-      self.state.set("news", self.state.get('news').concat(result.news));
-    })
+      self.state.set("news", self.state.get("news").concat(result.news));
+    });
   });
 
   this.autorun(function () {
@@ -63,10 +63,10 @@ Template.publicPagesHome.onRendered(function () {
         },
         filtering: {},
         sorting: {
-          sortField: 'communityData.views',
-          sortOrder: 'desc',
-        }
-      }
+          sortField: "communityData.views",
+          sortOrder: "desc",
+        },
+      },
     };
 
     Meteor.call("news.list", listOptions, function (error, result) {
@@ -75,7 +75,7 @@ Template.publicPagesHome.onRendered(function () {
         return;
       }
       self.state.set("topNews", result.news);
-    })
+    });
   });
 
   this.autorun(function () {
@@ -87,10 +87,10 @@ Template.publicPagesHome.onRendered(function () {
         },
         filtering: {},
         sorting: {
-          sortField: 'communityData.views',
-          sortOrder: 'desc',
-        }
-      }
+          sortField: "communityData.views",
+          sortOrder: "desc",
+        },
+      },
     };
 
     Meteor.call("column.list", listOptions, function (error, result) {
@@ -99,7 +99,7 @@ Template.publicPagesHome.onRendered(function () {
         return;
       }
       self.state.set("topColumns", result.columns);
-    })
+    });
   });
 
   this.autorun(function () {
@@ -111,10 +111,10 @@ Template.publicPagesHome.onRendered(function () {
         },
         filtering: {},
         sorting: {
-          sortField: 'createdAt',
-          sortOrder: 'desc',
-        }
-      }
+          sortField: "createdAt",
+          sortOrder: "desc",
+        },
+      },
     };
 
     Meteor.call("column.list", listOptions, function (error, result) {
@@ -124,8 +124,8 @@ Template.publicPagesHome.onRendered(function () {
       }
       self.columnsPagination.set("totalCount", result.options.pagination.totalCount);
       self.columnsPagination.set("totalPages", Math.ceil(result.options.pagination.totalCount / result.options.pagination.pageItems));
-      self.state.set("columns", self.state.get('columns').concat(result.columns));
-    })
+      self.state.set("columns", self.state.get("columns").concat(result.columns));
+    });
   });
 
   this.autorun(function () {
@@ -133,14 +133,14 @@ Template.publicPagesHome.onRendered(function () {
       options: {
         filtering: {
           isImportant: {
-            $eq: true
-          }
+            $eq: true,
+          },
         },
         sorting: {
-          sortField: 'createdAt',
-          sortOrder: 'desc',
-        }
-      }
+          sortField: "createdAt",
+          sortOrder: "desc",
+        },
+      },
     };
     Meteor.call("news.list", listOptions, function (error, result) {
       if (error) {
@@ -148,46 +148,43 @@ Template.publicPagesHome.onRendered(function () {
         return;
       }
       self.state.set("breakingNews", result.news);
-    })
+    });
   });
-
 });
 
-
 Template.publicPagesHome.events({
-  'mouseenter .btnCarousel': function (event, template) {
+  "mouseenter .btnCarousel": function (event, template) {
     $("#carouselExampleControls").carousel(parseInt(event.currentTarget.dataset.bsTargetSlide));
   },
-  'click .btnCarousel': function (event, template) {
+  "click .btnCarousel": function (event, template) {
     FlowRouter.go("public.news", {
-      slugUrl: this.slugUrl
+      slugUrl: this.slugUrl,
     });
   },
-  'click .btnNewsMore': function (event, template) {
+  "click .btnNewsMore": function (event, template) {
     template.newsPagination.set("currentPage", template.newsPagination.get("currentPage") + 1);
     if (template.newsPagination.get("currentPage") >= template.newsPagination.get("totalPages")) {
       $(event.target).hide();
     }
   },
-  'click .btnColumnsMore': function (event, template) {
+  "click .btnColumnsMore": function (event, template) {
     template.columnsPagination.set("currentPage", template.columnsPagination.get("currentPage") + 1);
     if (template.columnsPagination.get("currentPage") >= template.columnsPagination.get("totalPages")) {
       $(event.target).hide();
     }
   },
   "click .btnMoreNews": function (event, template) {
-    let moretext = document.getElementsByClassName("moreNewsSpan");;
+    let moretext = document.getElementsByClassName("moreNewsSpan");
     for (let data of moretext) {
-      data.classList.remove('d-none');
+      data.classList.remove("d-none");
     }
     $(event.target).hide();
   },
   "click .btnMoreColumns": function (event, template) {
-    let moretext = document.getElementsByClassName("moreColumnsSpan");;
+    let moretext = document.getElementsByClassName("moreColumnsSpan");
     for (let data of moretext) {
-      data.classList.remove('d-none');
+      data.classList.remove("d-none");
     }
     $(event.target).hide();
   },
-
 });

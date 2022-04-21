@@ -1,7 +1,7 @@
-import SimpleSchema from 'simpl-schema';
+import SimpleSchema from "simpl-schema";
 
 new ValidatedMethod({
-  name: 'column.show.url',
+  name: "column.show.url",
   validate: new SimpleSchema({
     slugUrl: String,
   }).validator(),
@@ -9,38 +9,41 @@ new ValidatedMethod({
     this.unblock();
     const { slugUrl } = data;
     const column = await Columns.findOne({
-      slugUrl: slugUrl
+      slugUrl: slugUrl,
     });
     column.featuredImage = await Files.findOne({
-      _id: column.featuredImage
+      _id: column.featuredImage,
     });
     const writer = await Meteor.users.findOne({
-      _id:column.createdUserId,
+      _id: column.createdUserId,
     });
-    column.writer={
-      _id:writer._id,
-      name:writer.profile.name,
-      lastName:writer.profile.lastName,
-      picture:writer.profile.picture.url,
-    }
+    column.writer = {
+      _id: writer._id,
+      name: writer.profile.name,
+      lastName: writer.profile.lastName,
+      picture: writer.profile.picture.url,
+    };
 
-    Columns.update({slugUrl: slugUrl}, {$set:{
-      "communityData.views": column.communityData.views + 1,
-    }});
-    let totalLike=0;
-    let totalDislike=0;
-    column.communityData.like.forEach((like)=>{
-      if(like.status){
+    Columns.update(
+      { slugUrl: slugUrl },
+      {
+        $set: {
+          "communityData.views": column.communityData.views + 1,
+        },
+      }
+    );
+    let totalLike = 0;
+    let totalDislike = 0;
+    column.communityData.like.forEach((like) => {
+      if (like.status) {
         totalLike++;
-      }else{
+      } else {
         totalDislike++;
       }
-    })
-    column.totalLike=totalLike;
-    column.totalDislike=totalDislike;
+    });
+    column.totalLike = totalLike;
+    column.totalDislike = totalDislike;
 
     return column;
-  }
+  },
 });
-
-

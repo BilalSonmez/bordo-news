@@ -8,7 +8,7 @@
       <div class="row my-1">
         <div class="h6 text-secondary">Categories:
           {{#each _news.categories}}
-          <a href="{{pathFor '/category/:slugUrl' slugUrl=slugUrl}}" class="text-decoration-none px-1">{{title}}</a>
+          <a href="{{pathFor 'public.category' slugUrl=slugUrl}}" class="text-decoration-none px-1">{{title}}</a>
           {{/each}}
         </div>
       </div>
@@ -84,12 +84,12 @@
                 {{#each _popNews}}
                 {{#if gt @index 4}}
                 <span class="moreNewsSpan d-none">
-                  <a href="{{pathFor '/news/:slugUrl' slugUrl=slugUrl}}"
+                  <a href="{{pathFor 'public.news' slugUrl=slugUrl}}"
                     class="list-group-item list-group-item-action list-group-item-light"><b>{{add @index}}.</b>
                     {{title}}</a>
                 </span>
                 {{else}}
-                <a href="{{pathFor '/news/:slugUrl' slugUrl=slugUrl}}"
+                <a href="{{pathFor 'public.news' slugUrl=slugUrl}}"
                   class="list-group-item list-group-item-action list-group-item-light"><b>{{add @index}}.</b>
                   {{title}}</a>
                 {{/if}}
