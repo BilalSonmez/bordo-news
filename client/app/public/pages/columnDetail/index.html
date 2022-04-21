@@ -1,25 +1,26 @@
 <template name="publicPagesColumnDetail">
   {{#let _column=(state.get 'column') _topColumns=(state.get'topColumns')}}
-    <div class="publicPagesColumnDetail">
-      <div class="container mb-4 mr-3">
-        <div class="row mt-2 pt-5">
-          <div class="h2">{{_column.title}}</div>
-        </div>
-        <div class="row mt-3 mb-2 justify-content-center ">
-          <div class="col-lg-8 mt-2 mb-2 position-relative">
-            <div class="row bg-white">
-              <div class="position-relative  mt-3  ">
-                <img src="{{_column.featuredImage.url}}" class="  w-100 img-fluid  h-100" alt="...">
-              </div>
-              <div class="content-sub-title my-2 text-muted">
-                <h5>{{_column.subTitle}}</h5>
-              </div>
-              <div id="columnDetailContent" class="pt-5">
-              </div>
+  <div class="publicPagesColumnDetail">
+    <div class="container mb-4 mr-3">
+      <div class="row mt-2 pt-5">
+        <div class="h2">{{_column.title}}</div>
+      </div>
+      <div class="row mt-3 mb-2 justify-content-center ">
+        <div class="col-lg-8 mt-2 mb-2 position-relative">
+          <div class="row bg-white">
+            <div class="position-relative  mt-3  ">
+              <img src="{{_column.featuredImage.url}}" class="  w-100 img-fluid  h-100" alt="...">
+            </div>
+            <div class="content-sub-title my-2 text-muted">
+              <h5>{{_column.subTitle}}</h5>
+            </div>
+            <div id="columnDetailContent" class="pt-5">
+            </div>
 
             <div class="d-flex flex-row-reverse">
               <div class="p-2 bd-highlight text-muted">{{timeConventer _column.createdAt}}</div>
-              <div class="p-2 bd-highlight text-muted"><i class="fa-solid fa-eye"></i> {{_column.communityData.views}}</div>
+              <div class="p-2 bd-highlight text-muted"><i class="fa-solid fa-eye"></i> {{_column.communityData.views}}
+              </div>
               <div class="p-2 bd-highlight">
                 {{#if eq (state.get 'currentUserLike') true}}
                 <span class="text-success">
@@ -33,29 +34,29 @@
                   {{_column.totalDislike}}
                 </span>
                 {{else}}
-                  {{#if eq (state.get 'currentUserLike') false}}
-                    <span class="text-success">
-                      <button class="btn likeBtn btnLike p-1"><i class="fa fa-thumbs-up fa-lg px-2"
-                          aria-hidden="true"></i></button>
-                    </span>
-                    {{_column.totalLike}}
-                    <span class="text-danger">
-                      <button class="btn likeBtn btnDislike p-1 likeBtnRed"><i class="fa fa-thumbs-down fa-lg px-2"
-                          aria-hidden="true"></i></button>
-                      {{_column.totalDislike}}
-                    </span>
-                    {{else}}
-                    <span class="text-success">
-                      <button class="btn likeBtn btnLike p-1"><i class="fa fa-thumbs-up fa-lg px-2"
-                          aria-hidden="true"></i></button>
-                    </span>
-                    {{_column.totalLike}}
-                    <span class="text-danger">
-                      <button class="btn likeBtn btnDislike p-1"><i class="fa fa-thumbs-down fa-lg px-2"
-                          aria-hidden="true"></i></button>
-                      {{_column.totalDislike}}
-                    </span>
-                  {{/if}}
+                {{#if eq (state.get 'currentUserLike') false}}
+                <span class="text-success">
+                  <button class="btn likeBtn btnLike p-1"><i class="fa fa-thumbs-up fa-lg px-2"
+                      aria-hidden="true"></i></button>
+                </span>
+                {{_column.totalLike}}
+                <span class="text-danger">
+                  <button class="btn likeBtn btnDislike p-1 likeBtnRed"><i class="fa fa-thumbs-down fa-lg px-2"
+                      aria-hidden="true"></i></button>
+                  {{_column.totalDislike}}
+                </span>
+                {{else}}
+                <span class="text-success">
+                  <button class="btn likeBtn btnLike p-1"><i class="fa fa-thumbs-up fa-lg px-2"
+                      aria-hidden="true"></i></button>
+                </span>
+                {{_column.totalLike}}
+                <span class="text-danger">
+                  <button class="btn likeBtn btnDislike p-1"><i class="fa fa-thumbs-down fa-lg px-2"
+                      aria-hidden="true"></i></button>
+                  {{_column.totalDislike}}
+                </span>
+                {{/if}}
                 {{/if}}
               </div>
             </div>
@@ -67,43 +68,46 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4 my-4">
-            <div>
-              <div class="position-relative my-3 text-center">
-                <img src="{{_column.writer.picture}}" class="rounded-circle w-50 img-fluid  h-50" alt="...">
-                <h5 class="my-2">Yazar: 
-                  <a href="{{pathFor 'public.columnist' _id=_column.writer._id}}" class="text-decoration-none">
-                    {{_column.writer.name}} {{_column.writer.lastName}}
-                  </a> 
-                </h5>
-              </div>
+        </div>
+        <div class="col-lg-4 my-4">
+          <div>
+            <div class="position-relative my-3 text-center">
+              <img src="{{_column.writer.picture}}" class="rounded-circle w-50 img-fluid  h-50" alt="...">
+              <h5 class="my-2">Yazar:
+                <a href="{{pathFor 'public.columnist' _id=_column.writer._id}}" class="text-decoration-none">
+                  {{_column.writer.name}} {{_column.writer.lastName}}
+                </a>
+              </h5>
             </div>
-            <div class="card position-sticky stickycard">
-              <div class="card-header text-center">Popüler Köşe Yazıları</div>
-              <div class="card-body">
-                <div class="list-group moreNewsList">
-                  {{#each _topColumns}}
-                    {{#if gt @index 4}}
-                      <span class="moreColumnsSpan d-none">
-                        <a href="{{pathFor 'public.columns' slugUrl=slugUrl}}" class="list-group-item list-group-item-action list-group-item-light">
-                          <b>{{add @index}}.</b> {{title}}
-                        </a>
-                      </span>
-                    {{else}}
-                      <a href="{{pathFor 'public.columns' slugUrl=slugUrl}}" class="list-group-item list-group-item-action list-group-item-light">
-                        <b>{{add @index}}.</b> {{title}}
-                      </a>
-                    {{/if}}
-                  {{/each}}
-                  {{#if gt _topColumns.length 5}}
-                    <a href="" id="myBtn" class="btn btnMoreColumns mt-3 btnBordoNews btn-sm">Daha Fazla Göster</a>
-                  {{/if}}
-                </div>
+          </div>
+          <div class="card position-sticky stickycard">
+            <div class="card-header text-center">Popüler Köşe Yazıları</div>
+            <div class="card-body">
+              <div class="list-group moreNewsList">
+                {{#each _topColumns}}
+                {{#if gt @index 4}}
+                <span class="moreColumnsSpan d-none">
+                  <a href="{{pathFor 'public.columns' slugUrl=slugUrl}}"
+                    class="list-group-item list-group-item-action list-group-item-light">
+                    <b>{{add @index}}.</b> {{title}}
+                  </a>
+                </span>
+                {{else}}
+                <a href="{{pathFor 'public.columns' slugUrl=slugUrl}}"
+                  class="list-group-item list-group-item-action list-group-item-light">
+                  <b>{{add @index}}.</b> {{title}}
+                </a>
+                {{/if}}
+                {{/each}}
+                {{#if gt _topColumns.length 5}}
+                <a href="" id="myBtn" class="btn btnMoreColumns mt-3 btnBordoNews btn-sm">Daha Fazla Göster</a>
+                {{/if}}
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
   {{/let}}
 </template>

@@ -20,7 +20,6 @@
             {{/each}}
           </div>
         </div>
-      </div>
       <div class="col-md-4 my-4">
         <div class="card position-sticky stickycard">
           <div class="card-header text-center">{{_category.title}} Popüler Haberler</div>
@@ -36,15 +35,15 @@
                     <a href="{{pathFor 'public.news' slugUrl=slugUrl}}"
                     class="list-group-item list-group-item-action list-group-item-light"><b>{{add @index}}.</b> {{title}}</a>
                   {{/if}}
-                {{/each}}
-                {{#if gt _topNews.length 5}}
-                  <a href="" id="myBtn" class="btn btnMoreNews mt-3 btnBordoNews btn-sm">Daha Fazla Göster</a>
-                {{/if}}
-              </div>
+              {{/each}}
+              {{#if gt _topNews.length 5}}
+                <a href="" id="myBtn" class="btn btnMoreNews mt-3 btnBordoNews btn-sm">Daha Fazla Göster</a>
+              {{/if}}
             </div>
           </div>
         </div>
       </div>
+    </div>
     </div>
   {{/let}}
 </template>
