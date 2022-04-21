@@ -1,45 +1,12 @@
 @import '../../../../style.scss';
 
-.gfooter {
-  font-size: 0.8rem;
-  background:  $color-secondary-dark;
-  //background: linear-gradient(180deg, $color-base-dark,  $color-secondary 80%);
-  color: white;
-  text-decoration: none;
- // margin-top: 34.5rem;
- // position:relative;
-  //position:absolute;  //Bunu yazarsak yerinde sabit kalır
-  
- 
-    /* Height of the footer */
-    .container {
-      min-height:100%;
-     // position:relative;
-   }
-  .row {
-    .col-md-4 {
-      margin-top: 0.7rem;
-      margin-bottom: 0.5rem;
-      li {
-        margin: 0.4rem 0;
-      } 
-    }
-    .brands a {
-      margin-left: 0.7rem;
-      margin-right: 0.7rem;
-    }
-    a {
-      color: #cfcfcf;
-      margin-left: 0.5rem;
-      margin-right: 0.5rem;
-      text-decoration: none;
-      margin: 10rem 0;
-    }
-    a:hover {
-      color: white;
-    }
+.publicComponentsFooter {
+  .bg-bordo {
+    --bs-bg-opacity: 1;
+    background-color: $color-base-dark;
+    color: $color-secondary-light!important;
   }
-}
-.ul-footer {
-  list-style-type: none;
+  a {
+    text-decoration: none;
+  }
 }

@@ -1,44 +1,17 @@
 @import '../../../../style.scss';
 
-.brd-hide{
-  top: -150px !important;
-  transition: top 0.3s ease;
-
-}
-.brdf-navbar {
-  background-color: $color-base-dark;
-  height: auto;
-  .brdf-navbar-content {
-    margin: 0 auto;
-    .navbar-brand-content {
-      margin-bottom: 0rem;
-      .navbar-brand {
-        font-size: 1.3rem;
-      }
-    }
+.publicComponentsNavbar {
+  .bg-bordo {
+    --bs-bg-opacity: 1;
+    background-color: $color-base-dark;
   }
-  
-  .navbar-brand {
-    font-weight: 500;
-  }
-  a, .navbar-toggler {
-    color: $color-secondary-light;
-  }
-  a:hover, a:focus, .nav-link.dropdown-toggle.show {
-    color: $color-secondary;
+  a:hover {
+    color: $color-secondary-light!important;
   }
   .dropdown-menu {
-    background-color: $color-base;
-  }
-  .nav-link {
-    font-weight: 500;
-  }
-  .nav-link.active {
-    color: $color-base-dark;
-    background-color: $color-secondary-light;
-    border-radius: 0.3rem;
-  }
-  .nav-item {
-    margin: 0 0.3rem;
+    background-color: $color-base-dark!important;
+    a:hover {
+      color: $color-base!important;
+    }
   }
 }
