@@ -19,6 +19,7 @@
       "profile" : {
           "name" : "Ahmet",
           "lastName" : "Hakan",
+          "userName": "ahmethakan",
           "status" : "active",
           "isAdmin" : false,
           "isEditor" : false,
@@ -57,6 +58,7 @@
       "profile" : {
           "name" : "Cem",
           "lastName" : "Küçük",
+          "userName": "cemkucuk",
           "status" : "active",
           "isAdmin" : false,
           "isEditor" : false,
@@ -95,6 +97,7 @@
       "profile" : {
           "name" : "Hakan",
           "lastName" : "Albayrak",
+          "userName": "hakanalbayrak",
           "status" : "active",
           "isAdmin" : false,
           "isEditor" : false,
@@ -133,6 +136,7 @@
       "profile" : {
           "name" : "Ahmet",
           "lastName" : "Çakar",
+          "userName": "ahmetcakar",
           "status" : "active",
           "isAdmin" : false,
           "isEditor" : false,
@@ -171,6 +175,7 @@
       "profile" : {
           "name" : "Editor",
           "lastName" : "Bordo",
+          "userName": "AAwwvT5scnaPqD2mv",
           "status" : "active",
           "isAdmin" : false,
           "isEditor" : true,

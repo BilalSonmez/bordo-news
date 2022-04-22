@@ -119,12 +119,15 @@ Template.adminModalsFileManager.onRendered(function () {
 
   $('.modal-body').scroll(function (event) {
     if ($(this).scrollTop() == ($(this)[0].scrollHeight - $(this).height()) - 32) {
-      self.pagination.set('currentPage', self.pagination.get('currentPage') + 1);
+      const currentPage = self.pagination.get('currentPage');
+      console.log(currentPage)
+      self.pagination.set('currentPage', currentPage + 1);
     }
   });
 
   uppy.on('complete', async (result) => {
     self.fileUpload.set(true);
+
     Swal.fire({
       title: 'Please Wait!',
       html: `Files uploading`,
@@ -134,18 +137,11 @@ Template.adminModalsFileManager.onRendered(function () {
         Swal.showLoading()
       },
     });
+    
     await Promise.all(result.successful.map(async (val) => {
       const fileName = val.meta.name.replace(/\.[^/.]+$/, "");
       const extension = '.' + val.extension;
-      let fileFullName = "";
-      let count = 0;
-      let result;
-
-      do {
-        fileFullName = fileName + (count === 0 ? "" : `-${count}`) + extension;
-        result = await Meteor.callWithPromise('file.show', { name: fileFullName });
-        count++;
-      } while (result)
+      const fileFullName = fileName + Random.id(10) + extension;
 
       const storageRef = ref(self.storage, fileFullName);
       const snapshot = await uploadBytes(storageRef, val.data);

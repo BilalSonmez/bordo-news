@@ -1,6 +1,29 @@
 .img-account-profile {
+  position: relative;
   width: auto;
-  height: 10rem;
+  color: white;
+  & img {
+    display: block;
+  }
+  input[type="file"] {
+      display: none;
+  }
+  .btnUploadPic {
+    position: absolute;
+    opacity: 0.1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 0.2s;
+    text-align: center;
+    i {
+      margin: auto;
+    }
+    &:hover {
+      opacity: 0.4;
+    }
+  }
 }
 .profileCard {
   box-shadow: 0 0.15rem 1.75rem 0 rgba(33, 40, 50, 0.15);
