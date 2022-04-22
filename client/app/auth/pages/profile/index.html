@@ -6,9 +6,11 @@
         <div class="card profileCard mb-4 mb-xl-0">
           <div class="card-header">Profile Picture</div>
           <div class="card-body text-center">
-            <img class="img-account-profile mb-2" src="{{currentUser.profile.picture.url}}" alt="" />
-            <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 1 MB</div>
-            <button data-bs-toggle="modal" data-bs-target="#authProfilePictureModal" class="btn btn-primary profileUploadImage" type="button">Upload new image</button>
+            <div class="img-account-profile">
+              <label class="btn btn-success btnUploadPic align-middle" for="file-upload"><i class="fa-solid fa-pen-to-square"></i></label>
+              <input id="file-upload" type="file"/>
+              <img class="img-fluid mb-2" src="{{currentUser.profile.picture.url}}" alt=""/>
+            </div>
           </div>
         </div>
       </div>
@@ -16,20 +18,24 @@
         <div class="card profileCard mb-4">
           <div class="card-header">Account Details</div>
           <div class="card-body">
-            <form>
+            <form id="userEdit">
               <div class="row gx-3 mb-3">
+                <div class="col-md-12">
+                  <label class="small mb-1" for="profileInputUserName">User Name</label>
+                  <input required class="form-control" id="profileInputUserName" type="text" value="{{currentUser.profile.userName}}"/>
+                </div>
                 <div class="col-md-6">
                   <label class="small mb-1" for="profileInputFirstName">Name</label>
-                  <input class="form-control" id="profileInputFirstName" type="text" value="{{currentUser.profile.name}}" disabled/>
+                  <input required class="form-control" id="profileInputFirstName" type="text" value="{{currentUser.profile.name}}"/>
                 </div>
                 <div class="col-md-6">
                   <label class="small mb-1" for="profileInputLastName">Last name</label>
-                  <input class="form-control" id="profileInputLastName" type="text" value="{{currentUser.profile.lastName}}" disabled/>
+                  <input required class="form-control" id="profileInputLastName" type="text" value="{{currentUser.profile.lastName}}"/>
                 </div>
               </div>
               <div class="mb-3">
                 <label class="small mb-1" for="profileInputEmailAddress">Email address</label>
-                <input class="form-control" id="profileInputEmailAddress" type="email" value="{{currentUser.emails.[0].address}}" disabled/>
+                <input required class="form-control" id="profileInputEmailAddress" type="email" value="{{currentUser.emails.[0].address}}" disabled/>
               </div>
               <!-- Form Row        -->
               <div class="row gx-3 mb-3">
@@ -39,15 +45,16 @@
                   <span class="border border-light rounded-pill bg-info px-3  mx-1" for="inputOrgName">Admin</span>
                   {{/if}}
                   {{#if currentUser.profile.isEditor}}
-                  <span class="border border-light rounded-pill bg-info px-3  mx-1" for="inputOrgName">Editorr</span>
+                  <span class="border border-light rounded-pill bg-info px-3  mx-1" for="inputOrgName">Editor</span>
                   {{/if}}
                   {{#if currentUser.profile.isColumnist}}
                   <span class="border border-light rounded-pill bg-info px-3  mx-1" for="inputOrgName">Columnist</span> 
                   {{/if}}
+                  <span class="border border-light rounded-pill bg-info px-3  mx-1" for="inputOrgName">User</span> 
                 </div>
               </div>
               <div class="gx-3 mb-3 text-end">
-              <button type="submit" form="authProfileForm" class="btn btn-secondary" disabled>Save changes</button>
+              <button type="submit" class="btn btn-primary">Save changes</button>
               </div>
             </form>
           </div>

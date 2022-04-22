@@ -1,25 +1,45 @@
 <template name="publicPagesContact">
-    <div class="container">
+    <div class="container publicPagesContact">
+      <div class="row my-4 ">
+        <div class="col-md-12">
+          <h1>Contact Us</h1>
+        </div>
+      </div>
       <section id="contentSection">
         <div class="row">
-          <div class="col-lg-8 col-md-8 col-sm-8">
-            <div class="left_content">
-              <div class="contact_area">
-                <h2>Contact Us</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dosectetur adipisicing elit, sed do.Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                <form action="#" class="contact_form">
-                  <input class="form-control" type="text" placeholder="Name*">
-                  <input class="form-control" type="email" placeholder="Email*">
-                  <textarea class="form-control" cols="30" rows="10" placeholder="Message*"></textarea>
-                  <input type="submit" value="Send Message">
-                </form>
-              </div>
+          <div class="col-md-6">
+            <div class="contact-area">
+              <form id="contact-form">
+                <input class="form-control" type="text" placeholder="Name" required name="ct_name" id="ct_name">
+                <input class="form-control" type="email" placeholder="Email" required name="ct_mail" id="ct_mail">
+                <textarea class="form-control" cols="30" rows="10" placeholder="Message" required name="ct_area" id="ct_area"></textarea>
+                <button class="btn brdSend" type="submit">Send</button>
+              </form>
             </div>
           </div>
-        
+          <div class="col-md-6">
+            <div class="contact-info">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dosectetur adipisicing elit, sed do.Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+              <ul>
+                <li>
+                  <a href="#"><i class="fa-solid fa-home"></i> <span>New York, NY 10012, US</span></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa-solid fa-envelope"></i> <span>info@bordonews.com</span></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa-solid fa-phone me-3"></i> <span>+90 546 591 70 99</span></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa-solid fa-phone me-3"></i> <span>+90 531 523 05 44</span></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa-solid fa-phone me-3"></i> <span>+90 537 602 84 45</span></a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
-  
     </div>
-
 </template>
