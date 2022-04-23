@@ -20,9 +20,13 @@ Template.authPageProfile.events({
       name: event.target.profileInputFirstName.value,
       lastName: event.target.profileInputLastName.value,
     };
-    Meteor.call("user.profile.update", obj, function (error, success) {
+    Meteor.call("user.profile.update", obj, function (error, result) {
       if (error) {
         ErrorHandler.show(error.message);
+        return;
+      }
+      if (!result){
+        Swal.fire('Not Saved!', 'User Name is exist!', 'warning');
         return;
       }
       Swal.fire('Saved!', '', 'success');

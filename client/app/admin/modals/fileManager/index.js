@@ -11,7 +11,8 @@ Template.adminModalsFileManager.onCreated(function () {
 
   this.state = new ReactiveDict(null, {
     files: [],
-    selectedFiles: []
+    selectedFiles: [],
+    searchKeyUp: false
   });
 
   this.pagination = new ReactiveDict(null, {
@@ -64,13 +65,13 @@ Template.adminModalsFileManager.onRendered(function () {
       self.state.set('selectedFiles', AppUtil.temp.get(self.currentArea.fileAreaID));
     }
   });
-  /*
-  obj[key] = {
-          $regex: `${_options.filtering[key]}`,
-          $options: 'i'
-        };
-  */
-  //Files.find({$or: [{name: {$regex: `${_options.filtering[key]}`, $options: 'i'}}]})
+
+  this.autorun(function(){
+    self.filtering.get('name');
+    self.pagination.set('currentPage', 1);
+    self.state.set('files', []);
+  });
+
   this.autorun(function() {
     $('.fileLoading').show();
     const currentPage = self.pagination.get('currentPage');
@@ -170,6 +171,18 @@ Template.adminModalsFileManager.onRendered(function () {
 });
 
 Template.adminModalsFileManager.events({
+  'keyup #fileSearchInput': function(event, template) {
+    let delayTimer = template.state.get('searchKeyUp');
+    clearTimeout(delayTimer);
+    delayTimer = setTimeout(function() {
+      if (event.target.value == '') {
+        template.filtering.set('name', undefined);
+      } else {
+        template.filtering.set('name', {$regex: event.target.value, $options: 'i'});
+      }
+    }, 1000);
+    template.state.set('searchKeyUp', delayTimer);
+  },
   'click .image_picker_selector li': function(event, template) {
     const selectedFiles = template.state.get('selectedFiles');
     if (template.currentArea.multiple) {

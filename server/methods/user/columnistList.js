@@ -16,6 +16,7 @@ new ValidatedMethod({
         _id: columnnist._id,
         name: columnnist.profile.name,
         lastName: columnnist.profile.lastName,
+        userName: columnnist.profile.userName,
         profilePicture: columnnist.profile.picture.url,
       })
     })

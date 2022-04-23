@@ -21,6 +21,7 @@ new ValidatedMethod({
       _id: writer._id,
       name: writer.profile.name,
       lastName: writer.profile.lastName,
+      userName: writer.profile.userName,
       picture: writer.profile.picture.url,
     };
 

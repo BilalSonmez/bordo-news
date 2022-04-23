@@ -46,6 +46,7 @@ Template.publicPagesColumnDetail.onRendered(function () {
         return;
       }
       self.state.set("column", result);
+      console.log(result);
       document.getElementById("columnDetailContent").innerHTML = result.content;
       result.communityData.like.forEach((data) => {
         if (data.userId === Meteor.userId()) {
