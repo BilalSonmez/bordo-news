@@ -13,7 +13,7 @@ const _schema = new SimpleSchema({
     type: SimpleSchema.RegEx.Id,
     autoValue: function () {
       if (this.isUpdate) {
-        return
+        return;
       }
       try {
         if (Meteor.userId()) {
