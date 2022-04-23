@@ -143,12 +143,14 @@
                   {{#each _topColumns}}
                     {{#if gt @index 4}}
                       <span class="moreColumnsSpan d-none">
-                        <a href="{{pathFor 'public.columns' slugUrl=slugUrl}}" class="list-group-item list-group-item-action list-group-item-light">
+                        <a href="{{pathFor 'public.columns' slugUrl=slugUrl}}"
+                          class="list-group-item list-group-item-action list-group-item-light">
                           <b>{{add @index}}.</b> {{title}}
                         </a>
                       </span>
                     {{else}}
-                      <a href="{{pathFor 'public.columns' slugUrl=slugUrl}}" class="list-group-item list-group-item-action list-group-item-light">
+                      <a href="{{pathFor 'public.columns' slugUrl=slugUrl}}"
+                        class="list-group-item list-group-item-action list-group-item-light">
                         <b>{{add @index}}.</b> {{title}}
                       </a>
                     {{/if}}

@@ -1,4 +1,4 @@
-import { FlowRouter } from "meteor/ostrio:flow-router-extra";
+import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 Template.publicPagesCategoryDetail.onCreated(function () {
   this.state = new ReactiveDict(null, {
     category: {},
@@ -14,8 +14,8 @@ Template.publicPagesCategoryDetail.onCreated(function () {
   });
 
   this.sorting = new ReactiveDict(null, {
-    sortField: "createdAt",
-    sortOrder: "desc",
+    sortField: 'createdAt',
+    sortOrder: 'desc',
   });
 
   this.filtering = new ReactiveDict(null, {
@@ -25,35 +25,34 @@ Template.publicPagesCategoryDetail.onCreated(function () {
 
 Template.publicPagesCategoryDetail.onRendered(function () {
   const self = this;
-  const slugUrl = FlowRouter.getParam("slugUrl");
+  const slugUrl = FlowRouter.getParam('slugUrl');
   $(window).scrollTop(0);
 
-  $(window).on("scroll", (event) => {
+  $(window).on('scroll', (event) => {
     if (window.innerHeight + window.scrollY >= document.body.scrollHeight) {
-      if (!(self.pagination.get("currentPage") >= self.pagination.get("totalPages"))) {
-        self.pagination.set("currentPage", self.pagination.get("currentPage") + 1);
+      if (!(self.pagination.get('currentPage') >= self.pagination.get('totalPages'))) {
+        self.pagination.set('currentPage', self.pagination.get('currentPage') + 1);
       }
     }
   });
 
   this.autorun(function () {
-    Meteor.call("category.show.url",{slugUrl: slugUrl},
-      function (error, result) {
-        if (error) {
-          ErrorHandler.show(error.message);
-          return;
-        }
-        document.getElementById("categoryDetailContent").innerHTML = result.description;
-        self.state.set("category", result);
-        self.filtering.set("categories", {
-          $in: [result._id],
-        });
+    Meteor.call('category.show.url', { slugUrl: slugUrl }, function (error, result) {
+      if (error) {
+        ErrorHandler.show(error.message);
+        return;
       }
-    );
+      document.getElementById('categoryDetailContent').innerHTML = result.description;
+      self.state.set('category', result);
+      self.filtering.set('categories', {
+        $in: [result._id],
+      });
+    });
   });
+  
   this.autorun(function () {
-    const currentPage = self.pagination.get("currentPage");
-    const pageItems = self.pagination.get("pageItems");
+    const currentPage = self.pagination.get('currentPage');
+    const pageItems = self.pagination.get('pageItems');
     const filtering = self.filtering.all();
     const sorting = self.sorting.all();
 
@@ -68,16 +67,16 @@ Template.publicPagesCategoryDetail.onRendered(function () {
       },
     };
 
-    Meteor.call("news.list", listOptions, function (error, result) {
+    Meteor.call('news.list', listOptions, function (error, result) {
       if (error) {
         ErrorHandler.show(error.message);
         return;
       }
       console.log(result);
-      self.pagination.set("totalCount", result.options.pagination.totalCount);
+      self.pagination.set('totalCount', result.options.pagination.totalCount);
       const pages = Math.ceil(result.options.pagination.totalCount / result.options.pagination.pageItems);
-      self.pagination.set("totalPages", pages);
-      self.state.set("news", self.state.get("news").concat(result.news));
+      self.pagination.set('totalPages', pages);
+      self.state.set('news', self.state.get('news').concat(result.news));
     });
   });
 
@@ -90,27 +89,27 @@ Template.publicPagesCategoryDetail.onRendered(function () {
         },
         filtering: self.filtering.all(),
         sorting: {
-          sortField: "communityData.views",
-          sortOrder: "desc",
+          sortField: 'communityData.views',
+          sortOrder: 'desc',
         },
       },
     };
 
-    Meteor.call("news.list", listOptions, function (error, result) {
+    Meteor.call('news.list', listOptions, function (error, result) {
       if (error) {
         ErrorHandler.show(error.message);
         return;
       }
-      self.state.set("topNews", result.news);
+      self.state.set('topNews', result.news);
     });
   });
 });
 
 Template.publicPagesCategoryDetail.events({
-  "click .btnMoreNews": function (event, template) {
-    let moretext = document.getElementsByClassName("moreNewsSpan");
+  'click .btnMoreNews': function (event, template) {
+    let moretext = document.getElementsByClassName('moreNewsSpan');
     for (let data of moretext) {
-      data.classList.remove("d-none");
+      data.classList.remove('d-none');
     }
     $(event.target).hide();
   },

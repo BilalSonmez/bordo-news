@@ -1,4 +1,4 @@
-import { FlowRouter } from "meteor/ostrio:flow-router-extra";
+import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 Template.publicPagesColumnistDetail.onCreated(function () {
   this.state = new ReactiveDict(null, {
     columns: [],
@@ -13,8 +13,8 @@ Template.publicPagesColumnistDetail.onCreated(function () {
   });
 
   this.sorting = new ReactiveDict(null, {
-    sortField: "createdAt",
-    sortOrder: "desc",
+    sortField: 'createdAt',
+    sortOrder: 'desc',
   });
 
   this.filtering = new ReactiveDict(null, {});
@@ -22,31 +22,31 @@ Template.publicPagesColumnistDetail.onCreated(function () {
 
 Template.publicPagesColumnistDetail.onRendered(function () {
   const self = this;
-  const _id = FlowRouter.getParam("_id");
+  const _id = FlowRouter.getParam('_id');
   $(window).scrollTop(0);
 
-  $(window).on("scroll", (event) => {
+  $(window).on('scroll', (event) => {
     if (window.innerHeight + window.scrollY >= document.body.scrollHeight) {
-      if (!(self.pagination.get("currentPage") >= self.pagination.get("totalPages"))) {
-        self.pagination.set("currentPage", self.pagination.get("currentPage") + 1);
+      if (!(self.pagination.get('currentPage') >= self.pagination.get('totalPages'))) {
+        self.pagination.set('currentPage', self.pagination.get('currentPage') + 1);
       }
     }
   });
 
   this.autorun(function () {
-    Meteor.call("columnist.show", { _id: _id }, function (error, result) {
+    Meteor.call('columnist.show', { _id: _id }, function (error, result) {
       if (error) {
         ErrorHandler.show(error.message);
         return;
       }
       console.log(result);
-      self.state.set("columnist", result);
+      self.state.set('columnist', result);
     });
   });
 
   this.autorun(function () {
-    const currentPage = self.pagination.get("currentPage");
-    const pageItems = self.pagination.get("pageItems");
+    const currentPage = self.pagination.get('currentPage');
+    const pageItems = self.pagination.get('pageItems');
     const sorting = self.sorting.all();
 
     const listOptions = {
@@ -62,16 +62,17 @@ Template.publicPagesColumnistDetail.onRendered(function () {
       },
     };
 
-    Meteor.call("column.list", listOptions, function (error, result) {
+    Meteor.call('column.list', listOptions, function (error, result) {
       if (error) {
         ErrorHandler.show(error.message);
         return;
       }
       console.log(result);
-      self.pagination.set("totalCount", result.options.pagination.totalCount);
+      
+      self.pagination.set('totalCount', result.options.pagination.totalCount);
       const pages = Math.ceil(result.options.pagination.totalCount / result.options.pagination.pageItems);
-      self.pagination.set("totalPages", pages);
-      self.state.set("columns", self.state.get("columns").concat(result.columns));
+      self.pagination.set('totalPages', pages);
+      self.state.set('columns', self.state.get('columns').concat(result.columns));
     });
   });
 });

@@ -1,7 +1,7 @@
-import SimpleSchema from "simpl-schema";
+import SimpleSchema from 'simpl-schema';
 
 new ValidatedMethod({
-  name: "news.show",
+  name: 'news.show',
   validate: new SimpleSchema({
     _id: SimpleSchema.RegEx.Id,
   }).validator(),

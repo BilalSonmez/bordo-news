@@ -3,14 +3,15 @@ import SimpleSchema from 'simpl-schema';
 
 new ValidatedMethod({
   name: 'category.delete',
-  mixins : [SignedInMixin,RoleMixin],
-  roles: ["roles.editor"],
+  mixins: [SignedInMixin, RoleMixin],
+  roles: ['roles.editor'],
   validate: new SimpleSchema({
-    _id: SimpleSchema.RegEx.Id
+    _id: SimpleSchema.RegEx.Id,
   }).validator(),
   run: async function (data) {
     this.unblock();
     const { _id } = data;
+
     Categories.remove({ _id: _id });
-  }
-}); 
+  },
+});

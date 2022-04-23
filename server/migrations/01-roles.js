@@ -11,22 +11,25 @@ Migrations.add({
       password: '123123',
       profile: {
         name: 'Bordo',
-        lastName: 'News'
-      }
+        lastName: 'News',
+      },
     });
 
-    Meteor.users.update({
-      _id: userId
-    }, {
-      $set: {
-        'profile.isAdmin': true,
-        'profile.isEditor': true,
-        'profile.isColumnist': true,
+    Meteor.users.update(
+      {
+        _id: userId,
+      },
+      {
+        $set: {
+          'profile.isAdmin': true,
+          'profile.isEditor': true,
+          'profile.isColumnist': true,
+        },
       }
-    })
+    );
 
     Roles.addUsersToRoles(userId, 'roles.admin', null);
     Roles.addUsersToRoles(userId, 'roles.editor', null);
     Roles.addUsersToRoles(userId, 'roles.columnist', null);
-  }
+  },
 });

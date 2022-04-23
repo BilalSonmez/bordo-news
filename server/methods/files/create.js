@@ -3,12 +3,14 @@ import SimpleSchema from 'simpl-schema';
 new ValidatedMethod({
   name: 'file.create',
   validate: new SimpleSchema({
-    file: FileSchema
+    file: FileSchema,
   }).validator(),
-  run: function(data){
+  run: function (data) {
     this.unblock();
-    const { file } = data
+    const { file } = data;
+    
     const id = Files.insert(file);
-    return Files.findOne({ _id: id});
-  }
+
+    return Files.findOne({ _id: id });
+  },
 });

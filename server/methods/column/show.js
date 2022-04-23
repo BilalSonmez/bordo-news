@@ -10,16 +10,13 @@ new ValidatedMethod({
     const { _id } = data;
 
     const column = Columns.findOne({
-      _id: _id
+      _id: _id,
     });
 
-
     column.featuredImage = Files.findOne({
-      _id: column.featuredImage
+      _id: column.featuredImage,
     });
 
     return column;
-  }
+  },
 });
-
-

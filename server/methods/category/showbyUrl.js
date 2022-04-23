@@ -8,8 +8,9 @@ new ValidatedMethod({
   run: async function (data) {
     this.unblock();
     const { slugUrl } = data;
+    
     return Categories.findOne({
-      slugUrl: slugUrl
+      slugUrl: slugUrl,
     });
-  }
+  },
 });

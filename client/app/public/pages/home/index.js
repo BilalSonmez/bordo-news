@@ -8,7 +8,7 @@ Template.publicPagesHome.onCreated(function () {
     topNews: [],
     topColumns: [],
   });
-
+  
   this.newsPagination = new ReactiveDict(null, {
     currentPage: 1,
     pageItems: 6,
@@ -27,6 +27,17 @@ Template.publicPagesHome.onCreated(function () {
 Template.publicPagesHome.onRendered(function () {
   const self = this;
   $(window).scrollTop(0);
+
+  const user = Meteor.user();
+
+  if (user) {
+    console.log(user);
+  }
+
+  if (!user) {
+    return;
+  }
+  console.log(user);
 
   this.autorun(function () {
     const listOptions = {

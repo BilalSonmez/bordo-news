@@ -1,4 +1,4 @@
-import Quill from "quill";
+import Quill from 'quill';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import Swal from 'sweetalert2';
 import Slugify from 'slugify';
@@ -10,36 +10,34 @@ Template.adminPageNewsAdd.onCreated(function () {
 
 Template.adminPageNewsAdd.onRendered(function () {
   const self = this;
-  self.quill = new Quill("#news-add-editor", {
-    theme: "snow",
+  self.quill = new Quill('#news-add-editor', {
+    theme: 'snow',
     placeholder: 'Optional',
   });
   this.autorun(function () {
-
-    Meteor.call("category.list", {}, function (error, result) {
+    Meteor.call('category.list', {}, function (error, result) {
       if (error) {
         ErrorHandler.show(error.message);
         return;
       }
       console.log(result.categories);
-      self.state.set("categories", result.categories);
-    })
-
+      self.state.set('categories', result.categories);
+    });
   });
 });
 
 Template.adminPageNewsAdd.events({
-  "submit form#brdNewAddForm": function (event, template) {
+  'submit form#brdNewAddForm': function (event, template) {
     event.preventDefault();
     const title = event.target.inputTitle.value;
     const images = AppUtil.temp.get('newsFeaturedImage');
     if (title === '') {
-      ErrorHandler.show("Title cannot be empty");
+      ErrorHandler.show('Title cannot be empty');
       return;
     }
     const subTitle = event.target.inputSubTitle.value;
     const content = template.quill.root.innerHTML;
-    const slugUrl = Slugify(event.target.slugUrl.value,{replacement: '-',lower:true});
+    const slugUrl = Slugify(event.target.slugUrl.value, { replacement: '-', lower: true });
     const featuredImage = images.length > 0 ? images[0]._id : null;
     const metaTitle = event.target.inputMetaTitle.value;
     const metaDescription = event.target.inputMetaDescription.value;
@@ -52,9 +50,11 @@ Template.adminPageNewsAdd.events({
     if (event.target.isImportantOn.checked) {
       isImportant = true;
     }
-    const selectedCategories = $('.selectedCategories:checkbox:checked').map(function () {
-      return this.value;
-    }).get();
+    const selectedCategories = $('.selectedCategories:checkbox:checked')
+      .map(function () {
+        return this.value;
+      })
+      .get();
 
     const obj = {
       news: {
@@ -75,8 +75,8 @@ Template.adminPageNewsAdd.events({
           views: 0,
           like: [],
         },
-      }
-    }
+      },
+    };
     console.log(obj);
 
     Swal.fire({
@@ -85,20 +85,20 @@ Template.adminPageNewsAdd.events({
       confirmButtonText: 'Save',
     }).then((result) => {
       if (result.isConfirmed) {
-        Meteor.call("news.create", obj, function (error, success) {
+        Meteor.call('news.create', obj, function (error, success) {
           if (error) {
             ErrorHandler.show(error.message);
             return;
           }
-          AppUtil.refreshTokens.set("news", Random.id());
+          AppUtil.refreshTokens.set('news', Random.id());
           event.target.reset();
-          Swal.fire('Saved!', '', 'success')
-          FlowRouter.go("admin.new", {});
+          Swal.fire('Saved!', '', 'success');
+          FlowRouter.go('admin.new', {});
         });
       }
-    })
+    });
   },
   'input #inputTitle': function (event, template) {
-    $('#slugUrl').val(Slugify(event.target.value,{replacement: '-',lower:true}));
+    $('#slugUrl').val(Slugify(event.target.value, { replacement: '-', lower: true }));
   },
 });

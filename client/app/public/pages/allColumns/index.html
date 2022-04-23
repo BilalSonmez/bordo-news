@@ -25,7 +25,8 @@
             <div class="card-body">
               <div class="list-group moreColumnsList">
                 {{#each _columnists}}
-                  <a href="{{pathFor '/columnist/:_id' _id=_id}}" class="list-group-item list-group-item-action list-group-item-light">
+                  <a href="{{pathFor '/columnist/:_id' _id=_id}}"
+                    class="list-group-item list-group-item-action list-group-item-light">
                     <b>{{add @index}}.</b> {{name}} {{lastName}}
                   </a>
                 {{/each}}

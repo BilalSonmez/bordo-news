@@ -9,10 +9,6 @@ new ValidatedMethod({
     this.unblock();
     const { _id } = data;
 
-    return Categories.findOne({
-      _id: _id
-    });
-  }
+    return Categories.findOne({ _id: _id });
+  },
 });
-
-

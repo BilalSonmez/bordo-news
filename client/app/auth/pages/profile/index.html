@@ -8,7 +8,8 @@
           <div class="card-body text-center">
             <img class="img-account-profile mb-2" src="{{currentUser.profile.picture.url}}" alt="" />
             <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 1 MB</div>
-            <button data-bs-toggle="modal" data-bs-target="#authProfilePictureModal" class="btn btn-primary profileUploadImage" type="button">Upload new image</button>
+            <button data-bs-toggle="modal" data-bs-target="#authProfilePictureModal"
+              class="btn btn-primary profileUploadImage" type="button">Upload new image</button>
           </div>
         </div>
       </div>
@@ -20,34 +21,38 @@
               <div class="row gx-3 mb-3">
                 <div class="col-md-6">
                   <label class="small mb-1" for="profileInputFirstName">Name</label>
-                  <input class="form-control" id="profileInputFirstName" type="text" value="{{currentUser.profile.name}}" disabled/>
+                  <input class="form-control" id="profileInputFirstName" type="text"
+                    value="{{currentUser.profile.name}}" disabled />
                 </div>
                 <div class="col-md-6">
                   <label class="small mb-1" for="profileInputLastName">Last name</label>
-                  <input class="form-control" id="profileInputLastName" type="text" value="{{currentUser.profile.lastName}}" disabled/>
+                  <input class="form-control" id="profileInputLastName" type="text"
+                    value="{{currentUser.profile.lastName}}" disabled />
                 </div>
               </div>
               <div class="mb-3">
                 <label class="small mb-1" for="profileInputEmailAddress">Email address</label>
-                <input class="form-control" id="profileInputEmailAddress" type="email" value="{{currentUser.emails.[0].address}}" disabled/>
+                <input class="form-control" id="profileInputEmailAddress" type="email"
+                  value="{{currentUser.emails.[0].address}}" disabled />
               </div>
               <!-- Form Row        -->
               <div class="row gx-3 mb-3">
                 <label class="small mb-1" for="profileInputEmailAddress">Roles</label>
                 <div class="d-flex">
                   {{#if currentUser.profile.isAdmin}}
-                  <span class="border border-light rounded-pill bg-info px-3  mx-1" for="inputOrgName">Admin</span>
+                    <span class="border border-light rounded-pill bg-info px-3  mx-1" for="inputOrgName">Admin</span>
                   {{/if}}
                   {{#if currentUser.profile.isEditor}}
-                  <span class="border border-light rounded-pill bg-info px-3  mx-1" for="inputOrgName">Editorr</span>
+                    <span class="border border-light rounded-pill bg-info px-3  mx-1" for="inputOrgName">Editorr</span>
                   {{/if}}
                   {{#if currentUser.profile.isColumnist}}
-                  <span class="border border-light rounded-pill bg-info px-3  mx-1" for="inputOrgName">Columnist</span> 
+                    <span class="border border-light rounded-pill bg-info px-3  mx-1"
+                      for="inputOrgName">Columnist</span>
                   {{/if}}
                 </div>
               </div>
               <div class="gx-3 mb-3 text-end">
-              <button type="submit" form="authProfileForm" class="btn btn-secondary" disabled>Save changes</button>
+                <button type="submit" form="authProfileForm" class="btn btn-secondary" disabled>Save changes</button>
               </div>
             </form>
           </div>
@@ -62,7 +67,8 @@
     <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="authProfilePictureModalLabel" style="margin-right: 1rem;">Profile Picture Upload</h5>
+          <h5 class="modal-title" id="authProfilePictureModalLabel" style="margin-right: 1rem;">Profile Picture Upload
+          </h5>
           <div class="fileLoading text-center" style="display: none;">
             <div class="spinner-border" role="status">
               <span class="visually-hidden">Loading...</span>
@@ -74,7 +80,7 @@
           <div id="drag-drop-area"></div>
         </div>
         <div class="modal-footer">
-          
+
           <!-- <button type="submit" form="brdCategoryCreateForm" class="btn btn-primary">Save</button> -->
         </div>
       </div>

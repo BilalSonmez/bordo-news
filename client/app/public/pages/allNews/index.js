@@ -11,8 +11,8 @@ Template.publicPagesAllNews.onCreated(function () {
   });
 
   this.sorting = new ReactiveDict(null, {
-    sortField: "createdAt",
-    sortOrder: "desc",
+    sortField: 'createdAt',
+    sortOrder: 'desc',
   });
 
   this.filtering = new ReactiveDict(null, {});
@@ -21,23 +21,23 @@ Template.publicPagesAllNews.onCreated(function () {
 Template.publicPagesAllNews.onRendered(function () {
   const self = this;
   $(window).scrollTop(0);
-  
-  $(window).on("scroll", (event) => {
+
+  $(window).on('scroll', (event) => {
     if (window.innerHeight + window.scrollY >= document.body.scrollHeight) {
-      if (!(self.pagination.get("currentPage") >= self.pagination.get("totalPages"))) {
-        self.pagination.set("currentPage", self.pagination.get("currentPage") + 1);
+      if (!(self.pagination.get('currentPage') >= self.pagination.get('totalPages'))) {
+        self.pagination.set('currentPage', self.pagination.get('currentPage') + 1);
       }
     }
   });
 
   this.autorun(function () {
-    Meteor.call("category.list", {}, function (error, result) {
+    Meteor.call('category.list', {}, function (error, result) {
       if (error) {
         ErrorHandler.show(error.message);
         return;
       }
       console.log(result);
-      self.state.set("categories", result.categories);
+      self.state.set('categories', result.categories);
     });
   });
 
@@ -45,40 +45,41 @@ Template.publicPagesAllNews.onRendered(function () {
     const listOptions = {
       options: {
         pagination: {
-          currentPage: self.pagination.get("currentPage"),
-          pageItems: self.pagination.get("pageItems"),
+          currentPage: self.pagination.get('currentPage'),
+          pageItems: self.pagination.get('pageItems'),
         },
         filtering: {},
         sorting: {
-          sortField: self.sorting.get("sortField"),
-          sortOrder: self.sorting.get("sortOrder"),
+          sortField: self.sorting.get('sortField'),
+          sortOrder: self.sorting.get('sortOrder'),
         },
       },
     };
-    Meteor.call("news.list", listOptions, function (error, result) {
+    
+    Meteor.call('news.list', listOptions, function (error, result) {
       if (error) {
         ErrorHandler.show(error.message);
         return;
       }
-      self.pagination.set("totalCount", result.options.pagination.totalCount);
+      self.pagination.set('totalCount', result.options.pagination.totalCount);
       const pages = Math.ceil(result.options.pagination.totalCount / result.options.pagination.pageItems);
-      self.pagination.set("totalPages", pages);
-      self.state.set("news", self.state.get("news").concat(result.news));
+      self.pagination.set('totalPages', pages);
+      self.state.set('news', self.state.get('news').concat(result.news));
     });
   });
 });
 
 Template.publicPagesAllNews.events({
-  "click .btnNewsMore": function (event, template) {
-    template.pagination.set("currentPage", template.pagination.get("currentPage") + 1);
-    if (template.pagination.get("currentPage") >= template.pagination.get("totalPages")) {
+  'click .btnNewsMore': function (event, template) {
+    template.pagination.set('currentPage', template.pagination.get('currentPage') + 1);
+    if (template.pagination.get('currentPage') >= template.pagination.get('totalPages')) {
       $(event.target).hide();
     }
   },
-  "click .btnCategoryMore": function (event, template) {
-    let moretext = document.getElementsByClassName("moreCategoriesSpan");
+  'click .btnCategoryMore': function (event, template) {
+    let moretext = document.getElementsByClassName('moreCategoriesSpan');
     for (let data of moretext) {
-      data.classList.remove("d-none");
+      data.classList.remove('d-none');
     }
     $(event.target).hide();
   },

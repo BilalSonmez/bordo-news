@@ -6,9 +6,9 @@ Accounts.onCreateUser(function (options, user) {
   user.profile.isAdmin = false;
   user.profile.isEditor = false;
   user.profile.isColumnist = false;
-  user.profile.picture={
-    name:"defaultPic",
-    url:"https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
+  user.profile.picture = {
+    name: 'defaultPic',
+    url: 'https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
   };
   return user;
 });
@@ -25,7 +25,7 @@ Accounts.emailTemplates.enrollAccount.subject = (user) => {
 };
 
 Accounts.emailTemplates.enrollAccount.html = (user, url) => {
-  return SSR.render('enrollment', { rootUrl: Meteor.settings.rootUrl, url: url, user: user })
+  return SSR.render('enrollment', { rootUrl: Meteor.settings.rootUrl, url: url, user: user });
 };
 
 Accounts.emailTemplates.resetPassword.subject = (user) => {
@@ -33,5 +33,5 @@ Accounts.emailTemplates.resetPassword.subject = (user) => {
 };
 
 Accounts.emailTemplates.resetPassword.html = (user, url) => {
-  return SSR.render('resetPassword', { rootUrl: Meteor.settings.rootUrl, url: url, user: user })
+  return SSR.render('resetPassword', { rootUrl: Meteor.settings.rootUrl, url: url, user: user });
 };
