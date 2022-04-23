@@ -11,6 +11,14 @@ new ValidatedMethod({
   run: async function (data) {
     this.unblock();
     const { userName, name, lastName } = data;
+    const checkUserName =  Meteor.users.findOne({
+      "profile.userName": userName
+    });
+
+    if (checkUserName && checkUserName._id != Meteor.userId()){
+      return false;
+    }
+    
     return Meteor.users.update({_id: Meteor.userId()}, {
       $set: {
         "profile.userName": userName,

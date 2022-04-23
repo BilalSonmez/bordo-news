@@ -1,61 +1,94 @@
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+import { FlowRouterMeta, FlowRouterTitle } from 'meteor/ostrio:flow-router-meta';
 
-FlowRouter.route('/', {
+
+const routesPublic = FlowRouter.group({
+  prefix: '',
+  name: 'public',
+  title: 'A day in the life - Bordo News',
+  meta: {
+    url: {
+      property: 'og:url',
+      itemprop: 'url',
+      content() {
+        return document.location.href;
+      }
+    }
+  },
+  link: {
+    canonical() {
+      return document.location.href;
+    }
+  }
+});
+
+routesPublic.route('/', {
   name: 'public.home',
   action: function (params, queryParams) {
     this.render('publicLayoutDefault', {page: 'publicPagesHome'});
   }
 });
 
-FlowRouter.route('/news/:slugUrl', {
+routesPublic.route('/news/:slugUrl', {
   name: 'public.news',
+  title: 'News Detail - Bordo News',
   action: function (params, queryParams) {
     this.render('publicLayoutDefault', {page: 'publicPagesNewDetail'});
   }
 });
-FlowRouter.route('/columns/:slugUrl', {
+routesPublic.route('/columns/:slugUrl', {
   name: 'public.columns',
+  title: 'Columns Detail - Bordo News',
   action: function (params, queryParams) {
     this.render('publicLayoutDefault', {page: 'publicPagesColumnDetail'});
   }
 });
-FlowRouter.route('/category/:slugUrl', {
+routesPublic.route('/category/:slugUrl', {
   name: 'public.category',
+  title: 'News Category - Bordo News',
   action: function (params, queryParams) {
     this.render('publicLayoutDefault', {page: 'publicPagesCategoryDetail'});
   }
 });
-FlowRouter.route('/columnist/:_id', {
+routesPublic.route('/columnist/:_userName', {
   name: 'public.columnist',
+  title: 'Columnist - Bordo News',
   action: function (params, queryParams) {
     this.render('publicLayoutDefault', {page: 'publicPagesColumnistDetail'});
   }
 });
 
-FlowRouter.route('/about', {
+routesPublic.route('/about', {
   name: 'public.about',
+  title: 'About Us - Bordo News',
   action: function (params, queryParams) {
     this.render('publicLayoutDefault', {page: 'publicPagesAbout'});
   }
 });
 
-FlowRouter.route('/contact', {
+routesPublic.route('/contact', {
   name: 'public.contact',
+  title: 'Contact Us - Bordo News',
   action: function (params, queryParams) {
     this.render('publicLayoutDefault', {page: 'publicPagesContact'});
   }
 });
 
-FlowRouter.route('/news', {
+routesPublic.route('/news', {
   name: 'public.all.news',
+  title: 'News - Bordo News',
   action: function (params, queryParams) {
     this.render('publicLayoutDefault', {page: 'publicPagesAllNews'});
   }
 });
 
-FlowRouter.route('/columns', {
+routesPublic.route('/columns', {
   name: 'public.all.columns',
+  title: 'Columns - Bordo News',
   action: function (params, queryParams) {
     this.render('publicLayoutDefault', {page: 'publicPagesAllColumns'});
   }
 });
+
+new FlowRouterMeta(FlowRouter);
+new FlowRouterTitle(FlowRouter);

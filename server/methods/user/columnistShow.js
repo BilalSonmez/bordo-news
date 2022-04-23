@@ -3,16 +3,15 @@ import SimpleSchema from 'simpl-schema';
 new ValidatedMethod({
   name: 'columnist.show',
   validate: new SimpleSchema({
-    _id: SimpleSchema.RegEx.Id
+    userName: String
   }).validator(),
   run: function (data) {
     this.unblock();
-    const { _id } = data;
+    const { userName } = data;
 
     const columnist = Meteor.users.findOne({
-      _id:_id,
-    }); 
-    
+      "profile.userName": userName,
+    });
     return {_id:columnist._id,name:columnist.profile.name,lastName:columnist.profile.lastName,picture:columnist.profile.picture.url};
   }
 });

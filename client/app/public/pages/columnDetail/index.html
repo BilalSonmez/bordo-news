@@ -74,7 +74,7 @@
             <div class="position-relative my-3 text-center">
               <img src="{{_column.writer.picture}}" class="rounded-circle w-50 img-fluid  h-50" alt="...">
               <h5 class="my-2">Yazar:
-                <a href="{{pathFor 'public.columnist' _id=_column.writer._id}}" class="text-decoration-none">
+                <a href="{{pathFor 'public.columnist' _userName=_column.writer.userName}}" class="text-decoration-none">
                   {{_column.writer.name}} {{_column.writer.lastName}}
                 </a>
               </h5>
